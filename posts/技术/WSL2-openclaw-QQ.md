@@ -1,6 +1,6 @@
 ---
 title: WSL2 部署 OpenClaw 龙虾机器人，实现 QQ 机器人接入教程
-slug: WSL2-openclaw
+slug: WSL2-openclaw-QQ
 date: 2026/03/11 17:36:00
 updated: 2026/05/04 17:50:45
 status: publish

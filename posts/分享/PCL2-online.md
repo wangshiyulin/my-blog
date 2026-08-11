@@ -1,6 +1,6 @@
 ---
 title: PCL2 启动器《我的世界》联机教程，内网 / 公网联机方案
-slug: PCL2
+slug: PCL2-online
 date: 2026/03/01 16:24:00
 updated: 2026/05/04 17:52:55
 status: publish

@@ -1,6 +1,6 @@
 ---
 title: Thunderbird——也许是最好的多平台、开源、注重隐私的邮件客户端
-slug: Thunderbird
+slug: Thunderbird-setup
 date: 2026/07/18 17:22:00
 updated: 2026/07/18 17:47:13
 status: publish

@@ -1,6 +1,6 @@
 ---
 title: Typecho 博客站点地图 Sitemap 配置方法，提升收录
-slug: Typecho
+slug: Typecho-sitemap
 date: 2026/05/04 18:16:00
 updated: 2026/07/18 18:30:07
 status: publish
@@ -26,7 +26,7 @@ desc: Typecho设置站点地图，方便google和bing提交
 
 如果未开启伪静态，则无法访问sitemap.xml页面，返回404
 1. 1Panel中打开 **网站 - 配置 - 伪静态**
->1panel和typecho部署请看[部署指南](/posts/技术/1Panel+Typecho搭建动态博客教程)
+>1panel和typecho部署请看[部署指南](/posts/技术/1panel-typecho.html)
 2. 下拉选择 **typecho**，保存
 3. **进入Typecho后台 - 设置 - 永久链接**
 4. 勾选启用功能，如果提示没有检测到也强制勾选

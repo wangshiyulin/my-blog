@@ -1,6 +1,6 @@
 ---
 title: 自建 WebDAV 服务，实现 Obsidian 笔记多端同步方案
-slug: WebDav-Obsidian
+slug: cloud-WebDav-Obsidian
 date: 2026/03/25 14:39:00
 updated: 2026/05/04 18:13:57
 status: publish

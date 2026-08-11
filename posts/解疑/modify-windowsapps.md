@@ -1,6 +1,6 @@
 ---
 title: 修改 WindowsApps 文件夹权限后应用报错的解决方法
-slug: Windowsapps
+slug: modify-windowsapps
 date: 2026/05/10 16:38:00
 updated: 2026/05/10 17:10:33
 status: publish

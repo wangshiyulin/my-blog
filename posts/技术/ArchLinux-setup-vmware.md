@@ -1,6 +1,6 @@
 ---
 title: 虚拟机环境安装 ArchLinux 极简上手教程
-slug: ArchLinux-setup
+slug: ArchLinux-setup-vmware
 date: 2026/03/22 20:35:00
 updated: 2026/05/04 13:29:13
 status: publish

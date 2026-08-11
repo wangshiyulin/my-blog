@@ -1,6 +1,6 @@
 ---
 title: Kazumi 全平台开源追番播放器，免费动漫播放工具推荐
-slug: Kazumi
+slug: Kazumi-setup
 date: 2026/05/05 14:29:00
 updated: 2026/07/18 18:29:30
 status: publish
