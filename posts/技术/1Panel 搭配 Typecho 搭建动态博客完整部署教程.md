@@ -1,5 +1,5 @@
 ---
-title: 1Panel+Typecho搭建动态博客教程
+title: 1Panel 搭配 Typecho 搭建动态博客完整部署教程
 slug: 1panel-typecho
 date: 2026/03/06 12:09:00
 updated: 2026/05/04 17:54:22

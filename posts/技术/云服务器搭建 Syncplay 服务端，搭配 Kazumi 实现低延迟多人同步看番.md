@@ -1,5 +1,5 @@
 ---
-title: 云服务器部署Syncplay服务端，并实现看番软件-Kazumi-低延迟、多端、一起看
+title: 云服务器搭建 Syncplay 服务端，搭配 Kazumi 实现低延迟多人同步看番
 slug: syncplay-kazumi
 date: 2026/06/13 12:25:00
 updated: 2026/07/18 18:34:05

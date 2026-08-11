@@ -1,5 +1,5 @@
 ---
-title: Windows11 推出新版开始菜单，如何返回旧版菜单
+title: Win11 更新新版开始菜单，一键恢复经典旧版菜单教程
 slug: Windows11-new-menu
 date: 2026/06/11 19:22:00
 updated: 2026/06/11 19:38:28

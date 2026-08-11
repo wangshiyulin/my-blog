@@ -1,5 +1,5 @@
 ---
-title: Zed 编辑器通过 MinGW 编译器配置 Rust 开发环境（Windows）
+title: Windows 系统 Zed 编辑器搭配 MinGW 搭建 Rust 开发环境
 slug: Zed-MinGW64-Rust-Windows
 date: 2026/05/21 16:49:00
 updated: 2026/05/29 14:11:55

@@ -1,5 +1,5 @@
 ---
-title: Obsidian多端同步指南（Syncthing）
+title: Syncthing 搭建 Obsidian 多端同步，无需第三方云端方案
 slug: Obsidian-syncthing
 date: 2026/03/22 22:43:00
 updated: 2026/05/04 17:54:56

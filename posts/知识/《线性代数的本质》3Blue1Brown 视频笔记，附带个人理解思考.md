@@ -1,5 +1,5 @@
 ---
-title: 线性代数的本质（3Blue1Brown视频笔记）及我自己的思考
+title: 《线性代数的本质》3Blue1Brown 视频笔记，附带个人理解思考
 slug: linear-algebra
 date: 2026/03/26 21:28:00
 updated: 2026/05/10 17:46:56

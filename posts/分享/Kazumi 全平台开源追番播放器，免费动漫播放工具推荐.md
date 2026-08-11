@@ -1,5 +1,5 @@
 ---
-title: 追番神器Kazumi——开源免费、全平台动漫播放器
+title: Kazumi 全平台开源追番播放器，免费动漫播放工具推荐
 slug: Kazumi
 date: 2026/05/05 14:29:00
 updated: 2026/07/18 18:29:30

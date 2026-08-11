@@ -1,5 +1,5 @@
 ---
-title: 开源音乐播放器 LX Music 及最新音源分享
+title: LX Music 开源音乐播放器使用教程，可用音源汇总分享
 slug: LX Music
 date: 2026/05/04 13:21:00
 updated: 2026/05/05 10:53:08

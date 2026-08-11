@@ -1,5 +1,5 @@
 ---
-title: Ollama部署本地模型教程
+title: Ollama 部署本地大模型完整教程，离线运行 AI 模型
 slug: Ollama-setup
 date: 2026/03/17 13:39:00
 updated: 2026/05/04 17:55:55

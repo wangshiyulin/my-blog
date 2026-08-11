@@ -21,14 +21,19 @@ test.html
 .vitepress/auto-imports.d.ts
 
 # Editor directories and files
-.vscode/*
-.vscode
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 
 .vercel
+
+# Markdown、文本文件仓库统一存储LF换行
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+# 二进制文件不做转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary

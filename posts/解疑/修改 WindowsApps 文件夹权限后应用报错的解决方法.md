@@ -1,5 +1,5 @@
 ---
-title: 改变Windowsapps文件夹权限，导致应用参数错误，解决方式
+title: 修改 WindowsApps 文件夹权限后应用报错的解决方法
 slug: Windowsapps
 date: 2026/05/10 16:38:00
 updated: 2026/05/10 17:10:33
