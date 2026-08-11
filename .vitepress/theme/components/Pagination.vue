@@ -87,8 +87,11 @@ const jumpInput = ref(null);
 const inputFocus = ref(false);
 
 // 页数数据
-const currentPage = ref(props.page);
-const totalPages = computed(() => Math.ceil(props.total / props.limit));
+const currentPage = computed(() => props.page);
+
+const totalPages = computed(() =>
+  Math.ceil(props.total / props.limit)
+);
 
 // 分页指示器数据
 const pageNumber = computed(() => {

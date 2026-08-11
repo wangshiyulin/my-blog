@@ -11,7 +11,7 @@
         <!-- 分页 -->
         <Pagination
           :total="allListTotal"
-          :page="Number(page)"
+          :page="currentPage"
           :limit="postSize"
           :useParams="showCategories || showTags ? true : false"
           :routePath="
@@ -31,95 +31,173 @@
 
 <script setup>
 import { mainStore } from "@/store";
-
 const { theme } = useData();
 const store = mainStore();
+const route = useRoute();
+
 const props = defineProps({
-  // 显示首页头部
+  // 是否显示头部
   showHeader: {
     type: Boolean,
     default: false,
   },
-  // 当前页数
+  // 当前页码
   page: {
     type: Number,
     default: 1,
   },
-  // 显示分类
+  // 分类
   showCategories: {
     type: [null, String],
     default: null,
   },
-  // 显示标签
+  // 标签
   showTags: {
     type: [null, String],
     default: null,
   },
 });
 
-// 每页文章数
+// 每页数量
 const postSize = theme.value.postSize;
 
-// 列表总数量
-const allListTotal = computed(() => {
-  const data = props.showCategories
-    ? theme.value.categoriesData[props.showCategories]?.articles
-    : props.showTags
-      ? theme.value.tagsData[props.showTags]?.articles
-      : theme.value.postData;
-  // 返回数量
-  return data ? data.length : 0;
-});
+// 分类、标签使用的URL页码
+const currentQueryPage = ref(1);
 
-// 获得当前页数
-const getCurrentPage = () => {
-  if (props.showCategories || props.showTags) {
-    if (typeof window === "undefined") return 0;
-    const params = new URLSearchParams(window.location.search);
-    const page = params.get("page");
-    if (!page) return 0;
-    const currentPage = Number(page);
-    return currentPage ? currentPage - 1 : 0;
+// 更新URL参数页码
+const updateQueryPage = () => {
+  if (typeof window === "undefined") {
+    return;
   }
-  return props.page ? props.page - 1 : 0;
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+  const page =
+    Number(params.get("page") || 1);
+  currentQueryPage.value =
+    page > 0 ? page : 1;
 };
 
-// 根据页数计算列表数据
+// 当前页码
+const currentPage = computed(() => {
+  // 分类 / 标签
+  if (
+    props.showCategories ||
+    props.showTags
+  ) {
+    return currentQueryPage.value;
+  }
+
+  // 首页
+  const match =
+    route.path?.match(
+      /\/page\/(\d+)/
+    );
+  if (match) {
+    return Number(match[1]);
+  }
+  return 1;
+});
+
+// 总文章数量
+const allListTotal = computed(() => {
+  const data =
+    props.showCategories
+      ? theme.value.categoriesData[
+          props.showCategories
+        ]?.articles
+      : props.showTags
+        ? theme.value.tagsData[
+            props.showTags
+          ]?.articles
+        : theme.value.postData;
+  return data
+    ? data.length
+    : 0;
+});
+
+// 根据页码获取文章
 const postData = computed(() => {
-  const page = getCurrentPage();
-  console.log("当前页数：", page);
+  const page =
+    currentPage.value - 1;
   let data = null;
-  // 分类数据
+
+  // 分类
   if (props.showCategories) {
-    data = theme.value.categoriesData[props.showCategories]?.articles;
+    data =
+      theme.value.categoriesData[
+        props.showCategories
+      ]?.articles;
   }
-  // 标签数据
+  // 标签
   else if (props.showTags) {
-    data = theme.value.tagsData[props.showTags]?.articles;
+    data =
+      theme.value.tagsData[
+        props.showTags
+      ]?.articles;
   }
-  // 文章数据
+  // 首页
   else {
-    data = theme.value.postData;
+    data =
+      theme.value.postData;
   }
-  // 返回列表
-  return data ? data.slice(page * postSize, page * postSize + postSize) : [];
+  return data
+    ? data.slice(
+        page * postSize,
+        page * postSize + postSize
+      )
+    : [];
 });
 
 // 恢复滚动位置
 const restoreScrollY = (val) => {
-  if (typeof window === "undefined" || val) return false;
-  const scrollY = store.lastScrollY;
+  if (
+    typeof window === "undefined" ||
+    val
+  ) {
+    return false;
+  }
+  const scrollY =
+    store.lastScrollY;
   nextTick().then(() => {
-    console.log("滚动位置：", scrollY);
-    // 平滑滚动
     window.scrollTo({
       top: scrollY,
       behavior: "smooth",
     });
-    // 清除滚动位置
     store.lastScrollY = 0;
   });
 };
+
+// 页面加载
+onMounted(() => {
+  // 初始化分类/标签页码
+  if (
+    props.showCategories ||
+    props.showTags
+  ) {
+    updateQueryPage();
+  }
+
+  // 监听VitePress路由变化
+  window.addEventListener(
+    "vitepress-route-change",
+    () => {
+      if (
+        props.showCategories ||
+        props.showTags
+      ) {
+        updateQueryPage();
+      }
+    }
+  );
+});
+onBeforeUnmount(() => {
+  window.removeEventListener(
+    "vitepress-route-change",
+    updateQueryPage
+  );
+});
 
 // 监听加载结束
 watch(

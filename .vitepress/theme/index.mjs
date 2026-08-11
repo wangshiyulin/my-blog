@@ -36,6 +36,12 @@ const Theme = {
     };
     router.onAfterRouteChanged = (to) => {
       routeChange("after", to);
+    
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new Event("vitepress-route-change")
+        );
+      }
     };
   },
 };
