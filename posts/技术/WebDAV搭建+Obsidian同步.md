@@ -43,24 +43,25 @@ Let's begin
 
 首先，创建一个运行目录，并下载WebDAV服务端：
 
-> mkdir /home/webdav
+> mkdir /home/webdav
 
-> cd /home/webdav
+> cd /home/webdav
 
-> wget https://github.com/hacdias/webdav/releases/download/v4.1.0/linux-amd64webdav.tar.gz
+> wget "https://github.com/hacdias/webdav/releases/download/v5.14.2/linux-amd64-webdav.tar.gz"
 
-> tar -xzvf linux-amd64-webdav.tar.gz
+> tar -xzvf linux-amd64-webdav.tar.gz
 
 新建配置文件_config.yaml_，并粘贴以下内容：
 
-Server related settings
+```
+# Server related settings
 address: 0.0.0.0
 port: 51234
 auth: true
 tls: false
 cert: cert.pem
 key: key.pem
-Default user settings (will be merged)
+# Default user settings (will be merged)
 scope:
 modify: true
 rules: []
@@ -73,7 +74,7 @@ scope: /home/webdav
 -(空格)username: user2
 password: user2
 scope: /home/webdav
-
+```
 ---
 
 如果之后修改该文件内容，改写后需要运行
@@ -92,6 +93,7 @@ scope: /home/webdav
 
 注意把路径修改为你真实的可执行文件及配置文件路径
 
+```
 [Unit]
 Description=WebDAV server
 After=network.target
@@ -102,7 +104,7 @@ ExecStart=/home/webdav/webdav --config /home/webdav/config.yaml
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target
-
+```
 ---
 
 > systemctl start webdav

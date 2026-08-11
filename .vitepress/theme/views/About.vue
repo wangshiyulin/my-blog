@@ -91,8 +91,8 @@
          <span class="info-num" style="--color: #43a6c6">2007</span>
          </div>  
         <div class="info-item"> 
-         <span class="info-name">现在"职业"</span>
-         <span class="info-num" style="--color: #dfac46">自由职业者</span>
+         <span class="info-name">现在职业</span>
+         <span class="info-num" style="--color: #dfac46">博主、见习交易员</span>
         </div> 
       </div> 
     </div>
@@ -140,12 +140,6 @@ const skillsData = [
     color: "#563d7c",
     icon: "css3",
     link: "https://developer.mozilla.org/zh-CN/docs/Web/CSS",
-  },
-  {
-    name: "React",
-    color: "#149ECA",
-    icon: "react",
-    link: "https://zh-hans.reactjs.org/",
   },
   {
     name: "Node.js",
