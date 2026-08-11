@@ -78,7 +78,7 @@
             </a>
           </div>
           <a
-            href= "mailto:kurong3007@gmail.com"
+            href= "mailto:wangshiyu@qingluanx.com"
             class="report"
             target="_blank"
           >

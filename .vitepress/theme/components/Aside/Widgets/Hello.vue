@@ -17,7 +17,7 @@
         <a href="https://github.com/wangshiyulin/" target="_blank" class="social-link">
           <i class="iconfont icon-github"></i>
         </a>
-        <a href="mailto:kurong3007@gmail.com" target="_blank" class="social-link">
+        <a href="mailto:wangshiyu@qingluanx.com" target="_blank" class="social-link">
           <i class="iconfont icon-email"></i>
         </a>
       </div>

@@ -16,7 +16,7 @@ export const themeConfig = {
     author: {
       name: "往世雨",
       cover: "/images/logo/logo.webp",
-      email: "mailto:kurong3007@gmail.com",
+      email: "mailto:wangshiyu@qingluanx.com",
       link: "https://qingluanx.com",
     },
   },
@@ -206,7 +206,7 @@ export const themeConfig = {
     social: [
       {
         icon: "email",
-        link: "mailto:kurong3007@gmail.com"
+        link: "mailto:wangshiyu@qingluanx.com"
       },
       {
         icon: "github",
