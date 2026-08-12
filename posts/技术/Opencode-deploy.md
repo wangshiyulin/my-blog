@@ -21,7 +21,7 @@ opencode作为AI编程代理工具，一定程度上对标ClaudeCode
 
 ---
 
-### 准备
+## 准备
 
 1. **有powershell的本地电脑**
 2. **模型API，如siliconflow、deepseek等**
@@ -30,9 +30,9 @@ opencode作为AI编程代理工具，一定程度上对标ClaudeCode
 
 ---
 
-### OpenCode部署
+## OpenCode部署
 
-#### 1.在终端使用TUI页面
+### 1.在终端使用TUI页面
 
 GUI的opencode较新，使用体验远不如终端TUI
 
@@ -80,7 +80,7 @@ env:EDITOR = "notepad"指定vscode：指定vscode：$env:EDITOR = "code --wait"
 
 ---
 
-#### 2.在浏览器中使用web页面：
+### 2.在浏览器中使用web页面：
 
 cd到项目目录，进入conda环境，
 
@@ -106,7 +106,7 @@ cd到项目目录，进入conda环境，
 
 ---
 
-#### 3.集成到vscode系列使用：
+### 3.集成到vscode系列使用：
 
 在扩展商店搜索 opencode 下载
 
@@ -114,7 +114,7 @@ cd到项目目录，进入conda环境，
 
 ---
 
-#### 4.常用命令
+### 4.常用命令
 
 > /help    查看帮助
 
@@ -148,7 +148,7 @@ cd到项目目录，进入conda环境，
 
 ---
 
-#### 5.opencode使用：
+### 5.opencode使用：
 
 1.提问：让opencode讲解不明白的代码库，可以用"@"键模糊搜索项目种文件，如@program/index.js
 
@@ -158,7 +158,7 @@ cd到项目目录，进入conda环境，
 
 ---
 
-#### 6.opencode配置：
+### 6.opencode配置：
 
 opencode支持json和jsonc格式，
 
@@ -180,7 +180,7 @@ opencode支持json和jsonc格式，
 
 ---
 
-### oh-my-opencode插件安装
+## oh-my-opencode插件安装
 
 进入powershell终端，进入conda环境
 

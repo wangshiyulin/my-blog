@@ -20,7 +20,7 @@ desc: Obsidian多端同步指南，效率提高十倍
 
 ---
 
-#### 准备
+## 准备
 
 确保设备之间处于同一局域网下
 
@@ -42,7 +42,7 @@ Android端：
 
 ---
 
-#### PC & PC
+## PC & PC
 
 安装完成后，进入文件夹找到Syncthing.exe双击启动
 
@@ -68,7 +68,7 @@ Android端：
 
 ---
 
-#### PC & Android
+## PC & Android
 
 大体步骤跟上面的一样
 

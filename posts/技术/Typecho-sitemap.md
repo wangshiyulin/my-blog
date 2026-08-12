@@ -13,7 +13,7 @@ desc: Typecho设置站点地图，方便google和bing提交
 ---
 
 
-### 1. 下载 Sitemap 插件并安装启用
+## 1. 下载 Sitemap 插件并安装启用
 
 1. 下载 Sitemap 插件[Sitemap插件][1]
 2. 解压后，复制到网站目录 /usr/plugins
@@ -22,7 +22,7 @@ desc: Typecho设置站点地图，方便google和bing提交
 ----------
 
 
-### 2. 设置伪静态和永久链接
+## 2. 设置伪静态和永久链接
 
 如果未开启伪静态，则无法访问sitemap.xml页面，返回404
 1. 1Panel中打开 **网站 - 配置 - 伪静态**
@@ -36,7 +36,7 @@ desc: Typecho设置站点地图，方便google和bing提交
 ----------
 
 
-### 3. 开启插件
+## 3. 开启插件
 
 1. **控制台 - 插件**
 2. 启用Sitemap插件

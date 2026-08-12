@@ -182,23 +182,23 @@ export const themeConfig = {
   ],
   
   // 封面配置
-  // cover: {
-  //   // 是否开启双栏布局
-  //   twoColumns: false,
-  //   // 是否开启封面显示
-  //   showCover: {
-  //     // 是否开启封面显示 文章不设置cover封面会显示异常，可以设置下方默认封面
-  //     enable: false,
-  //     // 封面布局方式: left | right | both
-  //     coverLayout: 'both',
-  //     // 默认封面(随机展示)
-  //     defaultCover: [
-  //       'https://example.com/1.avif',
-  //       'https://example.com/2.avif',
-  //       'https://example.com/3.avif'
-  //     ]
-  //   }
-  // },
+  cover: {
+    // 是否开启双栏布局
+    twoColumns: false,
+    // 是否开启封面显示
+    showCover: {
+      // 是否开启封面显示 文章不设置cover封面会显示异常，可以设置下方默认封面
+      enable: false,
+      // 封面布局方式: left | right | both
+      coverLayout: 'both',
+      // 默认封面(随机展示)
+      defaultCover: [
+        'https://example.com/1.avif',
+        'https://example.com/2.avif',
+        'https://example.com/3.avif'
+      ]
+    }
+  },
   
   // 页脚信息
   footer: {
@@ -216,14 +216,14 @@ export const themeConfig = {
         icon: "telegram",
         link: "https://t.me/yuqing_ren",
       },
-      {
-        icon: "bilibili",
-        link: "https://space.bilibili.com/3493104197831397",
-      },
-      {
-        icon: "qq",
-        link: "https://ti.qq.com/qcard/index.html?qq=1716726291",
-      },
+      // {
+      //   icon: "bilibili",
+      //   link: "https://space.bilibili.com/3493104197831397",
+      // },
+      // {
+      //   icon: "qq",
+      //   link: "https://ti.qq.com/qcard/index.html?qq=1716726291",
+      // },
       {
         icon: "twitter-x",
         link: "https://twitter.com/wangshi_yu",

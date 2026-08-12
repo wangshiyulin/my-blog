@@ -25,7 +25,7 @@ Let's begin
 
 ---
 
-#### 准备
+## 准备
 
 **1. 一台云服务器或VPS或一台NAS**
 
@@ -37,7 +37,7 @@ Let's begin
 
 ---
 
-#### 搭建服务器端WebDAV
+## 搭建服务器端WebDAV
 
 使用ssh软件连接到云服务器
 
@@ -121,7 +121,7 @@ WantedBy=multi-user.target
 
 ---
 
-#### Obsidian同步
+## Obsidian同步
 
 obsidian下载remotely save
 

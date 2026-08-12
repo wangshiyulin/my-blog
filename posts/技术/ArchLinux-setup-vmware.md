@@ -33,19 +33,19 @@ Let's begin
 
 用UEFI引导
 
-#### 禁用reflector服务
+## 禁用reflector服务
 
 > systemctl stop reflector
 
 禁用reflector服务，该服务会自动根据速度等条件进行镜像源的排序，保存在/etc/pacman.d/mirrorlist
 
-#### 再次确认是否为UEFI模式
+## 再次确认是否为UEFI模式
 
 > ls /sys/firmware/efi/efivars
 
 输出一堆文件名，确保在UEFI引导下
 
-#### 连接网络
+## 连接网络
 
 连接无线网络(若是有线直接跳过)
 
@@ -73,13 +73,13 @@ Let's begin
 
 连接成功后退出
 
-#### 测试网络连通性
+## 测试网络连通性
 
 > curl www.baidu.com
 
 测试网络状态
 
-#### 更新系统时钟
+## 更新系统时钟
 
 > timedatectl set-ntp true
 
@@ -89,7 +89,7 @@ Let's begin
 
 查看同步后时钟状态信息
 
-#### 更换国内软件仓库镜像源加快下载
+## 更换国内软件仓库镜像源加快下载
 
 修改软件仓库，在开头添加这3个
 
@@ -99,7 +99,7 @@ Let's begin
 > Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch
 > Server = https://repo.huaweicloud.com/archlinux/\$repo/os/\$arch
 
-#### 分区和格式化 (使用Btrfs文件系统)
+## 分区和格式化 (使用Btrfs文件系统)
 
 1. 分区
 
@@ -137,7 +137,7 @@ Let's begin
 
 格式化系统分区  -L指定该分区的 LABLE
 
-#### 操作Btrfs分区
+## 操作Btrfs分区
 
 > mount -t btrfs -o compress=zstd /dev/sdxn /mnt
 
@@ -163,7 +163,7 @@ Let's begin
 
 将 /mnt 卸载掉，以挂载子卷
 
-#### 挂载
+## 挂载
 
 > mount -t btrfs -o subvol=/@,compress=zstd /dev/sdxn /mnt
 
@@ -197,7 +197,7 @@ Let's begin
 
 复查 Swap 分区挂载情况
 
-#### 安装系统
+## 安装系统
 
 > pacstrap /mnt base base-devel linux linux-firmware btrfs-progs
 
@@ -215,7 +215,7 @@ linux —— 内核软件包，这里建议先不要替换为其它内核
 
 使用 pacstrap 脚本安装其它必要的功能性软件
 
-#### 生成fstab文件
+## 生成fstab文件
 
 > genfstab -U /mnt > /mnt/etc/fstab
 
@@ -225,13 +225,13 @@ fstab 用来定义磁盘分区，使用 genfstab 自动根据当前挂载情况�
 
 复查一下 /mnt/etc/fstab 确保没有错误
 
-#### 切换工作区
+## 切换工作区
 
 > arch-chroot /mnt
 
 把系统环境切换到新系统下
 
-#### 设置系统的主机名和时区
+## 设置系统的主机名和时区
 
 > vim /etc/hostname
 
@@ -248,13 +248,13 @@ fstab 用来定义磁盘分区，使用 genfstab 自动根据当前挂载情况�
 
 在 /etc/localtime 下用 /usr 中合适的时区创建符号链接，设置时区
 
-#### 设置硬件时间
+## 设置硬件时间
 
 > hwclock --systohc
 
 让BIOS硬件时间和操作系统所同步
 
-#### 设置地区偏好
+## 设置地区偏好
 
 > vim /etc/locale.gen
 
@@ -268,13 +268,13 @@ fstab 用来定义磁盘分区，使用 genfstab 自动根据当前挂载情况�
 
 向 /etc/locale.conf 输入内容
 
-#### 设置root密码
+## 设置root密码
 
 > passwd root
 
 设置root密码
 
-#### 安装微码
+## 安装微码
 
 > pacman -S intel-ucode
 
@@ -286,7 +286,7 @@ AMD
 
 安装对应芯片制造商的微码
 
-#### 设置引导程序
+## 设置引导程序
 
 > pacman -S grub efibootmgr
 
@@ -312,7 +312,7 @@ AMD
 
 生成 GRUB 所需的配置文件
 
-#### 完成安装
+## 完成安装
 
 > exit
 
@@ -328,7 +328,7 @@ AMD
 
 注意，(如果是装真机)重启前要先拔掉优盘，否则你重启后还是进安装程序而不是安装好的系统。
 
-#### 结束安装与连接网络
+## 结束安装与连接网络
 
 重启后使用 root 账户登录系统
 
@@ -338,7 +338,7 @@ AMD
 
 > ping www.bilibili.com
 
-#### 测试网络连接
+## 测试网络连接
 
 若为无线连接，则需要在启动 networkmanager 后使用 nmcli 连接网络：
 

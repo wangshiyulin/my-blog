@@ -13,7 +13,7 @@ desc: Zed 通过 MinGW 配置 Rust 开发环境（Windows）
 ---
 
 
-### 前言
+## 前言
 
 Rust底层依赖C/C++的编译器，因此需要先安装C/C++编译环境。
 
@@ -25,7 +25,7 @@ Windows上有两种C/C++的编译器：
 
 ----------
 
-### 下载Mingw64
+## 下载Mingw64
 
 Github：[Mingw_64位][1]
 Github：[Mingw_32位][2]
@@ -40,7 +40,7 @@ Github：[Mingw_32位][2]
 
 ----------
 
-### 安装Rust
+## 安装Rust
 
 Rust官网：[Rust][3]
 
@@ -70,7 +70,7 @@ Rust官网：[Rust][3]
 
 ----------
 
-### 创建Rust项目
+## 创建Rust项目
 
 启动Zed内终端，cd进入桌面，输入：
 
