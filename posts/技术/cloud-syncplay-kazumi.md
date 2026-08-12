@@ -45,7 +45,7 @@ Syncplay 是一个用于**同步媒体播放器状态**的软件。
 
 它的工作方式：
 
-```text
+```
               Syncplay Server
                     │
           ┌─────────┼─────────┐
@@ -80,10 +80,7 @@ Syncplay 有公共服务器可以使用，因此并不是必须自己部署服�
 
 #### 1. 地址固定
 
-可以使用：
-```text
-syncplay.example.com:8999
-```
+可以使用：**syncplay.example.com:8999**
 
 而不是每次依赖公共服务器。
 
@@ -106,7 +103,7 @@ syncplay.example.com:8999
 ## 三、本文最终实现的效果
 
 完成之后，整体结构如下：
-```text
+```
                  Ubuntu VPS
               Syncplay Server
                      │
@@ -295,13 +292,13 @@ WantedBy=multi-user.target
 ## 八、配置服务器密码和 Salt
 
 上面的服务文件包含：
-```text
+```
 --password
 --salt
 ```
 
 例如：
-```ini
+```
 ExecStart=/opt/syncplay/venv/bin/python /opt/syncplay/syncplayServer.py --port 8999 --password "你的强密码" --salt "一串随机字符串"
 ```
 
@@ -311,10 +308,7 @@ ExecStart=/opt/syncplay/venv/bin/python /opt/syncplay/syncplayServer.py --port 8
 
 如果你希望这个服务器只给自己和朋友使用，建议设置密码。
 
-例如：
-```text
---password "A-Strong-Random-Password"
-```
+例如: **--password "A-Strong-Random-Password"**
 
 ---
 
@@ -327,13 +321,13 @@ ExecStart=/opt/syncplay/venv/bin/python /opt/syncplay/syncplayServer.py --port 8
 官方源码中，如果没有手动指定 salt，服务器会随机生成一个；如果希望服务器重启后由该服务器生成的受控房间密码继续有效，就应该固定保存这个值。
 
 因此建议：
-```text
+```
 password = 自己设置的服务器连接密码
 salt     = 一串随机且长期保持不变的字符串
 ```
 
 例如：
-```ini
+```
 --password "ChangeThisToAStrongPassword"
 --salt "8f1e0d6c9a4b7e2f5d3c1a9b"
 ```
@@ -364,10 +358,7 @@ sudo systemctl enable syncplay
 sudo systemctl status syncplay
 ```
 
-如果看到：
-```text
-Active: active (running)
-```
+如果看到：**Active: active (running)**
 
 说明服务已经正常运行。
 
@@ -421,7 +412,7 @@ sudo ufw enable
 ### 2. 云服务器安全组
 
 如果使用腾讯云、阿里云、华为云、AWS 等云服务器，还需要在云平台控制台的安全组 / 防火墙中添加入方向规则：
-```text
+```
 协议：TCP
 端口：8999
 来源：根据自己的需求设置

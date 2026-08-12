@@ -40,7 +40,7 @@ UptimeFlare 是一个开源的网站监控工具，主要用于监控网站或�
 
 它的基本工作流程可以理解为：
 
-```text
+```
                  定期发起监控请求
                         │
                         ▼
@@ -97,11 +97,7 @@ UptimeFlare 可以部署到 Cloudflare 的相关服务中。
 
 ### 4. 可以绑定自己的域名
 
-部署完成后，可以将自定义域名绑定到 Cloudflare 上部署的服务，形成类似：
-
-```text
-https://status.example.com
-```
+部署完成后，可以将自定义域名绑定到 Cloudflare 上部署的服务，形成类似：**https://status.example.com**
 
 这样的独立状态页。
 
@@ -109,17 +105,13 @@ https://status.example.com
 
 ## 三、本文最终实现的效果
 
-完成部署后，可以得到一个独立的网站状态页，例如：
-
-```text
-https://status.example.com
-```
+完成部署后，可以得到一个独立的网站状态页，例如：**https://status.example.com**
 
 状态页可以展示你配置的监控对象及其运行状态。
 
 整个部署流程如下：
 
-```text
+```
 修改 UptimeFlare 配置
           │
           ▼
@@ -166,7 +158,7 @@ UptimeFlare 的 GitHub Actions 需要获得 Cloudflare 的授权，才能将项�
 
 进入 Cloudflare 控制台后：
 
-```text
+```
 Profile
 → API Tokens
 → Create Token
@@ -176,11 +168,7 @@ Profile
 
 ## 1. 选择 Workers 模板
 
-在创建 API Token 时，选择：
-
-```text
-Edit Cloudflare Workers
-```
+在创建 API Token 时，选择：**Edit Cloudflare Workers**
 
 然后根据 UptimeFlare 当前部署所需要的资源权限，补充 **D1** 的编辑权限。
 
@@ -192,15 +180,9 @@ Edit Cloudflare Workers
 
 ## 2. 限制 Token 的账户范围
 
-在账户资源（Account Resources）中：
+在账户资源（Account Resources）中：**选择你自己的 Cloudflare 账户。**
 
-**选择你自己的 Cloudflare 账户。**
-
-不要直接选择：
-
-```text
-All accounts
-```
+不要直接选择：**All accounts**
 
 区域资源（Zone Resources）则根据项目当前要求选择。
 
@@ -214,11 +196,7 @@ All accounts
 
 ## 3. 创建 Token
 
-确认权限后点击：
-
-```text
-Continue to summary
-```
+确认权限后点击：**Continue to summary**
 
 检查权限无误后创建 Token。
 
@@ -240,18 +218,14 @@ Continue to summary
 
 在项目页面选择：
 
-```text
+```
 Use this template
 → Create a new repository
 ```
 
 创建属于自己的 GitHub Repository。
 
-建议仓库设置为：
-
-```text
-Private
-```
+建议仓库设置为：**Private**
 
 或者根据你的实际需求决定是否公开。
 
@@ -267,7 +241,7 @@ Private
 
 进入：
 
-```text
+```
 Repository
 → Settings
 → Secrets and variables
@@ -277,18 +251,14 @@ Repository
 
 创建：
 
-```text
+```
 Name:
 CLOUDFLARE_API_TOKEN
 ```
 
 Value 填入刚才复制的 Cloudflare API Token。
 
-最终类似：
-
-```text
-CLOUDFLARE_API_TOKEN = 你的 Cloudflare API Token
-```
+最终类似: **CLOUDFLARE_API_TOKEN = 你的 Cloudflare API Token**
 
 保存即可。
 
@@ -308,11 +278,7 @@ GitHub 官方也建议将敏感信息作为 Secrets 管理，而不是直接写�
 
 完成 Cloudflare 和 GitHub 的基础配置之后，开始修改 UptimeFlare 的监控配置。
 
-在仓库根目录找到：
-
-```text
-uptime.config.ts
-```
+在仓库根目录找到：**uptime.config.ts**
 
 UptimeFlare 官方配置说明：
 
@@ -348,7 +314,7 @@ UptimeFlare 的配置中，至少需要区分两个概念：
 
 可以简单理解为：
 
-```text
+```
 PageConfig
     ↓
 控制“状态页长什么样”
@@ -377,7 +343,7 @@ WorkConfig
 
 你应该根据自己的项目进行修改，例如：
 
-```text
+```
 项目名称
 项目描述
 项目链接
@@ -394,7 +360,7 @@ WorkConfig
 
 例如：
 
-```text
+```
 个人博客
 GitHub Pages
 API 服务
@@ -426,25 +392,15 @@ API 服务
 
 配置完成之后，将修改提交到 GitHub。
 
-如果直接在 GitHub 网页中修改：
+如果直接在 GitHub 网页中修改：**uptime.config.ts**
 
-```text
-uptime.config.ts
-```
-
-点击：
-
-```text
-Commit changes
-```
-
-提交修改。
+点击：**Commit changes** 提交修改。
 
 提交后，GitHub Actions 会根据项目预先配置好的 Workflow 自动执行部署流程。
 
 进入：
 
-```text
+```
 Repository
 → Actions
 ```
@@ -457,19 +413,11 @@ Repository
 
 ## 如何判断部署是否成功？
 
-如果任务显示：
-
-```text
-✓
-```
+如果任务显示：✓
 
 通常表示该次 Workflow 已经成功完成。
 
-如果显示：
-
-```text
-✕
-```
+如果显示: ✕
 
 则说明 Workflow 中存在失败步骤。
 
@@ -503,31 +451,15 @@ GitHub Actions 成功之后，进入 Cloudflare 控制台查看部署结果。
 
 # 十四、绑定自己的域名
 
-如果你希望使用：
-
-```text
-https://status.example.com
-```
+如果你希望使用：**https://status.example.com**
 
 而不是 Cloudflare 提供的默认地址，可以在 Cloudflare 控制台中为对应服务添加自定义域名。
 
-例如：
+例如：**status.example.com**
 
-```text
-status.example.com
-```
+建议专门使用一个子域名作为网站状态页：**status.example.com**
 
-建议专门使用一个子域名作为网站状态页：
-
-```text
-status.example.com
-```
-
-而不要直接占用主站：
-
-```text
-example.com
-```
+而不要直接占用主站：*example.com**
 
 具体绑定方式取决于 UptimeFlare 当前部署到 Cloudflare 的具体资源类型，因此以 Cloudflare 当前控制台提供的 Custom Domains / Domains 配置入口为准。
 
@@ -539,7 +471,7 @@ example.com
 
 首先进入：
 
-```text
+```
 GitHub
 → Actions
 → 对应 Workflow
@@ -562,18 +494,14 @@ GitHub
 
 应该放在：
 
-```text
+```
 GitHub Repository
 → Settings
 → Secrets and variables
 → Actions
 ```
 
-Secret 名称：
-
-```text
-CLOUDFLARE_API_TOKEN
-```
+Secret 名称：**CLOUDFLARE_API_TOKEN**
 
 **不要把 Token 直接写进 `uptime.config.ts`。**
 
@@ -609,7 +537,7 @@ Cloudflare 的免费额度、产品限制和计费规则可能发生变化。
 
 通过：
 
-```text
+```
 UptimeFlare
 +
 GitHub
@@ -623,7 +551,7 @@ Cloudflare
 
 整个流程可以浓缩成：
 
-```text
+```
 ① 创建 Cloudflare API Token
         ↓
 ② 使用 UptimeFlare 模板创建 GitHub 仓库
@@ -645,11 +573,7 @@ Cloudflare
 ⑩ 绑定自己的 status 子域名
 ```
 
-最终，你就拥有了一个独立的：
-
-```text
-https://status.example.com
-```
+最终，你就拥有了一个独立的：**https://status.example.com**
 
 网站状态页。
 
