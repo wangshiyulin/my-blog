@@ -12,11 +12,26 @@
           @click.stop
         >
           <!-- 标题 -->
-          <div v-if="title" class="title">
+          <!-- <div v-if="title" class="title">
             <div class="title-left">
               <i v-if="titleIcon" :class="`iconfont icon-${titleIcon}`"></i>
               <span class="title-text">{{ title }}</span>
-            </div>
+            </div> -->
+            <div v-if="title || $slots.title" class="title">
+              <div class="title-left">
+                <template v-if="$slots.title">
+                  <slot name="title" />
+                </template>
+            
+                <template v-else>
+                  <i
+                    v-if="titleIcon"
+                    :class="`iconfont icon-${titleIcon}`"
+                  ></i>
+            
+                  <span class="title-text">{{ title }}</span>
+                </template>
+              </div>
             <!-- 关闭按钮 -->
             <i v-if="showClose" class="iconfont icon-close close" @click="modalClose" />
           </div>

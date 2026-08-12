@@ -347,11 +347,9 @@ export const themeConfig = {
   },
   
   // 搜索
-  // https://www.algolia.com/
   search: {
-    enable: false,
-    appId: "",
-    apiKey: "",
+    enable: true,
+    provider: "local",
   },
   // 打赏
   rewardData: {

@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import { createRssFile } from "./theme/utils/generateRSS.mjs";
+import { createSearchIndex } from "./theme/utils/generateSearchIndex.mjs";
 import { withPwa } from "@vite-pwa/vitepress";
 import {
   getAllPosts,
@@ -19,6 +20,9 @@ const postData = await getAllPosts();
 
 // 获取主题配置
 const themeConfig = await getThemeConfig();
+
+// 生成本地搜索索引
+await createSearchIndex();
 
 // https://vitepress.dev/reference/site-config
 export default withPwa(
@@ -75,6 +79,7 @@ export default withPwa(
     // buildEnd
     buildEnd: async (config) => {
       await createRssFile(config, themeConfig);
+      await createSearchIndex(config);
     },
     // vite
     vite: {
