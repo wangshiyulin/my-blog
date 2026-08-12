@@ -40,7 +40,7 @@ desc: 不要碰Windowsapps文件夹的权限！！出问题就来这里看如何
 ## 解决方法
 找了一天，发现Github上有大佬解决了这个情况：
 
-访问**[WindowsAppsUnfukker][1]**
+访问[WindowsAppsUnfukker][1]
 （关于如何访问、科学上网，我相信能来查这个问题的懂得都懂，这里不表）
 
 往下滚动鼠标，找到 How to use 栏
@@ -55,7 +55,7 @@ Step1：
 点击 Download the script here 的 **here**，下载脚本压缩包
 
 Step2：
-访问**[PAExec][3]**，往下滚动鼠标找到 **Download PAExec v1.31**，下载得到一个paexec.exe文件
+访问[PAExec][3]，往下滚动鼠标找到 **Download PAExec v1.31**，下载得到一个paexec.exe文件
 
 Step3:
 解压WindowsAppsUnfukker压缩包，将paexec.exe文件放入解压得到的文件夹中

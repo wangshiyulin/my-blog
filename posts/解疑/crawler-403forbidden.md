@@ -29,7 +29,7 @@ desc: 搜索引擎爬取网站出现403Forbidden解决方法
 
 尝试**关闭cloudflare的小橙云**
 
-**等待几分钟后重新让Google和Bing搜索引擎爬取**
+等待几分钟后重新让Google和Bing搜索引擎爬取
 
 ---
 
