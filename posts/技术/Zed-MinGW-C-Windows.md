@@ -3,13 +3,11 @@ title: Windows 系统 Zed 编辑器借助 MinGW64 搭建 C++ 开发环境
 slug: Zed-MinGW-C-Windows
 date: 2026/05/21 13:00:00
 updated: 2026/05/21 16:49:26
-status: publish
-author: 往世雨
 categories: 
   - 技术
 tags: 
   - Zed
-desc: Zed编辑器配置C++语言的开发环境，使用mingw64编译器
+description: Zed编辑器配置C++语言的开发环境，使用mingw64编译器
 ---
 
 

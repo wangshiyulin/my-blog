@@ -3,22 +3,11 @@ title: 云服务器搭建 Syncplay 服务端，搭配 Kazumi 实现远程多人�
 slug: cloud-syncplay-kazumi
 date: 2026/06/13 12:25:00
 updated: 2026/08/12 17:10:05
-status: publish
-author: 往世雨
 categories: 
   - 技术
 tags: 
   - 软件
-desc: 从零开始在 Ubuntu 云服务器部署 Syncplay 独立服务端，使用 systemd 管理服务并配置防火墙，再通过 Kazumi 的“一起看”功能连接自建 Syncplay 服务器，实现多人远程同步观看。
-keywords:
-  - Syncplay
-  - Syncplay 服务端
-  - Ubuntu 搭建 Syncplay
-  - Kazumi
-  - Kazumi 一起看
-  - 远程同步看番
-  - 自建同步观影服务器
-  - Syncplay Server
+description: 从零开始在 Ubuntu 云服务器部署 Syncplay 独立服务端，使用 systemd 管理服务并配置防火墙，再通过 Kazumi 的“一起看”功能连接自建 Syncplay 服务器，实现多人远程同步观看。
 ---
 
 ## 在 Ubuntu 云服务器上搭建 Syncplay 服务端，并使用 Kazumi 实现远程同步看番

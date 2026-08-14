@@ -3,13 +3,11 @@ title: 修改 WindowsApps 文件夹权限后应用报错的解决方法
 slug: modify-windowsapps
 date: 2026/05/10 16:38:00
 updated: 2026/05/10 17:10:33
-status: publish
-author: 往世雨
 categories: 
   - 解疑
 tags: 
   - 解疑
-desc: 不要碰Windowsapps文件夹的权限！！出问题就来这里看如何解决！！
+description: 不要碰Windowsapps文件夹的权限！！出问题就来这里看如何解决！！
 ---
 
 

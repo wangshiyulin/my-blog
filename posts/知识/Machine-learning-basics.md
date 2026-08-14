@@ -3,13 +3,11 @@ title: 机器学习基础（吴恩达课程笔记）
 slug: Machine-learning-basics
 date: 2026/03/19 23:57:00
 updated: 2026/05/04 13:29:45
-status: publish
-author: 往世雨
 categories: 
   - 知识
 tags: 
   - AI
-desc: 吴恩达的机器学习基础课程总结，只保留核心部分
+description: 吴恩达的机器学习基础课程总结，只保留核心部分
 ---
 
 

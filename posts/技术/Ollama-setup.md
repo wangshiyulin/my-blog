@@ -3,13 +3,11 @@ title: Ollama 部署本地大模型完整教程，离线运行 AI 模型
 slug: Ollama-setup
 date: 2026/03/17 13:39:00
 updated: 2026/05/04 17:55:55
-status: publish
-author: 往世雨
 categories: 
   - 技术
 tags: 
   - AI
-desc: 本地部署神器Ollama，推荐新手使用，简单又便捷
+description: 本地部署神器Ollama，推荐新手使用，简单又便捷
 ---
 
 

@@ -3,14 +3,11 @@ title: Syncthing 搭建 Obsidian 多端同步，无需第三方云端方案
 slug: Obsidian-syncthing
 date: 2026/03/22 22:43:00
 updated: 2026/05/04 17:54:56
-status: publish
-author: 往世雨
 categories: 
   - 分享
 tags: 
   - 软件
-content: 本文介绍使用Syncthing实现跨设备文件同步的方法，涵盖PC与PC、PC与Android间的设置步骤，强调需在同一局域网下运行。
-desc: Obsidian多端同步指南，效率提高十倍
+description: 本文介绍使用Syncthing实现跨设备文件同步的方法，涵盖PC与PC、PC与Android间的设置步骤，强调需在同一局域网下运行。
 ---
 
 

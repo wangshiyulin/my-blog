@@ -3,14 +3,11 @@ title: 如何科学上网&访问海外网站？使用Clash来完成！
 slug: scientific-internet-clash
 date: 2026/05/14 22:09:00
 updated: 2026/08/01 12:38:43
-status: publish
-author: 往世雨
 categories: 
   - 分享
 tags: 
   - 软件
-desc: 如何快速访问Github和海外网站？来这里！有指南！
-img: 
+description: 如何快速访问Github和海外网站？来这里！有指南！
 ---
 
 

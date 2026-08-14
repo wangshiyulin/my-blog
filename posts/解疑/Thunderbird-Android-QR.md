@@ -3,13 +3,11 @@ title: 解决Android端 Thunderbird 无法扫描二维码导入邮箱账户问�
 slug: Thunderbird-Android-QR
 date: 2026/07/18 17:04:18
 updated: 2026/07/18 17:20:21
-status: publish
-author: 往世雨
 categories: 
   - 解疑
 tags: 
   - 解疑
-desc: Thunderbird Android 端无法扫描二维码导入账户解决
+description: Thunderbird Android 端无法扫描二维码导入账户解决
 ---
 
 

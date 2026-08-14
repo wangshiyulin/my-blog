@@ -3,13 +3,11 @@ title: Cloudflare Workers 部署 Twikoo 评论系统完整教程
 slug: Cloudflare-Twikoo
 date: 2026/08/09 00:25:00
 updated: 2026/08/09 00:25:00
-status: publish
-auther: 往世雨
 categories: 
   - 技术
 tags:
   - 网站
-desc: 在Cloudflare Worker上部署Twikoo评论系统
+description: 在Cloudflare Worker上部署Twikoo评论系统
 ---
 
 

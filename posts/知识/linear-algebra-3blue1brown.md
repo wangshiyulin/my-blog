@@ -3,13 +3,11 @@ title: 《线性代数的本质》3Blue1Brown 视频笔记，附带个人理解�
 slug: linear-algebra-3blue1brown
 date: 2026/03/26 21:28:00
 updated: 2026/05/10 17:46:56
-status: publish
-author: 往世雨
 categories: 
   - 知识
 tags: 
   - 知识
-desc: 线性代数的本质，加上很多我自己的思考，极大提高对线性代数的理解
+description: 线性代数的本质，加上很多我自己的思考，极大提高对线性代数的理解
 ---
 
 

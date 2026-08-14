@@ -3,13 +3,11 @@ title: AI 编程代理 Opencode 部署教程，本地搭建代码智能助手
 slug: Opencode-deploy
 date: 2026/03/26 21:35:00
 updated: 2026/05/04 13:25:17
-status: publish
-author: 往世雨
 categories: 
   - 技术
 tags: 
   - AI
-desc: Opencode部署及使用指南
+description: Opencode部署及使用指南
 ---
 
 

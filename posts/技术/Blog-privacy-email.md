@@ -3,13 +3,11 @@ title: 零成本搭建自定义域名邮箱｜隐藏真实邮箱，独立博客�
 slug: Blog-privacy-email
 date: 2026/08/11 23:35:00
 updated: 2026/08/11 23:35:00
-status: publish
-auther: 往世雨
 categories: 
   - 技术
 tags:
   - 网站
-desc: Cloudflare 免费自定义域名邮箱｜隐藏真实邮箱、搭建博客专属联系邮箱教程
+description: Cloudflare 免费自定义域名邮箱｜隐藏真实邮箱、搭建博客专属联系邮箱教程
 ---
 
 ## 一、什么是自定义域名邮箱转发？（原理与名词解释）

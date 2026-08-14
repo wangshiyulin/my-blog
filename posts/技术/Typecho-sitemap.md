@@ -3,13 +3,11 @@ title: Typecho 博客站点地图 Sitemap 配置方法，提升收录
 slug: Typecho-sitemap
 date: 2026/05/04 18:16:00
 updated: 2026/07/18 18:30:07
-status: publish
-author: 往世雨
 categories: 
   - 技术
 tags: 
   - 网站
-desc: Typecho设置站点地图，方便google和bing提交
+description: Typecho设置站点地图，方便google和bing提交
 ---
 
 

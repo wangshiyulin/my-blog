@@ -3,22 +3,11 @@ title: Kazumi 全平台开源追番播放器，免费动漫播放工具推荐
 slug: Kazumi-setup
 date: 2026/05/05 14:29:00
 updated: 2026/08/12 17:55:30
-status: publish
-author: 往世雨
 categories: 
   - 分享
 tags: 
   - 软件
-desc: Kazumi 是一款开源的跨平台追番软件，通过规则管理和多源聚合，让用户可以在一个客户端中搜索和观看番剧。本文介绍 Kazumi 的主要功能、使用方式、优缺点以及适合人群。
-keywords:
-  - Kazumi
-  - Kazumi 追番
-  - 开源追番软件
-  - 开源看番软件
-  - 追番软件
-  - 番剧软件
-  - Kazumi 教程
-  - Kazumi GitHub
+description: Kazumi 是一款开源的跨平台追番软件，通过规则管理和多源聚合，让用户可以在一个客户端中搜索和观看番剧。本文介绍 Kazumi 的主要功能、使用方式、优缺点以及适合人群。
 ---
 
 ## Kazumi：一个值得尝试的开源追番软件

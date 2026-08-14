@@ -3,13 +3,11 @@ title: 1Panel 访问提示网站不存在，请检查域名问题排查方案
 slug: 1Panel-Website-does-not-exist
 date: 2026/03/14 08:24:00
 updated: 2026/05/04 13:33:12
-status: publish
-author: 往世雨
 categories: 
   - 解疑
 tags: 
   - 网站
-desc: 如何解决1Panel拦截的方法
+description: 如何解决1Panel拦截的方法
 ---
 
 

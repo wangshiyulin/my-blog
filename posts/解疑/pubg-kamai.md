@@ -3,13 +3,11 @@ title: 绝地求生 PUBG 按 T 说话没声音、卡麦问题完整解决办法
 slug: pubg-kamai
 date: 2026/05/14 20:09:43
 updated: 2026/05/14 20:20:55
-status: publish
-author: 往世雨
 categories: 
   - 解疑
 tags: 
   - 解疑
-desc: 电脑版pubg（绝地求生）按T没声音、卡麦问题，终极解决方法
+description: 电脑版pubg（绝地求生）按T没声音、卡麦问题，终极解决方法
 ---
 
 

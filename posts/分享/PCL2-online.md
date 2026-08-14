@@ -3,13 +3,11 @@ title: PCL2 启动器《我的世界》联机教程，内网 / 公网联机方�
 slug: PCL2-online
 date: 2026/03/01 16:24:00
 updated: 2026/05/04 17:52:55
-status: publish
-author: 往世雨
 categories: 
   - 分享
 tags: 
   - 游戏
-desc: 如何在离线状态下，用PCL2联机玩我的世界？
+description: 如何在离线状态下，用PCL2联机玩我的世界？
 ---
 
 几个月前还没入手正版，

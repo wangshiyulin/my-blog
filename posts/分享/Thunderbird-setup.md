@@ -3,13 +3,11 @@ title: Thunderbird——也许是最好的多平台、开源、注重隐私的�
 slug: Thunderbird-setup
 date: 2026/07/18 17:22:00
 updated: 2026/07/18 17:47:13
-status: publish
-author: 往世雨
 categories: 
   - 分享
 tags: 
   - 软件
-desc: Thunderbird——解放收件箱！
+description: Thunderbird——解放收件箱！
 ---
 
 

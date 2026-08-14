@@ -3,13 +3,11 @@ title: Git 新手入门完整教程，从零掌握版本控制基础操作
 slug: Git-course
 date: 2026/03/09 12:25:00
 updated: 2026/05/20 15:26:37
-status: publish
-author: 往世雨
 categories: 
   - 知识
 tags: 
   - 知识
-desc: 史上最容易学会的Git操作指南
+description: 史上最容易学会的Git操作指南
 ---
 
 

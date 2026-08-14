@@ -3,13 +3,11 @@ title: Win11 更新新版开始菜单，一键恢复经典旧版菜单教程
 slug: Windows11-new-menu
 date: 2026/06/11 19:22:00
 updated: 2026/06/11 19:38:28
-status: publish
-author: 往世雨
 categories: 
   - 解疑
 tags: 
   - 解疑
-desc: Windows11新版本开始菜单难用？这里教你改回原版效果
+description: Windows11新版本开始菜单难用？这里教你改回原版效果
 ---
 
 

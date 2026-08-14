@@ -3,21 +3,11 @@ title: 利用 Cloudflare 搭建 Uptime-Flare，免费站点在线监控服务
 slug: Cloudflare-UptimeFlare
 date: 2026/08/09 19:11:00
 updated: 2026/08/12 17:01:00
-status: publish
-auther: 往世雨
 categories: 
   - 技术
 tags:
   - 网站
-desc: 详细介绍如何使用 GitHub Actions 和 Cloudflare Workers、D1 部署 UptimeFlare，监控网站可用性与性能，并绑定自定义域名。
-keywords:
-  - UptimeFlare
-  - Cloudflare 网站监控
-  - 网站可用性监控
-  - 网站 uptime 监控
-  - Cloudflare Workers
-  - Cloudflare D1
-  - GitHub Actions
+description: 详细介绍如何使用 GitHub Actions 和 Cloudflare Workers、D1 部署 UptimeFlare，监控网站可用性与性能，并绑定自定义域名。
 ---
 
 如果你有个人博客、网站、API 或其他在线服务，除了正常访问之外，还应该关注一个问题：
