@@ -46,6 +46,8 @@
 </template>
 
 <script setup>
+import { lockBodyScroll, unlockBodyScroll } from "@/utils/scrollLock.mjs";
+
 const props = defineProps({
   // 是否显示
   show: {
@@ -90,21 +92,27 @@ const modalClose = () => emit("modal-close");
 watch(
   () => props.show,
   (val) => {
-    document.body.style.overflowY = val ? "hidden" : "";
+    if (val) lockBodyScroll();
+    else unlockBodyScroll();
   },
+  { immediate: true },
 );
+
+onBeforeUnmount(() => {
+  if (props.show) unlockBodyScroll();
+});
 </script>
 
 <style lang="scss" scoped>
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
   z-index: 2000;
   .modal-mask {
     position: absolute;

@@ -117,8 +117,6 @@
 </template>
 
 <script setup>
-import { getStatistics } from "@/api";
-
 const { theme } = useData();
 
 // 技能数据
@@ -173,18 +171,6 @@ const skillsData = [
   },
 ];
 
-// 站点统计数据
-const statisticsData = ref(null);
-
-// 获取站点统计数据
-const getStatisticsData = async () => {
-  const result = await getStatistics(theme.value.tongji["51la"]);
-  statisticsData.value = result;
-};
-
-onMounted(() => {
-  getStatisticsData();
-});
 </script>
 
 <style lang="scss" scoped>

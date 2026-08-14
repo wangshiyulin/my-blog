@@ -1,8 +1,7 @@
 import { getAllPosts } from "../.vitepress/theme/utils/getPostData.mjs";
-import { getThemeConfig } from "../.vitepress/init.mjs";
+import { themeConfig } from "../.vitepress/theme/assets/themeConfig.mjs";
 
 const postData = await getAllPosts();
-const themeConfig = await getThemeConfig();
 
 // 每页文章数
 const postsPerPage = themeConfig.postSize;

@@ -27,14 +27,6 @@ export const mainStore = defineStore("main", {
       searchShow: false,
       // 个性化配置显示
       showSeetings: false,
-      // 播放器数据
-      playState: false,
-      playerShow: true,
-      playerVolume: 0.7,
-      playerData: {
-        name: "未知曲目",
-        artist: "未知艺术家",
-      },
       // 移动端菜单显示
       mobileMenuShow: false,
       // 使用自定义右键菜单
@@ -59,8 +51,6 @@ export const mainStore = defineStore("main", {
     // 切换应用状态
     changeShowStatus(value, blur = true) {
       this[value] = !this[value];
-      // 阻止滚动
-      document.body.style.overflowY = this[value] ? "hidden" : "";
       // 全局模糊
       const globalApp = document.getElementById("app");
       this[value] && this.backgroundBlur && blur
@@ -117,8 +107,6 @@ export const mainStore = defineStore("main", {
         "themeType",
         "bannerType",
         "useRightMenu",
-        "playerShow",
-        "playerVolume",
         "backgroundBlur",
         "backgroundType",
         "fontFamily",

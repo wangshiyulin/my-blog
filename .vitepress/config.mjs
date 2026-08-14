@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { themeConfig as siteThemeConfig } from "./theme/assets/themeConfig.mjs";
 import { createRssFile } from "./theme/utils/generateRSS.mjs";
 import { createSearchIndex } from "./theme/utils/generateSearchIndex.mjs";
 import { withPwa } from "@vite-pwa/vitepress";
@@ -9,7 +10,6 @@ import {
   getAllArchives,
 } from "./theme/utils/getPostData.mjs";
 import { jumpRedirect } from "./theme/utils/commonTools.mjs";
-import { getThemeConfig } from "./init.mjs";
 import markdownConfig from "./theme/utils/markdownConfig.mjs";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
@@ -19,7 +19,7 @@ import path from "path";
 const postData = await getAllPosts();
 
 // 获取主题配置
-const themeConfig = await getThemeConfig();
+const themeConfig = structuredClone(siteThemeConfig);
 
 // 生成本地搜索索引
 await createSearchIndex();

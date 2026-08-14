@@ -28,7 +28,7 @@
 <script setup>
 import { getGreetings } from "@/utils/helper";
 
-const { site, theme } = useData();
+const { theme } = useData();
 
 // 问候数据
 const helloClick = ref(0);
@@ -72,10 +72,16 @@ const changeHello = () => {
 // 是否具有用户
 const isHasUser = () => {
   // 检查本地存储
-  const userData = localStorage.getItem("ArtalkUser");
+  const userData = localStorage.getItem("twikoo-user");
   if (!userData) return false;
   // 获取用户数据
-  const { nick } = JSON.parse(userData);
+  let nick;
+  try {
+    ({ nick } = JSON.parse(userData));
+  } catch {
+    localStorage.removeItem("twikoo-user");
+    return false;
+  }
   const hello = ["很高兴见到你", "好久不见", "欢迎回来"];
   // 随机问候语
   helloText.value = hello[Math.floor(Math.random() * hello.length)] + "，" + nick;

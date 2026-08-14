@@ -52,6 +52,7 @@
 </template>
 
 <script setup>
+import { lockBodyScroll, unlockBodyScroll } from "@/utils/scrollLock.mjs";
 import { mainStore } from "@/store";
 
 const store = mainStore();
@@ -67,15 +68,28 @@ const pageJump = (url) => {
   store.changeShowStatus("mobileMenuShow");
   router.go(url);
 };
+
+watch(
+  () => store.mobileMenuShow,
+  (show) => {
+    if (show) lockBodyScroll();
+    else unlockBodyScroll();
+  },
+  { immediate: true },
+);
+
+onBeforeUnmount(() => {
+  if (store.mobileMenuShow) unlockBodyScroll();
+});
 </script>
 
 <style lang="scss" scoped>
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
   z-index: 3000;
   .menu-mask {
     position: absolute;

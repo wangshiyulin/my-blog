@@ -30,8 +30,6 @@
     <div :class="['left-menu', { hidden: footerIsShow }]">
       <!-- 全局设置 -->
       <Settings />
-      <!-- 全局播放器 -->
-       <Player /> 
     </div>
   </Teleport>
   <!-- 右键菜单 -->
@@ -47,7 +45,7 @@ import { calculateScroll, specialDayGray } from "@/utils/helper";
 
 const route = useRoute();
 const store = mainStore();
-const { frontmatter, page, theme } = useData();
+const { frontmatter, page } = useData();
 const { loadingStatus, footerIsShow, themeValue, themeType, backgroundType, fontFamily, fontSize } =
   storeToRefs(store);
 
@@ -61,6 +59,10 @@ const isPostPage = computed(() => {
 });
 
 // 开启右键菜单
+const onRouteChanged = () => {
+  requestAnimationFrame(() => requestAnimationFrame(() => calculateScroll()));
+};
+
 const openRightMenu = (e) => {
   rightMenuRef.value?.openRightMenu(e);
 };
@@ -84,7 +86,6 @@ const changeSiteThemeType = () => {
   };
   // 必要数据
   const htmlElement = document.documentElement;
-  console.log("当前模式：", themeType.value);
   // 清除所有 class
   Object.values(themeClasses).forEach((themeClass) => {
     htmlElement.classList.remove(themeClass);
@@ -130,7 +131,6 @@ watch(
 );
 
 onMounted(() => {
-  console.log(frontmatter.value, page.value, theme.value);
   // 全站置灰
   specialDayGray();
   // 更改主题类别
@@ -138,7 +138,10 @@ onMounted(() => {
   // 切换系统字体样式
   changeSiteFont();
   // 滚动监听
-  window.addEventListener("scroll", calculateScroll);
+  window.addEventListener("scroll", calculateScroll, { passive: true });
+  window.addEventListener("resize", calculateScroll, { passive: true });
+  window.addEventListener("vitepress-route-change", onRouteChanged);
+  calculateScroll();
   // 右键监听
   window.addEventListener("contextmenu", openRightMenu);
   // 复制监听
@@ -149,7 +152,11 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", calculateScroll);
+  window.removeEventListener("resize", calculateScroll);
+  window.removeEventListener("vitepress-route-change", onRouteChanged);
   window.removeEventListener("contextmenu", openRightMenu);
+  window.removeEventListener("copy", copyTip);
+  window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", changeSiteThemeType);
 });
 </script>
 

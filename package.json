@@ -1,15 +1,11 @@
 {
-  "name": "vitepress-theme-curve",
-  "productName": "vitepress-theme-curve",
+  "name": "qingluanx-blog",
+  "productName": "青鸾小栈",
   "version": "1.0.1",
-  "description": "A Simple VitePress Theme",
-  "author": "imsyy",
-  "home": "https://imsyy.top",
-  "github": "https://github.com/imsyy/vitepress-theme-curve",
-  "blog": "https://blog.imsyy.top",
-  "repository": "github:imsyy/vitepress-theme-curve",
-  "license": "MIT License",
-  "license-file": "LICENSE",
+  "description": "青鸾小栈博客",
+  "author": "往世雨",
+  "repository": "github:wangshiyulin/my-blog",
+  "license": "MIT",
   "engines": {
     "node": ">=20",
     "npm": ">=10"
@@ -34,8 +30,8 @@
     "globby": "^14.0.2",
     "gray-matter": "^4.0.3",
     "markdown-it-attrs": "^4.3.1",
-    "markdown-it-container": "^4.0.0",
     "markdown-it-mathjax3": "^4.3.2",
+    "markdown-it-container": "^4.0.0",
     "prettier": "^3.4.2",
     "sass": "^1.83.4",
     "terser": "^5.37.0",
@@ -48,14 +44,12 @@
   "dependencies": {
     "@types/node": "^22.10.7",
     "@vite-pwa/vitepress": "^0.4.0",
-    "@vueuse/core": "^11.3.0",
-    "aplayer": "^1.10.1",
     "dayjs": "^1.11.13",
     "lodash-es": "^4.17.21",
     "pinia": "^2.3.0",
     "pinia-plugin-persistedstate": "^3.2.3",
     "vue": "^3.5.13",
-    "vue-slider-component": "4.1.0-beta.7",
     "fuse.js": "^7.0.0"
-  }
+  },
+  "homepage": "https://qingluanx.com"
 }

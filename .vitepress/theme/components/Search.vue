@@ -2,8 +2,8 @@
 <template>
   <Modal
     :show="store.searchShow"
-    :title="isSearching ? '' : '全局搜索'"
-    :title-icon="isSearching ? '' : 'search'"
+    :title="'全局搜索'"
+    title-icon="search"
     @mask-click="store.changeShowStatus('searchShow')"
     @modal-close="store.changeShowStatus('searchShow')"
   >
@@ -18,7 +18,7 @@
           class="search-input"
           type="text"
           autofocus
-          @keydown.esc.stop="closeSearch"
+          @keydown.esc.stop="store.changeShowStatus('searchShow')"
         />
       </div>
     </template>
@@ -628,8 +628,6 @@ onBeforeUnmount(() => {
   query.value = "";
 
   results.value = [];
-
-  isSearching.value = false;
 });
 </script>
 
@@ -699,34 +697,7 @@ onBeforeUnmount(() => {
    }
  }
 
-/*
- * 清空按钮
- */
-.search-clear {
-  flex-shrink: 0;
-
-  margin-left: 10px;
-
-  padding: 6px;
-
-  border-radius: 8px;
-
-  font-size: 0.9rem;
-
-  cursor: pointer;
-
-  transition:
-    background-color 0.3s;
-
-  &:hover {
-    background-color:
-      var(--main-card-border);
-  }
-}
-
-/*
- * 搜索内容
- */
+/* 搜索内容 */
 .search-content {
   width: 100%;
 }

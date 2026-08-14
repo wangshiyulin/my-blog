@@ -120,14 +120,6 @@ export const themeConfig = {
         { text: "全部标签", link: "/pages/tags", icon: "hashtag" },
       ],
     },
-    // {
-    //   text: "专栏",
-    //   items: [
-    //     { text: "技术分享", link: "/pages/categories/技术分享", icon: "technical" },
-    //     { text: "我的项目", link: "/pages/project", icon: "code" },
-    //     { text: "效率工具", link: "/pages/tools", icon: "tools" },
-    //   ],
-    // },
     {
       text: "友链",
       items: [
@@ -191,12 +183,6 @@ export const themeConfig = {
       enable: false,
       // 封面布局方式: left | right | both
       coverLayout: 'both',
-      // 默认封面(随机展示)
-      defaultCover: [
-        'https://example.com/1.avif',
-        'https://example.com/2.avif',
-        'https://example.com/3.avif'
-      ]
     }
   },
   
@@ -216,14 +202,6 @@ export const themeConfig = {
         icon: "telegram",
         link: "https://t.me/yuqing_ren",
       },
-      // {
-      //   icon: "bilibili",
-      //   link: "https://space.bilibili.com/3493104197831397",
-      // },
-      // {
-      //   icon: "qq",
-      //   link: "https://ti.qq.com/qcard/index.html?qq=1716726291",
-      // },
       {
         icon: "twitter-x",
         link: "https://twitter.com/wangshi_yu",
@@ -246,12 +224,6 @@ export const themeConfig = {
           { text: "本站源码", link: "https://github.com/wangshiyulin/my-blog", newTab: true }
         ],
       },
-      // {
-      //   text: "专栏",
-      //   items: [
-      //     { text: "技术分享", link: "/pages/categories/技术分享" }
-      //   ],
-      // },
       {
         text: "页面",
         items: [
@@ -271,22 +243,15 @@ export const themeConfig = {
   // 评论
   comment: {
     enable: true,
-    // 评论系统选择
-    // artalk / twikoo
     type: "twikoo",
-    // artalk
-    // https://artalk.js.org/
-    artalk: {
-      site: "",
-      server: "",
-    },
-    // twikoo
+    // 评论系统选择
+    // Twikoo
     // https://twikoo.js.org/
     twikoo: {
       // 必填，若不想使用 CDN，可以使用 pnpm add twikoo 安装并引入
       js: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twikoo/1.6.44/twikoo.all.min.js",
       envId: "https://twikoo.qingluanx.com",
-      // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+      // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou
       region: "ap-shanghai",
       lang: "zh-CN",
     },
@@ -320,32 +285,6 @@ export const themeConfig = {
       enable: true,
     },
   },
-  // 友链
-  friends: {
-    // 友链朋友圈
-    circleOfFriends: "",
-    // 动态友链
-    dynamicLink: {
-      server: "",
-      app_token: "",
-      table_id: "",
-    },
-  },
-  
-  // 音乐播放器
-  // https://github.com/imsyy/Meting-API
-  music: {
-    enable: false,
-    // url
-    url: "https://api-meting.example.com",
-    // id
-    id: 9379831714,
-    // netease / tencent / kugou
-    server: "netease",
-    // playlist / album / song
-    type: "playlist",
-  },
-  
   // 搜索
   search: {
     enable: true,
@@ -387,9 +326,5 @@ export const themeConfig = {
       "right-menu-link",
       "link-card",
     ],
-  },
-  // 站点统计
-  tongji: {
-    "51la": "",
   },
 };

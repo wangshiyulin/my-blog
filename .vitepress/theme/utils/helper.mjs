@@ -10,14 +10,14 @@ export const calculateScroll = throttle(
       if (typeof window === "undefined" || typeof document === "undefined") return false;
       const store = mainStore();
       const scrollY = window.scrollY || window.pageYOffset;
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = ((scrollY / totalHeight) * 100).toFixed(0);
+      const totalHeight = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const scrollPercentage = totalHeight === 0 ? 0 : Math.min(100, Math.max(0, (scrollY / totalHeight) * 100));
       // 判断滚动方向
       const scrollDirection = scrollY > store.scrollData.height ? "down" : "up";
       // 储存计算结果
       store.scrollData = {
         height: Number(scrollY.toFixed(0)),
-        percentage: Number(scrollPercentage),
+        percentage: Number(scrollPercentage.toFixed(0)),
         direction: scrollDirection,
       };
     } catch (error) {
@@ -124,7 +124,6 @@ export const shufflePost = (postData) => {
   lastIndex = randomIndex;
   // 随机文章
   const randomPost = postData[randomIndex];
-  console.log(randomPost);
   // 跳转到随机文章
   return randomPost.regularPath;
 };

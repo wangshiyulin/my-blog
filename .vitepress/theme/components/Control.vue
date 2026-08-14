@@ -24,13 +24,6 @@
               <i class="iconfont icon-list"></i>
             </div>
             <div
-              :class="['menu-item', { open: store.playerShow }]"
-              title="播放器开关"
-              @click.stop="store.playerShow = !store.playerShow"
-            >
-              <i class="iconfont icon-music"></i>
-            </div>
-            <div
               :class="['menu-item', { open: store.backgroundBlur }]"
               title="背景模糊开关"
               @click.stop="store.changeShowStatus('backgroundBlur')"
@@ -45,6 +38,7 @@
 </template>
 
 <script setup>
+import { lockBodyScroll, unlockBodyScroll } from "@/utils/scrollLock.mjs";
 import { mainStore } from "@/store";
 
 const store = mainStore();
@@ -69,18 +63,31 @@ const rightMenuSwitch = () => {
   store.useRightMenu = !store.useRightMenu;
   $message.info(`${store.useRightMenu ? "已开启" : "已关闭"}自定义右键菜单`);
 };
+
+watch(
+  () => store.controlShow,
+  (show) => {
+    if (show) lockBodyScroll();
+    else unlockBodyScroll();
+  },
+  { immediate: true },
+);
+
+onBeforeUnmount(() => {
+  if (store.controlShow) unlockBodyScroll();
+});
 </script>
 
 <style lang="scss" scoped>
 .control {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
   z-index: 1109;
   .close-control {
     position: absolute;

@@ -17,7 +17,7 @@ const getPostFiles = async () => {
     ],
   });
 
-  return files.filter((file) => file.includes("posts/"));
+  return files.filter((file) => file.startsWith("posts/"));
 };
 
 /**
@@ -97,10 +97,7 @@ export const createSearchIndex = async () => {
         const cleanContent =
           cleanMarkdown(content);
 
-        const url = `/${file.replace(
-          /\.md$/,
-          ".html",
-        )}`;
+        const url = `/${file.replace(/\.md$/, ".html")}`;
 
         searchIndex.push({
           id: file,
