@@ -198,7 +198,7 @@ Kazumi 支持通过 WebDAV 进行相关数据同步。
 
 如果你想自己搭建 Webdav 服务器，可以参考：
 
-[自建 WebDAV 服务](/posts/技术/cloud-WebDav-Obsidian.md)
+[自建 WebDAV 服务](/cloud-WebDav-Obsidian)
 
 ---
 
@@ -214,7 +214,7 @@ Kazumi 还有一个比较有意思的功能：**一起看。**
 
 如果你想自己搭建 Syncplay 服务器，可以参考：
 
-[云服务器搭建 Syncplay 服务端，搭配 Kazumi 实现远程多人同步看番](/posts/技术/cloud-syncplay-kazumi)
+[云服务器搭建 Syncplay 服务端，搭配 Kazumi 实现远程多人同步看番](/cloud-syncplay-kazumi)
 
 ---
 

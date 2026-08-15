@@ -97,10 +97,15 @@ export const createSearchIndex = async () => {
         const cleanContent =
           cleanMarkdown(content);
 
-        const url = `/${file.replace(/\.md$/, ".html")}`;
+        const slug = typeof data.slug === "string" ? data.slug.trim().replace(/^\/+|\/+$/g, "") : "";
+      if (!slug) {
+        throw new Error(`文章缺少有效 slug：${file}`);
+      }
+      const url = `/${slug}`;
 
         searchIndex.push({
           id: file,
+          slug,
           title,
           description,
           content: cleanContent,

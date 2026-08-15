@@ -40,11 +40,15 @@ const nextPostData = ref(null);
 // 获取文章
 const getNextPostData = () => {
   const { postData } = theme.value;
-  const { filePath } = page.value;
-  if (!postData || !filePath) return false;
-  // 本篇索引
-  const postId = generateId(filePath);
-  const postIndex = postData.findIndex((post) => post.id === postId);
+  const { filePath, frontmatter } = page.value;
+  if (!postData) return false;
+  // 本篇索引：优先使用 slug，避免 URL 重写后依赖源文件路径。
+  const currentSlug = frontmatter?.slug;
+  const postIndex = currentSlug
+    ? postData.findIndex((post) => post.slug === currentSlug)
+    : filePath
+      ? postData.findIndex((post) => post.id === generateId(filePath))
+      : -1;
   // 是否有下一篇
   if (postIndex >= 0 && postIndex < postData.length - 1) {
     nextPostData.value = postData[postIndex + 1];

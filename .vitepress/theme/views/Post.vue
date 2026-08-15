@@ -109,7 +109,14 @@ const commentRef = ref(null);
 
 // 获取对应文章数据
 const postMetaData = computed(() => {
-  const postId = generateId(page.value.relativePath);
+  const slug = frontmatter.value?.slug;
+  if (slug) {
+    const postBySlug = theme.value.postData.find((item) => item.slug === slug);
+    if (postBySlug) return postBySlug;
+  }
+  const sourcePath = page.value?.filePath || page.value?.relativePath;
+  if (!sourcePath) return null;
+  const postId = generateId(sourcePath);
   return theme.value.postData.find((item) => item.id === postId);
 });
 

@@ -28,9 +28,12 @@ const getRelatedData = () => {
   // 分类名
   const catName = frontmatter.value.categories?.[0];
   // 指定分类数据
-  const postData = theme.value.categoriesData?.[catName]?.articles;
-  // 本篇索引
-  const postId = generateId(page.value?.filePath);
+  const postData = theme.value.categoriesData?.[catName]?.articles || [];
+  // 本篇索引：优先使用 slug，避免 URL 重写后依赖源文件路径。
+  const currentSlug = frontmatter.value?.slug;
+  const postId = currentSlug
+    ? postData.find((post) => post.slug === currentSlug)?.id
+    : generateId(page.value?.filePath);
   // 过滤掉当前文章
   const filteredPosts = postData.filter((post) => post.id !== postId);
   // 取出两篇文章

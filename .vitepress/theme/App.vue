@@ -45,7 +45,7 @@ import { calculateScroll, specialDayGray } from "@/utils/helper";
 
 const route = useRoute();
 const store = mainStore();
-const { frontmatter, page } = useData();
+const { frontmatter, page, theme } = useData();
 const { loadingStatus, footerIsShow, themeValue, themeType, backgroundType, fontFamily, fontSize } =
   storeToRefs(store);
 
@@ -54,8 +54,8 @@ const rightMenuRef = ref(null);
 
 // 判断是否为文章页面
 const isPostPage = computed(() => {
-  const routePath = decodeURIComponent(route.path);
-  return routePath.includes("/posts/");
+  const routePath = decodeURIComponent(route.path).replace(/\/$/, "");
+  return theme.value.postData?.some((post) => post.regularPath.replace(/\/$/, "") === routePath) ?? false;
 });
 
 // 开启右键菜单

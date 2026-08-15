@@ -60,7 +60,14 @@ export const getAllPosts = async () => {
           const { birthtimeMs, mtimeMs } = stat;
           // 解析 front matter
           const { data } = matter(content);
-          const { title, date, categories, description, tags, top, cover } = data;
+          const { title, date, categories, description, tags, top, cover, slug } = data;
+          const normalizedSlug = typeof slug === "string" ? slug.trim().replace(/^\/+|\/+$/g, "") : "";
+          if (!normalizedSlug) {
+            throw new Error(`文章缺少有效 slug：${item}`);
+          }
+          if (normalizedSlug.includes("..") || normalizedSlug.includes("\\") || /[#?]/.test(normalizedSlug)) {
+            throw new Error(`文章 slug 含有非法路径：${item} -> ${normalizedSlug}`);
+          }
           // 计算文章的过期天数
           const expired = Math.floor(
             (new Date().getTime() - new Date(date).getTime()) / (1000 * 60 * 60 * 24),
@@ -68,6 +75,8 @@ export const getAllPosts = async () => {
           // 返回文章对象
           return {
             id: generateId(item),
+            sourcePath: item.replace(/\\/g, "/"),
+            slug: normalizedSlug,
             title: title || "未命名文章",
             date: date ? new Date(date).getTime() : birthtimeMs,
             lastModified: mtimeMs,
@@ -75,7 +84,7 @@ export const getAllPosts = async () => {
             tags,
             categories,
             description,
-            regularPath: `/${item.replace(/\.md$/i, ".html")}`,
+            regularPath: `/${normalizedSlug}`.replace(/\/+/g, "/"),
             top,
             cover,
           };
@@ -85,6 +94,17 @@ export const getAllPosts = async () => {
         }
       }),
     );
+    // 检查 slug 是否重复，避免两个文章抢占同一个 URL。
+    const slugMap = new Map();
+    for (const post of posts) {
+      const previous = slugMap.get(post.slug);
+      if (previous) {
+        throw new Error(
+          `发现重复 slug：${post.slug}\n- ${previous.sourcePath}\n- ${post.sourcePath}`,
+        );
+      }
+      slugMap.set(post.slug, post);
+    }
     // 根据日期排序文章
     posts.sort(comparePostPriority);
     return posts;

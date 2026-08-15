@@ -21,6 +21,14 @@ const postData = await getAllPosts();
 // 获取主题配置
 const themeConfig = structuredClone(siteThemeConfig);
 
+// 文章源文件路径 -> 公开 URL 的映射。文章 URL 只由 frontmatter.slug 决定。
+const postRouteMap = new Map(
+  postData.map((post) => [post.sourcePath, `${post.regularPath.slice(1)}.md`]),
+);
+if (postRouteMap.size !== postData.length) {
+  throw new Error("检测到重复的文章 slug，请确保每篇文章的 slug 唯一。");
+}
+
 // 生成本地搜索索引
 await createSearchIndex();
 
@@ -32,6 +40,11 @@ export default withPwa(
     lang: themeConfig.siteMeta.lang,
     // 简洁的 URL
     cleanUrls: true,
+    // 文章目录只用于文件组织，公开 URL 不再依赖 posts 下的分类目录/文件名。
+    rewrites(id) {
+      const normalizedId = id.replace(/\\/g, "/");
+      return postRouteMap.get(normalizedId) || id;
+    },
     // 最后更新时间戳
     lastUpdated: true,
     // 主题
@@ -65,10 +78,15 @@ export default withPwa(
     srcExclude: ["**/README.md", "**/TODO.md"],
     // transformHead
     transformPageData: async (pageData) => {
-      // canonical URL
-      const canonicalUrl = `${themeConfig.siteMeta.site}/${pageData.relativePath}`
-        .replace(/index\.md$/, "")
-        .replace(/\.md$/, "");
+      const pageSlug =
+        typeof pageData.frontmatter.slug === "string"
+          ? pageData.frontmatter.slug.trim().replace(/^\/+|\/+$/g, "")
+          : "";
+      const post = pageSlug ? postData.find((item) => item.slug === pageSlug) : null;
+      const canonicalPath = post
+        ? post.regularPath
+        : `/${(pageData.relativePath || "").replace(/^\/?/, "").replace(/index\.md$/, "").replace(/\.md$/, "")}`;
+      const canonicalUrl = `${themeConfig.siteMeta.site}${canonicalPath}`.replace(/([^:]\/)\/+/, "$1");
       pageData.frontmatter.head ??= [];
       pageData.frontmatter.head.push(["link", { rel: "canonical", href: canonicalUrl }]);
     },
