@@ -98,6 +98,7 @@ Android ：在通话设置中找“WiFi 通话”，成功开启后，状态栏�
  - 已安装 giffgaff App
  - 手机连接稳定的 WiFi
 
+步骤：
 1. 登录 giffgaff App
 2. 依次点击：**Account** → **SIM** → **Replace my SIM** → **Switch to a new eSIM**
 3. 阅读提示，确保 WiFi 连接稳定，**勾选I understand and accept this** -> **点击Start the switch**
