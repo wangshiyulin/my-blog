@@ -6,7 +6,7 @@ updated: 2026/05/04 13:29:13
 categories: 
   - 技术
 tags: 
-  - Linux
+  - 操作系统
 description: ArchLinux折腾日志
 ---
 

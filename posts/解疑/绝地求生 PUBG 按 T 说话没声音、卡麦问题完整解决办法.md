@@ -6,7 +6,7 @@ updated: 2026/05/14 20:20:55
 categories: 
   - 解疑
 tags: 
-  - 解疑
+  - 游戏
 description: 电脑版pubg（绝地求生）按T没声音、卡麦问题，终极解决方法
 ---
 

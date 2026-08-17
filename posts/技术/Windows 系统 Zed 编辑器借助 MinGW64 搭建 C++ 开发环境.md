@@ -6,7 +6,7 @@ updated: 2026/05/21 16:49:26
 categories: 
   - 技术
 tags: 
-  - Zed
+  - 开发
 description: Zed编辑器配置C++语言的开发环境，使用mingw64编译器
 ---
 

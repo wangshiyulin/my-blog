@@ -6,7 +6,7 @@ updated: 2026/05/10 17:10:33
 categories: 
   - 解疑
 tags: 
-  - 解疑
+  - 操作系统
 description: 不要碰Windowsapps文件夹的权限！！出问题就来这里看如何解决！！
 ---
 
