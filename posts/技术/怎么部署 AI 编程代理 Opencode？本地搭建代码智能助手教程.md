@@ -1,5 +1,5 @@
 ---
-title: AI 编程代理 Opencode 部署教程，本地搭建代码智能助手
+title: 怎么部署 AI 编程代理 Opencode？本地搭建代码智能助手教程
 slug: Opencode-deploy
 date: 2026/03/26 21:35:00
 updated: 2026/05/04 13:25:17

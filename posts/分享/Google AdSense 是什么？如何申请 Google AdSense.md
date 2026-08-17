@@ -7,6 +7,7 @@ categories:
   - 分享
 tags:
   - 网站
+  - Google
 description: 介绍 Google AdSense 的基本原理、申请条件与申请流程，帮助个人博客快速了解并申请 Google AdSense。
 ---
 

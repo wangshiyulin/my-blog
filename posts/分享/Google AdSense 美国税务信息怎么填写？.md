@@ -7,6 +7,7 @@ categories:
   - 分享
 tags:
   - 网站
+  - Google
 description: Google AdSense 美国税务信息填写教程，记录个人账户填写 W-8BEN 税务信息时的具体步骤与注意事项。
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Typecho 博客站点地图 Sitemap 配置方法，提升收录
+title: Typecho 博客站点怎么配置Sitemap？极简操作指南
 slug: Typecho-sitemap
 date: 2026/05/04 18:16:00
 updated: 2026/07/18 18:30:07

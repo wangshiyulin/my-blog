@@ -1,5 +1,5 @@
 ---
-title: Cloudflare Workers 部署 Twikoo 评论系统完整教程
+title: Cloudflare Workers 怎么部署 Twikoo 评论系统？极简完整教程
 slug: Cloudflare-Twikoo
 date: 2026/08/09 00:25:00
 updated: 2026/08/09 00:25:00

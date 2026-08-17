@@ -1,5 +1,5 @@
 ---
-title: 如何科学上网&访问海外网站？使用Clash来完成！
+title: 如何翻墙访问海外网站？使用Clash完整翻墙指南
 slug: scientific-internet-clash
 date: 2026/05/14 22:09:00
 updated: 2026/08/01 12:38:43

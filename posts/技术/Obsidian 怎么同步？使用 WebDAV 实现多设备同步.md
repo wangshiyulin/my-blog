@@ -1,5 +1,5 @@
 ---
-title: 自建 WebDAV 服务，实现 Obsidian 笔记多端同步方案
+title: Obsidian 怎么同步？使用 WebDAV 实现多设备同步
 slug: cloud-WebDav-Obsidian
 date: 2026/03/25 14:39:00
 updated: 2026/08/12 17:01:00
@@ -10,6 +10,7 @@ tags:
 description: WebDAV搭建+Obsidian同步，极大提高效率
 ---
 
+本文是自建WebDAV教程，当然如果嫌麻烦可以搜索**坚果云**，可以提供WebDAV，然后看后文中Obsidian同步操作。
 
 ## 使用 WebDAV 搭建自己的 Obsidian 多端同步服务
 

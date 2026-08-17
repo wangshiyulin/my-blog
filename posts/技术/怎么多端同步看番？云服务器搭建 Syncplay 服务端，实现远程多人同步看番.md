@@ -1,5 +1,5 @@
 ---
-title: 云服务器搭建 Syncplay 服务端，搭配 Kazumi 实现远程多人同步看番
+title: 怎么多端同步看番？云服务器搭建 Syncplay 服务端，实现远程多人同步看番
 slug: cloud-syncplay-kazumi
 date: 2026/06/13 12:25:00
 updated: 2026/08/12 17:10:05
