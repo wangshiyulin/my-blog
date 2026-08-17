@@ -20,6 +20,7 @@ const { comment } = theme.value;
 // 评论数据
 const twikoo = ref(null);
 const commentRef = ref(null);
+let observer = null;
 
 // 初始化 Twikoo
 const initTwikoo = async () => {
@@ -55,6 +56,23 @@ const fillComments = (data) => {
 };
 
 onMounted(() => {
-  initTwikoo();
+  if (typeof window === "undefined") return;
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer?.disconnect();
+      observer = null;
+      initTwikoo();
+    },
+    { rootMargin: "800px 0px" },
+  );
+
+  if (commentRef.value) observer.observe(commentRef.value);
+});
+
+onBeforeUnmount(() => {
+  observer?.disconnect();
+  observer = null;
 });
 </script>

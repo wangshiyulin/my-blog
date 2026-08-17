@@ -117,21 +117,26 @@
       </div>
     </nav>
     <!-- 移动端菜单 -->
-    <MobileMenu />
-    <!-- 全局搜索 -->
+    <!-- 移动端菜单，仅打开时创建 -->
+    <MobileMenu v-if="store.mobileMenuShow" />
+    <!-- 全局搜索，仅点击搜索按钮时创建和加载 -->
     <ClientOnly>
-      <Search v-if="theme.search.enable" />
+      <Search v-if="theme.search.enable && store.searchShow" />
     </ClientOnly>
   </header>
 </template>
 
 <script setup>
 import { storeToRefs } from "pinia";
+import { defineAsyncComponent } from "vue";
 import { mainStore } from "@/store";
 import { smoothScrolling, shufflePost } from "@/utils/helper";
 
 const router = useRouter();
 const store = mainStore();
+
+const Search = defineAsyncComponent(() => import("@/components/Search.vue"));
+const MobileMenu = defineAsyncComponent(() => import("@/components/MobileMenu.vue"));
 const { scrollData } = storeToRefs(store);
 const { site, theme, frontmatter, page } = useData();
 </script>

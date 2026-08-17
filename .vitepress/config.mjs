@@ -144,6 +144,7 @@ export default withPwa(
     // PWA
     pwa: {
       registerType: "autoUpdate",
+      injectRegister: "script-defer",
       selfDestroying: true,
       workbox: {
         clientsClaim: true,

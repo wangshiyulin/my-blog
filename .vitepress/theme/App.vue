@@ -42,15 +42,46 @@
 import { storeToRefs } from "pinia";
 import { mainStore } from "@/store";
 import { calculateScroll, specialDayGray } from "@/utils/helper";
+import { loadCSS } from "@/utils/commonTools.mjs";
 
 const route = useRoute();
 const store = mainStore();
+
+// 首页是首屏核心；文章页、普通页和 404 属于按路由加载的低频视图。
+const Post = defineAsyncComponent(() => import("@/views/Post.vue"));
+const Page = defineAsyncComponent(() => import("@/views/Page.vue"));
+const NotFound = defineAsyncComponent(() => import("@/views/NotFound.vue"));
 const { frontmatter, page, theme } = useData();
 const { loadingStatus, footerIsShow, themeValue, themeType, backgroundType, fontFamily, fontSize } =
   storeToRefs(store);
 
 // 右键菜单
 const rightMenuRef = ref(null);
+
+const externalResources = theme.value.externalResources || {};
+const loadedResources = new Set();
+
+const loadResource = (url) => {
+  if (!url || loadedResources.has(url)) return;
+  loadedResources.add(url);
+  loadCSS(url);
+};
+
+const loadOptionalResources = () => {
+  loadResource(externalResources.iconfontCss);
+  if (fontFamily.value === "hmos" || fontFamily.value === "lxgw") {
+    loadResource(externalResources.fonts?.[fontFamily.value]);
+  }
+};
+
+const scheduleOptionalResources = () => {
+  if (typeof window === "undefined") return;
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(loadOptionalResources, { timeout: 2500 });
+  } else {
+    window.setTimeout(loadOptionalResources, 1500);
+  }
+};
 
 // 判断是否为文章页面
 const isPostPage = computed(() => {
@@ -127,7 +158,12 @@ watch(
 );
 watch(
   () => fontFamily.value,
-  () => changeSiteFont(),
+  () => {
+    changeSiteFont();
+    if (fontFamily.value === "hmos" || fontFamily.value === "lxgw") {
+      loadResource(externalResources.fonts?.[fontFamily.value]);
+    }
+  },
 );
 
 onMounted(() => {
@@ -148,6 +184,8 @@ onMounted(() => {
   window.addEventListener("copy", copyTip);
   // 监听系统颜色
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", changeSiteThemeType);
+  // 第三方字体和图标不进入首屏关键路径。
+  scheduleOptionalResources();
 });
 
 onBeforeUnmount(() => {

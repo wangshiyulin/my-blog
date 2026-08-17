@@ -7,7 +7,7 @@ export const themeConfig = {
     // 站点描述
     description: "记录此刻所思，创造未来之物",
     // 站点logo
-    logo: "/images/logo/logo.webp",
+    logo: "/images/logo/logo-100.webp",
     // 站点地址
     site: "https://qingluanx.com",
     // 语言
@@ -15,7 +15,7 @@ export const themeConfig = {
     // 作者
     author: {
       name: "往世雨",
-      cover: "/images/logo/logo.webp",
+      cover: "/images/logo/logo-100.webp",
       email: "mailto:wangshiyu@qingluanx.com",
       link: "https://qingluanx.com",
     },
@@ -28,88 +28,28 @@ export const themeConfig = {
   // 每页文章数据
   postSize: 8,
   // inject
+  // 仅保留不阻塞首屏的本地资源；第三方字体/图标在客户端空闲时按需加载。
   inject: {
-    // 头部
-    // https://vitepress.dev/zh/reference/site-config#head
     header: [
-      // favicon
       ["link", { rel: "icon", href: "/favicon.ico" }],
-      // RSS
-      [
-        "link",
-        {
-          rel: "alternate",
-          type: "application/rss+xml",
-          title: "RSS",
-          href: "/rss.xml",
-        },
-      ],
-      // 预载 CDN
-      [
-        "link",
-        {
-          crossorigin: "",
-          rel: "preconnect",
-          href: "https://s1.hdslb.com",
-        },
-      ],
-      [
-        "link",
-        {
-          crossorigin: "",
-          rel: "preconnect",
-          href: "https://mirrors.sustech.edu.cn",
-        },
-      ],
-      // HarmonyOS font
-      [
-        "link",
-        {
-          crossorigin: "anonymous",
-          rel: "stylesheet",
-          href: "https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css",
-        },
-      ],
-      [
-        "link",
-        {
-          crossorigin: "anonymous",
-          rel: "stylesheet",
-          href: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css",
-        },
-      ],
-      // iconfont
-      [
-        "link",
-        {
-          crossorigin: "anonymous",
-          rel: "stylesheet",
-          href: "https://cdn2.codesign.qq.com/icons/g5ZpEgx3z4VO6j2/latest/iconfont.css",
-        },
-      ],
-      // Embed code
-      ["link", { rel: "preconnect", href: "https://use.sevencdn.com" }],
-      ["link", { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" }],
-      [
-        "link",
-        {
-          crossorigin: "anonymous",
-          href: "https://use.sevencdn.com/css2?family=Fira+Code:wght@300..700&display=swap",
-          rel: "stylesheet",
-        },
-      ],
-      // 预载 DocSearch
-      [
-        "link",
-        {
-          href: "https://X5EBEZB53I-dsn.algolia.net",
-          rel: "preconnect",
-          crossorigin: "",
-        },
-      ],
+      ["link", {
+        rel: "alternate",
+        type: "application/rss+xml",
+        title: "RSS",
+        href: "/rss.xml",
+      }],
     ],
   },
-  
+
+  // 运行时按需加载资源
+  externalResources: {
+    iconfontCss: "https://cdn2.codesign.qq.com/icons/g5ZpEgx3z4VO6j2/latest/iconfont.css",
+    fonts: {
+      hmos: "https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css",
+      lxgw: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css",
+    },
+  },
+
   // 导航栏菜单
   nav: [
     {

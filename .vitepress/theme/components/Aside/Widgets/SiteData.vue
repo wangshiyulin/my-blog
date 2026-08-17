@@ -45,10 +45,17 @@ import { daysFromNow } from "@/utils/helper";
 const { theme } = useData();
 
 onMounted(() => {
-  loadScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", {
-    async: true,
-    reload: true,
-  });
+  const load = () =>
+    loadScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", {
+      async: true,
+      reload: true,
+    });
+
+  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+    window.requestIdleCallback(load, { timeout: 4000 });
+  } else {
+    window.setTimeout(load, 2500);
+  }
 });
 </script>
 

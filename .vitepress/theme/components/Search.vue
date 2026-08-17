@@ -124,7 +124,6 @@
 </template>
 
 <script setup>
-import Fuse from "fuse.js";
 import { mainStore } from "@/store";
 
 const store = mainStore();
@@ -198,6 +197,9 @@ const loadSearchIndex = async () => {
     }
 
     const data = await response.json();
+
+    // 搜索属于低频交互功能，只有真正打开搜索框后才加载 Fuse。
+    const { default: Fuse } = await import("fuse.js");
 
     /**
      * 给 Fuse 创建专门的搜索字段。

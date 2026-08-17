@@ -9,7 +9,7 @@ export const mainStore = defineStore("main", {
       // banner
       bannerType: "half",
       // 加载状态
-      loadingStatus: true,
+      loadingStatus: false,
       // 滚动高度
       scrollData: {
         // 滚动高度
@@ -34,7 +34,7 @@ export const mainStore = defineStore("main", {
       // 背景模糊
       backgroundBlur: false,
       // 全站字体
-      fontFamily: "hmos",
+      fontFamily: "system",
       // 全站字体大小
       fontSize: 16,
       // 信息显示位置

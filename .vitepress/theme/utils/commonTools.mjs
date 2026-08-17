@@ -1,5 +1,3 @@
-import { load } from "cheerio";
-
 /**
  * 从文件名生成数字 ID
  * @param {string} fileName - 文件名
@@ -94,7 +92,7 @@ export const loadCSS = (href, option = {}) => {
  * @param {string} html - 页面内容
  * @param {boolean} isDom - 是否为 DOM 对象
  */
-export const jumpRedirect = (html, themeConfig, isDom = false) => {
+export const jumpRedirect = async (html, themeConfig, isDom = false) => {
   try {
     // 是否为开发环境
     const isDev = process.env.NODE_ENV === "development";
@@ -131,6 +129,7 @@ export const jumpRedirect = (html, themeConfig, isDom = false) => {
         }
       });
     } else {
+      const { load } = await import("cheerio");
       const $ = load(html);
       // 替换符合条件的标签
       $("a[target='_blank']").each((_, el) => {
