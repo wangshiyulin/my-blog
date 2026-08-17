@@ -1,8 +1,8 @@
 ---
 title: 无需服务器！免费部署静态博客教程：从零部署到 Cloudflare Pages
 slug: CloudflarePages-static-blog
-date: 2026/03/26 21:35:00
-updated: 2026/05/04 13:25:17
+date: 2026/08/17 16:49:00
+updated: 2026/08/17 16:51:17
 categories: 
   - 技术
 tags:

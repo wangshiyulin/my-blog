@@ -22,51 +22,91 @@ description: 开源免费音乐播放器LX Music分享
 
 ## 2. 软件下载
 官网：
->https://lxmusic.toside.cn/download
+```
+https://lxmusic.toside.cn/download
+```
 
 **此为LX Music的下载地址：(由于官网未提供下载源，需要从Github上下载)**
->桌面端：
->https://github.com/lyswhut/lx-music-desktop/releases
+桌面端：
+```
+https://github.com/lyswhut/lx-music-desktop/releases
+```
+
 移动端：
->https://github.com/lyswhut/lx-music-mobile/releases
+```
+https://github.com/lyswhut/lx-music-mobile/releases
+```
 
 ----------
 ## 3. 音源导入
 **以下是最新音源分享：**
-**在线导入 - 原始链接**
-SixYin：
-https://raw.githubusercontent.com/pdone/lx-music-source/main/sixyin/latest.js
-Huibq：
-https://raw.githubusercontent.com/pdone/lx-music-source/main/huibq/latest.js
-Flower：
-https://raw.githubusercontent.com/pdone/lx-music-source/main/flower/latest.js
-LX官方源：
-https://raw.githubusercontent.com/pdone/lx-music-source/main/lx/latest.js
-ikun：
-https://raw.githubusercontent.com/pdone/lx-music-source/main/ikun/latest.js
-Grass：
-https://raw.githubusercontent.com/pdone/lx-music-source/main/grass/latest.js
-JuheApi：
-https://raw.githubusercontent.com/pdone/lx-music-source/main/juhe/latest.js
-SVIP音源：
-https://raw.githubusercontent.com/LuoXiaohei-2025/LX-music-collection/refs/heads/main/Source%20of%20music/SVIP%E9%9F%B3%E6%BA%90.js
 
+**在线导入 - 原始链接**
+
+SixYin：
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/sixyin/latest.js
+```
+Huibq：
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/huibq/latest.js
+```
+Flower：
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/flower/latest.js
+```
+LX官方源：
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/lx/latest.js
+```
+ikun：
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/ikun/latest.js
+```
+Grass：
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/grass/latest.js
+```
+JuheApi：
+```
+https://raw.githubusercontent.com/pdone/lx-music-source/main/juhe/latest.js
+```
+SVIP音源：
+```
+https://raw.githubusercontent.com/LuoXiaohei-2025/LX-music-collection/refs/heads/main/Source%20of%20music/SVIP%E9%9F%B3%E6%BA%90.js
+```
 <!--more-->
 
 **在线导入 - 加速链接（国内用户）**
 SixYin：
+```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/sixyin/latest.js
+```
 Huibq：
+```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/huibq/latest.js
+```
 Flower：
+```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/flower/latest.js
+```
 LX官方源：
+```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/lx/latest.js
+```
 ikun：
+```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/ikun/latest.js
+```
 Grass：
+```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/grass/latest.js
+```
 JuheApi：
+```
 https://ghproxy.net/raw.githubusercontent.com/pdone/lx-music-source/main/juhe/latest.js
+```
 SVIP音源：
+```
 https://ghproxy.net/raw.githubusercontent.com/LuoXiaohei-2025/LX-music-collection/refs/heads/main/Source%20of%20music/SVIP%E9%9F%B3%E6%BA%90.js
+```

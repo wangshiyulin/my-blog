@@ -10,16 +10,11 @@ tags:
 description: WSL隔离环境，安全部署Openclaw
 ---
 
-
-~
-
 原文为WSL2+Arch+Docker安装
 
 （因为疯狂报错因此改用配置完全的Ubuntu并全局安装openclaw）
 
 有需要可以看看，不需要直接跳过 2-4步 即可
-
-~
 
 如有疏漏，还望指出，
 
@@ -129,10 +124,12 @@ memory=8GB
 
 ## ~~4.Arch部署openclaw~~
 
-**！部分步骤可以取来尝试编写源文件，拥有自己的 openclaw！**
+！部分步骤可以取来尝试编写源文件，拥有自己的 openclaw！
 
-在arch里运行：**git clone https://github.com/openclaw/openclaw.git**
-
+在arch里运行：
+```
+**git clone https://github.com/openclaw/openclaw.git**
+```
 > 拉取openclaw源码
 
 **cd openclaw**
@@ -176,9 +173,9 @@ memory=8GB
 更新系统
 
 #### 安装Node.js 22
-
-> **curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash**
-
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
 安装nvm
 
 > **source ~/.bashrc**

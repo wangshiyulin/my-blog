@@ -92,11 +92,11 @@ Let's begin
 修改软件仓库，在开头添加这3个
 
 > vim /etc/pacman.d/mirrorlist
-
-> Server = https://mirrors.ustc.edu.cn/archlinux/\$repo/os/\$arch
-> Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch
-> Server = https://repo.huaweicloud.com/archlinux/\$repo/os/\$arch
-
+```
+Server = https://mirrors.ustc.edu.cn/archlinux/\$repo/os/\$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch
+Server = https://repo.huaweicloud.com/archlinux/\$repo/os/\$arch
+```
 ## 分区和格式化 (使用Btrfs文件系统)
 
 1. 分区
@@ -464,10 +464,11 @@ archlinuxcn配置：
 > sudo vim /etc/pacman.conf
 
 在文件底部添加：
-
+```
 Server = https://mirrors.ustc.edu.cn/archlinux/$arch
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$arch
 Server = https://repo.huaweicloud.com/archlinux/$arch
+```
 
 > sudo pacman -Sy archlinuxcn-kryring
 

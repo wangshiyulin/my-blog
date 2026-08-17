@@ -102,7 +102,7 @@ Tor Browser 同样可以访问普通网站，并不要求必须访问 Onion Serv
 
 如果要访问 Onion Service，则需要获得对应的 `.onion` 地址。
 
-例如：**xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.onion**
+例如：**xxxxxxxxx.onion**
 
 将完整地址复制到 Tor Browser 地址栏即可访问。
 

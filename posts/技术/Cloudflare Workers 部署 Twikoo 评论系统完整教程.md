@@ -22,9 +22,11 @@ Curve主题支持Twikoo评论系统，同时非Curve主题也推荐使用Twikoo�
 ## 创建D1 SQL数据库
 
 1. 登录 Cloudflare，点击左侧 <strong>存储与数据库</strong> - <strong>D1 SQLite数据库</strong>，点击<strong>创建数据库</strong>按钮，输入<strong>twikoo</strong>作为数据库名，提供位置提示可以选择亚太地区，之后点击<strong>创建</strong>。
+
 ![][1]
 
 2. 创建成功后回到列表页面，可以找到对应红框中的 <strong>UUID</strong> 复制出来。
+
 ![][2]
 
 3. 然后点击<strong>twikoo</strong>数据库，进入控制台，依次输入下面的内容并执行以完成建表：
@@ -75,9 +77,11 @@ CREATE TABLE IF NOT EXISTS counter (
   updated INTEGER NOT NULL
 );
 ```
+
 ![][3]
 
 4. 等待数据库表创建完成，进入Github仓库，修改根目录中下的 <strong>wrangler.toml</strong> 文件中的 <strong>database_id</strong> 值。
+
 ![][4]
 
 5. 输入 <strong>/tables</strong>，如果输出 comment、config、counter 三张表，代表建表完成。
@@ -88,18 +92,23 @@ CREATE TABLE IF NOT EXISTS counter (
 > 此部分引用自[blog.pe.ee](https://blog.p0.ee/2024/12/15/linux/%E5%88%A9%E7%94%A8cloudflare%E6%90%AD%E5%BB%BAtwikoo%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/index.html)
 
 1. 点击左侧栏 <strong>R2 对象存储</strong>，点击 <strong>创建存储桶</strong>，填入 <strong>twikoo</strong> 作为存储桶名称，点击 <strong>创建存储桶</strong> 按钮。
+
 ![][5]
 
 2. 创建成功后后回到列表页面，可以看到刚才创建的存储桶。
+
 ![][6]
 
 3. 再点击 <strong>twikoo</strong> 进入存储桶，点击设置页签，在公开访问点击<strong>连接域</strong>， 输入你想设置的域名比如 twikoo.r2.example.org。
+
 ![][7]
 
 4. 然后点击继续，再点击 <strong>连接域</strong> 就会回到设置页面，这时你会看到你设置的域状态为 <strong>正在初始化</strong>，过几分钟再次刷新状态就变成了 活动
+
 ![][8]
 
 5. 接下来将刚才的域名写入Github仓库根目录下的 <strong>wrangler.toml</strong> 文件中。
+
 ![][9]
 
 
@@ -108,6 +117,7 @@ CREATE TABLE IF NOT EXISTS counter (
 如果不需要R2存储桶，但并未进行任何更改，下一步中会导致Worker部署失败。
 
 那么请直接<strong>注释或删除</strong>掉下面截图中这一部分，
+
 ![][9]
 
 ## 部署Cloudflare Worker
@@ -118,6 +128,7 @@ CREATE TABLE IF NOT EXISTS counter (
 3. 选择刚才fork的仓库，下一步，保持默认配置，点击部署
 
 4. 等待部署完成后，点击 <strong>概述</strong>
+
 ![][10]
 
 5. 若查看到以下内容，即创建成功
@@ -131,14 +142,16 @@ CREATE TABLE IF NOT EXISTS counter (
 
 ## 绑定域名
 找到<strong>域</strong> - <strong>添加域名</strong>
+
 ![][11]
 
 添加完成后域名就和部署的 Worker 绑定完毕
 
 ## 配置博客设置
-1. 打开Curve主题的"vitepress-theme-curve/.vitepress/theme/assets/themeConfig.mjs"文件
+1. 打开".vitepress/theme/assets/themeConfig.mjs"文件
 
 2. 找到twikoo配置，填入域名：
+
 ![][12]
 
 3. 修改完提交到 Github, Cloudflare Pages 会自动部署，等待部署完毕，即可在博文下方看到评论区。

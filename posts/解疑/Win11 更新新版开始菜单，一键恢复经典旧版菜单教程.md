@@ -28,12 +28,14 @@ Windows11系统升级至26200.8655之后开始菜单增加了【全部】这一�
 以管理员身份打开 cmd 并运行以下命令：
 
 要移除新的开始菜单：
-
->reg add “HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer” /v NoStartMenuMorePrograms /t REG_DWORD /d 1 /f && taskkill /f /im explorer.exe && start explorer.exe
+```
+reg add “HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer” /v NoStartMenuMorePrograms /t REG_DWORD /d 1 /f && taskkill /f /im explorer.exe && start explorer.exe
+```
 
 如果你想恢复：
-
->reg add “HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer” /v NoStartMenuMorePrograms /t REG_DWORD /d 0 /f && taskkill /f /im explorer.exe && start explorer.exe
+```
+reg add “HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer” /v NoStartMenuMorePrograms /t REG_DWORD /d 0 /f && taskkill /f /im explorer.exe && start explorer.exe
+```
 
 ----------
 
