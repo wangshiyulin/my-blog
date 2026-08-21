@@ -1,6 +1,6 @@
 ---
 title: 投资A股入门：一文看懂中国股市的基本知识
-slug: 
+slug: china-stock-market-knowledge
 date: 2026/08/21 12:56:00
 updated: 2026/08/21 13:25:17
 categories: 
