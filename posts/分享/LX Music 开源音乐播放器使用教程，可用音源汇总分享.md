@@ -1,6 +1,6 @@
 ---
 title: LX Music 开源音乐播放器使用教程，可用音源汇总分享
-slug: LX Music-Sound-Source
+slug: LXMusic-Sound-Source
 date: 2026/05/04 13:21:00
 updated: 2026/05/05 10:53:08
 categories: 
