@@ -1,4 +1,4 @@
-> 主题fork自https://github.com/imsyy/vitepress-theme-curve，但是经过在下的重构，保留了自己需要的，删除了很多不必要的组件和代码，并简化了一下逻辑
+> 主题fork自https://github.com/imsyy/vitepress-theme-curve, 但是经过在下的重构，保留了自己需要的，删除了很多不必要的组件和代码，并简化了一下逻辑
 
 # 青鸾小栈
 
