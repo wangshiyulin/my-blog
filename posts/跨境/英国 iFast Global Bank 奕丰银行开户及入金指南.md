@@ -1,5 +1,5 @@
 ---
-title: 英国 iFast Global Bank 奕丰银行开户及入金指南
+title: 英国 iFAST Global Bank 奕丰银行开户及入金指南
 slug: UK-iFast-register
 date: 2026/08/18 12:40:00
 updated: 2026/08/18 12:45:17
@@ -7,6 +7,7 @@ categories:
   - 跨境
 tags:
   - 银行
+  - iFAST
 description: iFAST Global Bank 开户申请、资料准备、税务居民填写、账户激活及首次入金完整教程
 ---
 

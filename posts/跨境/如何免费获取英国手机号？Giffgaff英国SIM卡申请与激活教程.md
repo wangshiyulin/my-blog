@@ -7,6 +7,7 @@ categories:
   - 跨境
 tags:
   - SIM卡
+  - 英国手机号
 description: 详细介绍中国大陆用户如何申请英国 giffgaff SIM 卡，包含：激活、保号、充值、转 esim等操作。
 ---
 

@@ -6,7 +6,7 @@ updated: 2026/9/17 23:47:17
 categories: 
   - 投资
 tags:
-  - 嘉信
+  - 嘉信理财
   - 美股
 description: 2026年9月CharlesSchwab嘉信理财开户指南，包含开户教程、w-8ben表格、注意事项
 ---
