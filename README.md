@@ -6,7 +6,7 @@
 
 ## 本地开发
 
-需要 Node.js 20+。
+需要 Node.js 22.12+。
 
 ```bash
 pnpm install

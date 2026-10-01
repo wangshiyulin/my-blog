@@ -7,7 +7,7 @@
   "repository": "github:wangshiyulin/my-blog",
   "license": "MIT",
   "engines": {
-    "node": ">=20.19.0",
+    "node": ">=22.12.0",
     "npm": ">=10"
   },
   "type": "module",
@@ -21,36 +21,35 @@
     "deploy:vercel": "vercel deploy"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^26.6.3",
-    "eslint": "^10.10.0",
-    "eslint-plugin-vue": "^10.11.0",
-    "feed": "^6.0.0",
-    "fs-extra": "^11.4.0",
-    "globby": "^16.2.4",
-    "gray-matter": "^4.0.3",
-    "markdown-it-attrs": "^5.0.1",
-    "markdown-it-container": "^4.0.0",
-    "markdown-it-mathjax3": "^4.3.2",
-    "prettier": "^3.9.9",
-    "sass": "^1.105.0",
-    "terser": "^5.51.2",
-    "unplugin-auto-import": "^21.1.0",
-    "unplugin-vue-components": "^32.1.0",
-    "vercel": "^59.19.1",
-    "vitepress": "^1.6.4",
-    "vitepress-plugin-tabs": "^0.9.1",
-    "@vite-pwa/vitepress": "^1.1.0"
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.6.3",
+    "eslint": "10.10.0",
+    "eslint-plugin-vue": "10.11.0",
+    "feed": "6.0.0",
+    "fs-extra": "11.4.0",
+    "globby": "16.2.4",
+    "gray-matter": "4.0.3",
+    "markdown-it-attrs": "5.0.1",
+    "markdown-it-container": "4.0.0",
+    "markdown-it-mathjax3": "4.3.2",
+    "prettier": "3.9.9",
+    "sass": "1.105.0",
+    "terser": "5.51.2",
+    "unplugin-auto-import": "21.1.0",
+    "unplugin-vue-components": "32.1.0",
+    "vercel": "59.19.1",
+    "vitepress": "1.6.4",
+    "vitepress-plugin-tabs": "0.9.1",
+    "@vite-pwa/vitepress": "1.1.0"
   },
   "dependencies": {
-    "@vue/devtools-api": "^8.2.1",
-    "dayjs": "^1.11.23",
-    "fuse.js": "^7.5.0",
-    "lodash-es": "^4.18.1",
-    "pinia": "^4.0.3",
-    "pinia-plugin-persistedstate": "^4.7.1",
-    "vue": "^3.5.43"
+    "dayjs": "1.11.23",
+    "fuse.js": "7.5.0",
+    "lodash-es": "4.18.1",
+    "pinia": "4.0.3",
+    "pinia-plugin-persistedstate": "4.7.1",
+    "vue": "3.5.43"
   },
   "homepage": "https://qingluanx.com",
-  "packageManager": "pnpm@11.24.0"
+  "packageManager": "pnpm@12.8.1"
 }

@@ -4,17 +4,55 @@ import matter from "gray-matter";
 import fs from "fs-extra";
 
 /**
- * 获取 posts 目录下所有 Markdown 文件的路径
- * @returns {Promise<string[]>} - 文件路径数组
+ * 将旧式 #Uxxxx 路径编码还原为 Unicode。
+ * 某些旧压缩包在 Windows 解压时会留下这种文件名；标准化后可避免同一文章出现两份路径。
+ * @param {string} value 文件路径
+ * @returns {string} 标准化后的路径
+ */
+const decodeLegacyUnicodePath = (value) =>
+  value.replace(/#U([0-9A-Fa-f]{4})/g, (_, codePoint) =>
+    String.fromCodePoint(parseInt(codePoint, 16)),
+  );
+
+/**
+ * 获取 posts 目录下所有 Markdown 文件的路径，并处理旧式文件名编码。
+ * 如果同一个标准化路径存在两份完全相同的文件，只保留正常 Unicode 路径；
+ * 如果内容不同，则主动报错，避免静默覆盖真正不同的文章。
+ * @returns {Promise<string[]>} 文件路径数组
  */
 const getPostMDFilePaths = async () => {
   try {
-    // 获取所有 md 文件路径
-    let paths = await globby(["**.md"], {
-      ignore: ["node_modules", "pages", ".vitepress", "README.md"],
+    const paths = await globby(["posts/**/*.md"], {
+      ignore: ["**/README.md", "**/TODO.md"],
+      onlyFiles: true,
     });
-    // 过滤路径，只包括 'posts' 目录下的文件
-    return paths.filter((item) => item.startsWith("posts/"));
+
+    const normalizedMap = new Map();
+    for (const item of paths) {
+      const normalizedPath = decodeLegacyUnicodePath(item.replace(/\\/g, "/"));
+      const existing = normalizedMap.get(normalizedPath);
+      if (!existing) {
+        normalizedMap.set(normalizedPath, item);
+        continue;
+      }
+
+      const [existingContent, currentContent] = await Promise.all([
+        fs.readFile(existing),
+        fs.readFile(item),
+      ]);
+      if (!existingContent.equals(currentContent)) {
+        throw new Error(
+          `发现重复文章路径且内容不同：\n- ${existing}\n- ${item}\n标准化路径：${normalizedPath}`,
+        );
+      }
+      if (existing.includes("#U") && !item.includes("#U")) {
+        normalizedMap.set(normalizedPath, item);
+      }
+    }
+
+    return Array.from(normalizedMap.entries())
+      .sort(([pathA], [pathB]) => pathA.localeCompare(pathB, "zh-CN"))
+      .map(([, filePath]) => filePath);
   } catch (error) {
     console.error("获取文章路径时出错:", error);
     throw error;
@@ -45,9 +83,9 @@ const comparePostPriority = (a, b) => {
 export const getAllPosts = async () => {
   try {
     // 获取所有 Markdown 文件的路径
-    let paths = await getPostMDFilePaths();
+    const paths = await getPostMDFilePaths();
     // 读取和处理每个 Markdown 文件的内容
-    let posts = await Promise.all(
+    const posts = await Promise.all(
       paths.map(async (item) => {
         try {
           // 读取文件内容
@@ -126,13 +164,9 @@ export const getAllType = (postData) => {
   postData.map((item) => {
     // 检查是否有 tags 属性
     if (!item.tags || item.tags.length === 0) return;
-    // 处理标签
-    if (typeof item.tags === "string") {
-      // 以逗号分隔
-      item.tags = item.tags.split(",");
-    }
+    const tags = typeof item.tags === "string" ? item.tags.split(",") : item.tags;
     // 遍历文章的每个标签
-    item.tags.forEach((tag) => {
+    tags.forEach((tag) => {
       // 初始化标签的统计信息，如果不存在
       if (!tagData[tag]) {
         tagData[tag] = {
@@ -159,23 +193,20 @@ export const getAllCategories = (postData) => {
   // 遍历数据
   postData.map((item) => {
     if (!item.categories || item.categories.length === 0) return;
-    // 处理标签
-    if (typeof item.categories === "string") {
-      // 以逗号分隔
-      item.categories = item.categories.split(",");
-    }
-    // 遍历文章的每个标签
-    item.categories.forEach((tag) => {
+    const categories =
+      typeof item.categories === "string" ? item.categories.split(",") : item.categories;
+    // 遍历文章的每个分类
+    categories.forEach((category) => {
       // 初始化标签的统计信息，如果不存在
-      if (!catData[tag]) {
-        catData[tag] = {
+      if (!catData[category]) {
+        catData[category] = {
           count: 1,
           articles: [item],
         };
       } else {
-        // 如果标签已存在，则增加计数和记录所属文章
-        catData[tag].count++;
-        catData[tag].articles.push(item);
+        // 如果分类已存在，则增加计数和记录所属文章
+        catData[category].count++;
+        catData[category].articles.push(item);
       }
     });
   });
