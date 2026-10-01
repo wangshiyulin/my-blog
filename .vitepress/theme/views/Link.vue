@@ -15,20 +15,6 @@
           </div>
         </div>
       </template>
-      <!-- <div class="link-group">
-        <div v-for="(link, index) in pairedLinks(allLinkData)" :key="index" class="link-group-item">
-          <a v-for="(item, i) in link" :key="i" :href="item.url" class="link-logo">
-            <LazyLoader>
-              <img
-                :src="item.avatar"
-                :alt="item.name"
-                class="link-logo-img"
-                @load="(e) => e.target.classList.add('loaded')"
-              />
-            </LazyLoader>
-          </a>
-        </div>
-      </div> -->
     </Banner>
     <!-- 友链数据 -->
     <LinkList :listData="linkData" :useFriendsLink="true" />
@@ -56,7 +42,7 @@ const randomJump = () => {
         duration: 2000,
       },
       () => {
-        if (randomList?.url) window.open(randomList.url, "_blank");
+        if (randomList?.url) window.open(randomList.url, "_blank", "noopener,noreferrer");
       },
     );
   } catch (error) {
@@ -119,33 +105,6 @@ const randomJump = () => {
           box-shadow: 0 8px 16px -4px var(--main-color-bg);
           .iconfont {
             color: #fff;
-          }
-        }
-      }
-    }
-    .link-group {
-      position: absolute;
-      left: 0;
-      top: 140px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow: hidden;
-      .link-group-item {
-        display: flex;
-        flex-direction: column;
-        .link-logo {
-          margin-right: 1.2rem;
-          .link-logo-img {
-            width: 120px;
-            height: 120px;
-            min-width: 120px;
-            border-radius: 50%;
-            overflow: hidden;
-          }
-          &:nth-of-type(2n) {
-            margin-top: 1.2rem;
-            transform: translate(-60px);
           }
         }
       }

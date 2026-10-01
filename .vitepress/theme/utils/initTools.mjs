@@ -1,5 +1,4 @@
 import { mainStore } from "@/store";
-import { jumpRedirect } from "./commonTools.mjs";
 
 // 必要数据
 let loadingTimer = null;
@@ -29,7 +28,6 @@ export const routeChange = (type, to) => {
   // 跳转前
   if (type === "before") {
     isOnlyAfter = false;
-    // const isSame = isSamePage(to);
     // 更改上次路径
     lastPathName = new URL(to, window.location.origin).pathname;
     // 开始动画
@@ -65,8 +63,6 @@ const changeLoading = (option = {}) => {
   loadingTimer = setTimeout(
     () => {
       store.loadingStatus = false;
-      // 替换链接
-      // jumpRedirect(null, true);
       // 清除定时器
       clearTimeout(loadingTimer);
     },

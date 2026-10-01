@@ -16,12 +16,12 @@ description: 本篇文章，会通过实际操作和截图，一步步指引完�
 
 如果还没有开通相关账户，可以参考我的开户教程操作：
 
-**嘉信理财开户：https://qingluanx.com/charles-schwab-open-an-account**\
-**iFAST GB开户：https://qingluanx.com/UK-iFast-register**
+[2026年10月 | 大陆用户开通嘉信理财实测指南](https://qingluanx.com/charles-schwab-open-an-account)
+[英国 iFAST Global Bank 大陆用户线上开户及入金指南](https://qingluanx.com/UK-iFast-register)
 
-这里有其余方式可参考：
+这里有不同入金方式可参考：
 
-**Wise ACH入金：https://qingluanx.com/charles-schwab-deposit-wise**
+[2026年实测 | 嘉信证券 绑定Wise美元账户 ACH 入金流程](https://qingluanx.com/charles-schwab-deposit-wise)
 
 ## 前言
 对于不同币种的入金，嘉信在不同地区提供了本地收款账户，它在全世界很多地方都设有花旗银行的本地分行账户。这说明我们可以走本地转账的方式，而不是有手续费的国际电汇，将对应的币种打到当地的账户就可以。而嘉信在收到转账后，会**自动换汇**成美元。

@@ -16,7 +16,7 @@ export const themeConfig = {
     author: {
       name: "往世雨",
       cover: "/images/logo/logo-100.webp",
-      email: "mailto:wangshiyu@qingluanx.com",
+      email: "wangshiyu@qingluanx.com",
       link: "https://qingluanx.com",
     },
   },
@@ -170,6 +170,7 @@ export const themeConfig = {
           { text: "关于本站", link: "/pages/about" },
           { text: "隐私政策", link: "/pages/privacy" },
           { text: "版权协议", link: "/pages/cc" },
+          { text: "联系我们", action: "contact" },
         ],
       },
       {
@@ -243,28 +244,5 @@ export const themeConfig = {
     enable: true,
     js: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.min.js",
     css: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.min.css",
-  },
-  // 外链中转
-  jumpRedirect: {
-    enable: true,
-    // 排除类名
-    exclude: [
-      "cf-friends-link",
-      "upyun",
-      "icp",
-      "author",
-      "rss",
-      "cc",
-      "power",
-      "social-link",
-      "link-text",
-      "travellings",
-      "post-link",
-      "report",
-      "more-link",
-      "skills-item",
-      "right-menu-link",
-      "link-card",
-    ],
   },
 };

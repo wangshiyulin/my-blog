@@ -2,7 +2,7 @@
   <div class="copyright s-card">
     <div class="title">
       <span class="post-name">{{ postData?.title || "未命名文章" }}</span>
-      <a :href="theme.siteMeta.site + route.path" class="post-link" target="_blank">
+      <a :href="theme.siteMeta.site + route.path" class="post-link" target="_blank" rel="noopener noreferrer">
         {{ theme.siteMeta.site + route.path }}
       </a>
     </div>
@@ -23,14 +23,14 @@
         <span class="tip">许可协议</span>
         <a
           class="name"
-          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
-          target="_blank"
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans"
+          target="_blank" rel="noopener noreferrer"
         >
-          CC BY-NC-SA 4.0
+          CC BY-NC-ND 4.0
         </a>
       </div>
     </div>
-    <span class="meta-tip">署名-非商业性使用-相同方式共享 4.0 国际</span>
+    <span class="meta-tip">署名-非商业性使用-禁止演绎 4.0 国际</span>
   </div>
 </template>
 
@@ -38,11 +38,11 @@
 import { formatTimestamp } from "@/utils/helper";
 
 const { theme } = useData();
-const props = defineProps({
+defineProps({
   // 文章数据
   postData: {
     type: Object,
-    default: {},
+    default: () => ({}),
   },
 });
 const route = useRoute();

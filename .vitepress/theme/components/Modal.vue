@@ -12,12 +12,7 @@
           @click.stop
         >
           <!-- 标题 -->
-          <!-- <div v-if="title" class="title">
-            <div class="title-left">
-              <i v-if="titleIcon" :class="`iconfont icon-${titleIcon}`"></i>
-              <span class="title-text">{{ title }}</span>
-            </div> -->
-            <div v-if="title || $slots.title" class="title">
+          <div v-if="title || $slots.title" class="title">
               <div class="title-left">
                 <template v-if="$slots.title">
                   <slot name="title" />

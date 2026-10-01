@@ -85,7 +85,7 @@
               v-if="(clickedType === 'text' || clickedType === 'input') && isLink(clickedTypeData)"
               :href="isLink(clickedTypeData)"
               class="btn right-menu-link"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
             >
               <i class="iconfont icon-link" />
               <span class="name">在新标签页打开</span>
@@ -94,7 +94,7 @@
               v-if="clickedType === 'text' || clickedType === 'input'"
               :href="`https://cn.bing.com/search?q=${encodeURIComponent(clickedTypeData)}`"
               class="btn right-menu-link"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
             >
               <i class="iconfont icon-bing" />
               <span class="name">使用必应搜索</span>
@@ -275,7 +275,7 @@ const rightMenuFunc = async (type) => {
         window.location.reload();
         break;
       case "open-link":
-        window.open(clickedTypeData.value?.href);
+        window.open(clickedTypeData.value?.href, "_blank", "noopener,noreferrer");
         break;
       case "copy-link":
         const pageLink = theme.value.siteMeta.site + router.route.path;

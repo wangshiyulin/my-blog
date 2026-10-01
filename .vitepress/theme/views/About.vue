@@ -31,7 +31,7 @@
             :style="{ '--color': item.color }"
             :href="item.link"
             class="skills-item"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             <div class="skills-logo">
               <i :class="`iconfont icon-${item.icon}`"></i>
@@ -60,16 +60,13 @@
             <span class="title2" style="color: var(--color)">INTJ</span>
             <span class="more">
               在
-              <a href="https://www.16personalities.com/ch/" target="_blank">16personalities</a>
+              <a href="https://www.16personalities.com/ch/" target="_blank" rel="noopener noreferrer">16personalities</a>
               了解更多关于
-              <a href="https://www.16personalities.com/ch/intj-%E4%BA%BA%E6%A0%BC" target="_blank">
+              <a href="https://www.16personalities.com/ch/intj-%E4%BA%BA%E6%A0%BC" target="_blank" rel="noopener noreferrer">
                 架构师
               </a>
              </span>
           </div>
-          <!-- <div class="about-content" style="grid-template-columns: 5fr 3fr"> -->
-
-          <!-- </div>    -->
       </div>
     </div>
 

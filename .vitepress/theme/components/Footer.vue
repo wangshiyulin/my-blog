@@ -2,37 +2,23 @@
   <footer id="main-footer" class="main-footer">
     <div class="footer-content">
       <div class="copyright">
-        <span class="time">@ 2026 - {{ thisYear }} By </span>
-        <a :href="theme.siteMeta.author.link" class="author link" target="_blank">
+        <span class="time">@ {{ sinceYear }} - {{ thisYear }} By </span>
+        <a :href="theme.siteMeta.author.link" class="author link" target="_blank" rel="noopener noreferrer">
           {{ theme.siteMeta.author.name }}
         </a>
-         <!-- <a class="icp link" href="https://beian.miit.gov.cn/" target="_blank">
-          <i class="iconfont icon-safe" />
-          {{ theme.icp }}
-        </a>  -->
       </div>
       <div class="meta">
-        <a class="power link" href="https://vitepress.dev/" target="_blank">
+        <a class="power link" href="https://vitepress.dev/" target="_blank" rel="noopener noreferrer">
           <span class="by">Powered by</span>
           <span class="name">VitePress</span>
         </a>
-        <a class="theme link" href="https://github.com/imsyy/vitepress-theme-curve" target="_blank">
+        <a class="theme link" href="https://github.com/imsyy/vitepress-theme-curve" target="_blank" rel="noopener noreferrer">
           <span class="name">主题</span>
         </a>
-        <a class="rss link" href="https://qingluanx.com/rss.xml" target="_blank">
+        <a class="rss link" href="https://qingluanx.com/rss.xml" target="_blank" rel="noopener noreferrer">
           <i class="iconfont icon-rss" />
           <span class="name">订阅</span>
         </a>
-        <!-- <a
-          class="cc link"
-          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
-          target="_blank"
-        >
-          <i class="iconfont icon-line" />
-          <i class="iconfont icon-by-line" />
-          <i class="iconfont icon-nc-line" />
-          <i class="iconfont icon-nd-line" />
-        </a> -->
       </div>
     </div>
   </footer>
@@ -51,6 +37,7 @@ const observer = ref(null);
 
 // 实时年份
 const thisYear = computed(() => new Date().getFullYear());
+const sinceYear = computed(() => new Date(theme.value.since).getFullYear());
 
 // 监听页脚视窗
 const isShowFooter = () => {
@@ -101,18 +88,8 @@ onBeforeUnmount(() => {
     line-height: 1;
     min-height: 32px;
     .copyright {
-      .icp {
-        .iconfont {
-          font-size: 20px;
-          opacity: 0.6;
-        }
-      }
-      .upyun {
-        .iconfont {
-          font-size: 20px;
-          font-weight: normal;
-        }
-      }
+      display: inline-flex;
+      align-items: center;
     }
     .meta {
       display: flex;
@@ -131,12 +108,6 @@ onBeforeUnmount(() => {
         .iconfont {
           font-weight: normal;
           margin-right: 6px;
-        }
-      }
-      .cc {
-        .iconfont {
-          margin: 0 2px;
-          font-weight: normal;
         }
       }
     }

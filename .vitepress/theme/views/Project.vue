@@ -8,7 +8,7 @@
       image="/images/logo/github.webp"
     >
       <template #footer-slot>
-        <a class="to-github" href="https://github.com/wangshiyulin/" target="_blank">
+        <a class="to-github" href="https://github.com/wangshiyulin/" target="_blank" rel="noopener noreferrer">
           <i class="iconfont icon-github"></i>
           <span>前往 Github</span>
         </a>

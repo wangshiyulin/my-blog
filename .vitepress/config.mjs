@@ -9,13 +9,15 @@ import {
   getAllCategories,
   getAllArchives,
 } from "./theme/utils/getPostData.mjs";
-import { jumpRedirect } from "./theme/utils/commonTools.mjs";
 import markdownConfig from "./theme/utils/markdownConfig.mjs";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import path from "path";
+import { fileURLToPath } from "url";
 
 // 获取全局数据
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const postData = await getAllPosts();
 
 // 获取主题配置
@@ -90,10 +92,6 @@ export default withPwa(
       pageData.frontmatter.head ??= [];
       pageData.frontmatter.head.push(["link", { rel: "canonical", href: canonicalUrl }]);
     },
-    // transformHtml
-    transformHtml: (html) => {
-      return jumpRedirect(html, themeConfig);
-    },
     // buildEnd
     buildEnd: async (config) => {
       await createRssFile(config, themeConfig);
@@ -116,7 +114,6 @@ export default withPwa(
       resolve: {
         // 配置路径别名
         alias: {
-          // eslint-disable-next-line no-undef
           "@": path.resolve(__dirname, "./theme"),
         },
       },

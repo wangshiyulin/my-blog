@@ -20,7 +20,11 @@ description: 本篇文章教程，会实操通过 Wise美元账户 绑定ACH入�
 
 如果还没有开通相关账户，可以参考我的开户教程操作：
 
-**嘉信理财开户：https://qingluanx.com/charles-schwab-open-an-account**
+[2026年10月 | 大陆用户开通嘉信理财实测指南](https://qingluanx.com/charles-schwab-open-an-account)
+
+这里不同入金方式可参考：
+
+[2026年实测 | iFAST英镑 无损入金嘉信理财指引](https://qingluanx.com/charles-schwab-deposit-ifast)
 
 ## 前言
 Wise 的美元账户即使显示为 Deposit 类型，同样可以用来绑定 ACH，并不一定非要是 Checking 账户

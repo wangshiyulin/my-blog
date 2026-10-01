@@ -113,12 +113,6 @@
         </span>
       </div>
 
-      <!-- 搜索来源 -->
-      <!-- <div class="power">
-        <span class="name">
-          本站搜索
-        </span>
-      </div> -->
     </div>
   </Modal>
 </template>

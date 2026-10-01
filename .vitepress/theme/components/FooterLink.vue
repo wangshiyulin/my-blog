@@ -12,6 +12,7 @@
         :key="index"
         :href="item.link"
         target="_blank"
+        rel="noopener noreferrer"
         class="social-link"
       >
         <i :class="`iconfont icon-${item.icon}`"></i>
@@ -24,6 +25,7 @@
         :key="index"
         :href="item.link"
         target="_blank"
+        rel="noopener noreferrer"
         class="social-link"
       >
         <i :class="`iconfont icon-${item.icon}`"></i>
@@ -33,18 +35,41 @@
       <div v-for="(item, index) in footer.sitemap" :key="index" class="sitemap-item">
         <span class="title">{{ item.text }}</span>
         <div class="links">
-          <a
-            v-for="(link, linkIndex) in item.items"
-            :key="linkIndex"
-            :href="link.link"
-            :target="link.newTab ? '_blank' : null"
-            class="link-text"
-          >
-            {{ link.text }}
-          </a>
+          <template v-for="(link, linkIndex) in item.items" :key="linkIndex">
+            <button
+              v-if="link.action === 'contact'"
+              type="button"
+              class="link-text link-button"
+              @click="contactShow = true"
+            >
+              {{ link.text }}
+            </button>
+            <a
+              v-else
+              :href="link.link"
+              :target="link.newTab ? '_blank' : null"
+              :rel="link.newTab ? 'noopener noreferrer' : null"
+              class="link-text"
+            >
+              {{ link.text }}
+            </a>
+          </template>
         </div>
       </div>
     </div>
+    <Modal
+      :show="contactShow"
+      title="联系我们"
+      title-icon="email"
+      :max-width="520"
+      @modal-close="contactShow = false"
+      @mask-click="contactShow = false"
+    >
+      <p class="contact-content">
+        联系邮箱:
+        <a href="mailto:wangshiyu@qingluanx.com">wangshiyu@qingluanx.com</a>
+      </p>
+    </Modal>
   </div>
 </template>
 
@@ -53,13 +78,15 @@ import { smoothScrolling } from "@/utils/helper";
 
 const { theme, site } = useData();
 const { footer, siteMeta } = theme.value;
-const props = defineProps({
+defineProps({
   // 显示底栏
   showBar: {
     type: Boolean,
     default: true,
   },
 });
+
+const contactShow = ref(false);
 
 // 社交链接数据
 const socialLinkData = computed(() => {
@@ -192,23 +219,7 @@ const socialLinkData = computed(() => {
         margin: 1rem 0;
         font-size: 16px;
         font-weight: bold;
-        // margin-left: 8px;
         color: var(--main-font-second-color);
-        &.friends {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          cursor: pointer;
-          .iconfont {
-            font-weight: normal;
-            margin-left: 6px;
-            color: var(--main-font-second-color);
-            transition: color 0.3s;
-            &:hover {
-              color: var(--main-color);
-            }
-          }
-        }
       }
       .links {
         display: flex;
@@ -234,6 +245,13 @@ const socialLinkData = computed(() => {
             color: var(--main-color);
             background-color: var(--main-color-bg);
           }
+        }
+        .link-button {
+          appearance: none;
+          border: 0;
+          background: transparent;
+          font: inherit;
+          text-align: center;
         }
       }
     }

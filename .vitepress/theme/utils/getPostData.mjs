@@ -27,9 +27,7 @@ const getPostMDFilePaths = async () => {
  * @param {Object} obj2 - 第二篇文章对象
  * @returns {number} - 比较结果
  */
-const compareDate = (obj1, obj2) => {
-  return obj1.date < obj2.date ? 1 : -1;
-};
+const compareDate = (obj1, obj2) => obj2.date - obj1.date;
 const comparePostPriority = (a, b) => {
   if (a.top && !b.top) {
     return -1;
@@ -68,17 +66,20 @@ export const getAllPosts = async () => {
           if (normalizedSlug.includes("..") || normalizedSlug.includes("\\") || /[#?]/.test(normalizedSlug)) {
             throw new Error(`文章 slug 含有非法路径：${item} -> ${normalizedSlug}`);
           }
+          // 校验并规范化文章日期
+          const parsedDate = date ? new Date(date).getTime() : birthtimeMs;
+          if (!Number.isFinite(parsedDate)) {
+            throw new Error(`文章日期无效：${item} -> ${date}`);
+          }
           // 计算文章的过期天数
-          const expired = Math.floor(
-            (new Date().getTime() - new Date(date).getTime()) / (1000 * 60 * 60 * 24),
-          );
+          const expired = Math.floor((Date.now() - parsedDate) / (1000 * 60 * 60 * 24));
           // 返回文章对象
           return {
             id: generateId(item),
             sourcePath: item.replace(/\\/g, "/"),
             slug: normalizedSlug,
             title: title || "未命名文章",
-            date: date ? new Date(date).getTime() : birthtimeMs,
+            date: parsedDate,
             lastModified: mtimeMs,
             expired,
             tags,

@@ -61,21 +61,3 @@ export const getDaysUntil = (dateStr) => {
   const daysUntil = targetDate.diff(now, "day");
   return daysUntil;
 };
-
-/**
- * 格式化日期字符串。
- * 如果日期与当前年份相同，则返回 "月/日" 格式
- * 如果日期不与当前年份相同，则返回 "年/月/日" 格式
- * @param {string} dateString - 需要转换的日期字符串，格式为 "YYYY/MM/DD" 或 "YYYY-MM-DD"
- * @returns {string} 格式化后的日期。
- */
-export const formatDate = (dateString) => {
-  // 获取当前年份
-  const currentYear = new Date().getFullYear();
-  // 解析传入的日期字符串
-  const date = new Date(dateString.replace(/-/g, "/"));
-  // 检查年份是否相同，并且格式化日期
-  return date.getFullYear() === currentYear
-    ? `${date.getMonth() + 1}/${date.getDate()}`
-    : `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
-};

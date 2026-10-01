@@ -15,7 +15,7 @@
                     :key="i"
                     :href="link.url"
                     class="more-link"
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                   >
                     <img class="link-icon" :src="link.icon" :alt="link.name" />
                     <span class="link-name">{{ link.name }}</span>
@@ -51,15 +51,6 @@
           </span>
         </div>
         <div class="right-nav">
-          <!-- 开往 -->
-          <!-- <a
-            class="menu-btn nav-btn travellings"
-            title="开往-友链接力"
-            href="https://www.travellings.cn/go.html"
-            target="_blank"
-          >
-            <i class="iconfont icon-subway"></i>
-          </a> -->
           <!-- 随机文章 -->
           <div
             class="menu-btn nav-btn"

@@ -12,6 +12,7 @@ export const createRssFile = async (config, themeConfig) => {
   // 配置信息
   const siteMeta = themeConfig.siteMeta;
   const hostLink = siteMeta.site;
+  const sinceYear = new Date(themeConfig.since).getFullYear();
   // Feed 实例
   const feed = new Feed({
     title: siteMeta.title,
@@ -21,7 +22,7 @@ export const createRssFile = async (config, themeConfig) => {
     language: "zh",
     generator: siteMeta.author.name,
     favicon: siteMeta.author.cover,
-    copyright: `Copyright © 2020-present ${siteMeta.author.name}`,
+    copyright: `Copyright © ${sinceYear}-present ${siteMeta.author.name}`,
     updated: new Date(),
   });
   // 加载文章

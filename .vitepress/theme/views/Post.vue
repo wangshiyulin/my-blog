@@ -58,8 +58,6 @@
         </div>
         <!-- 文章内容 -->
         <Content id="page-content" class="markdown-main-style" />
-        <!-- 参考资料 -->
-        <References />
         <!-- 版权 -->
         <Copyright v-if="frontmatter.copyright !== false" :postData="postMetaData" />
         <!-- 其他信息 -->
@@ -78,7 +76,7 @@
           <a
             href="mailto:wangshiyu@qingluanx.com"
             class="report"
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
           >
             <i class="iconfont icon-report" />
             反馈与投诉
