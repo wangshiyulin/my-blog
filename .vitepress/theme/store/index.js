@@ -103,7 +103,7 @@ export const mainStore = defineStore("main", {
   persist: [
     {
       key: "siteData",
-      paths: [
+      pick: [
         "themeType",
         "bannerType",
         "useRightMenu",

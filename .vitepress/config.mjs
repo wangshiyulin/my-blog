@@ -19,6 +19,9 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const postData = await getAllPosts();
+if (!postData.length) {
+  throw new Error("未发现任何文章，请检查 posts 目录。");
+}
 
 // 获取主题配置
 const themeConfig = structuredClone(siteThemeConfig);
