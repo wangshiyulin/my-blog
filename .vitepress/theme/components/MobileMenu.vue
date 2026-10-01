@@ -69,17 +69,20 @@ const pageJump = (url) => {
   router.go(url);
 };
 
-watch(
-  () => store.mobileMenuShow,
-  (show) => {
-    if (show) lockBodyScroll();
-    else unlockBodyScroll();
-  },
-  { immediate: true },
-);
+// 菜单由 Nav.vue 的 v-if 控制生命周期，因此在挂载时加锁、卸载时解锁。
+// 使用本地状态记录是否实际加锁，避免生命周期边界下出现重复解锁。
+let scrollLockAcquired = false;
+
+onMounted(() => {
+  lockBodyScroll();
+  scrollLockAcquired = true;
+});
 
 onBeforeUnmount(() => {
-  if (store.mobileMenuShow) unlockBodyScroll();
+  if (scrollLockAcquired) {
+    unlockBodyScroll();
+    scrollLockAcquired = false;
+  }
 });
 </script>
 

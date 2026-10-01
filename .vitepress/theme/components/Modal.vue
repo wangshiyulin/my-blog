@@ -84,17 +84,25 @@ const maskClick = () => emit("mask-click");
 const modalClose = () => emit("modal-close");
 
 // 监听开启
-watch(
-  () => props.show,
-  (val) => {
-    if (val) lockBodyScroll();
-    else unlockBodyScroll();
-  },
-  { immediate: true },
-);
+let scrollLockAcquired = false;
+
+const updateScrollLock = (show) => {
+  if (show && !scrollLockAcquired) {
+    lockBodyScroll();
+    scrollLockAcquired = true;
+  } else if (!show && scrollLockAcquired) {
+    unlockBodyScroll();
+    scrollLockAcquired = false;
+  }
+};
+
+watch(() => props.show, updateScrollLock, { immediate: true });
 
 onBeforeUnmount(() => {
-  if (props.show) unlockBodyScroll();
+  if (scrollLockAcquired) {
+    unlockBodyScroll();
+    scrollLockAcquired = false;
+  }
 });
 </script>
 

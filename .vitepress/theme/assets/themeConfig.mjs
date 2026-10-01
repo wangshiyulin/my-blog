@@ -31,7 +31,7 @@ export const themeConfig = {
   // 仅保留不阻塞首屏的本地资源；第三方字体/图标在客户端空闲时按需加载。
   inject: {
     header: [
-      ["link", { rel: "icon", href: "/favicon.ico" }],
+      ["link", { rel: "icon", href: "/images/logo/favicon.ico" }],
       ["link", {
         rel: "alternate",
         type: "application/rss+xml",
