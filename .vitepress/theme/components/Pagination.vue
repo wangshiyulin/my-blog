@@ -164,18 +164,6 @@ const fastJump = () => {
   );
 };
 
-// 检查当前路径参数
-const checkCurrentPage = () => {
-  const params = new URLSearchParams(window.location.search);
-  const page = params.get("page");
-  if (page && props.useParams) {
-    currentPage.value = Number(page);
-  }
-};
-
-onMounted(() => {
-  checkCurrentPage();
-});
 </script>
 
 <style lang="scss" scoped>

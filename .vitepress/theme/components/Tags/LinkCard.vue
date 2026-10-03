@@ -28,8 +28,6 @@
 </template>
 
 <script setup>
-import { getSiteInfo } from "@/api";
-
 const props = defineProps({
   // 地址
   url: {
@@ -64,14 +62,24 @@ const isOutLink = computed(() => {
   return !link.startsWith("/") && (link.startsWith("http://") || link.startsWith("https://"));
 });
 
-// 获取站点数据
-const getSiteInfoData = async () => {
+// 获取站点基础信息
+// 不再依赖不存在的第三方接口，直接根据 URL 生成安全的本地兜底信息。
+const getSiteInfoData = () => {
   const url = props.url;
-  if (!url) return false;
-  if (props.title || props.desc || props.icon) return false;
-  // 获取数据
-  const result = await getSiteInfo(url);
-  siteInfo.value = result;
+  if (!url || props.title || props.desc || props.icon) return false;
+
+  try {
+    const target = new URL(url, window.location.origin);
+    const hostname = target.hostname.replace(/^www\./, "");
+
+    siteInfo.value = {
+      title: hostname || target.href,
+      description: target.href,
+      iconUrl: `${target.origin}/favicon.ico`,
+    };
+  } catch (error) {
+    console.warn("链接卡片 URL 无效：", url, error);
+  }
 };
 
 onMounted(() => {

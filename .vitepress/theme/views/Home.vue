@@ -169,12 +169,9 @@ const restoreScrollY = (val) => {
   });
 };
 
-// 监听路由变化
+// 监听 VitePress 路由变化
 const onRouteChanged = () => {
-  if (
-    props.showCategories ||
-    props.showTags
-  ) {
+  if (props.showCategories || props.showTags) {
     updateQueryPage();
   }
 };
@@ -182,24 +179,20 @@ const onRouteChanged = () => {
 // 页面加载
 onMounted(() => {
   // 初始化分类/标签页码
-  if (
-    props.showCategories ||
-    props.showTags
-  ) {
+  if (props.showCategories || props.showTags) {
     updateQueryPage();
   }
 
-  // 监听 VitePress 路由变化
   window.addEventListener(
     "vitepress-route-change",
-    onRouteChanged
+    onRouteChanged,
   );
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener(
     "vitepress-route-change",
-    onRouteChanged
+    onRouteChanged,
   );
 });
 

@@ -596,33 +596,41 @@ const jumpSearch = (url) => {
 
 /**
  * 搜索窗口打开
+ *
+ * Search 组件本身只在 searchShow=true 时创建，
+ * 因此这里必须立即执行一次，否则普通 watch 不会收到首次变化。
  */
- watch(
-   () => store.searchShow,
-   async (show) => {
-     if (!show) {
-       query.value = "";
-       results.value = [];
-       return;
-     }
- 
-     // 打开搜索框时立即加载索引
-     await loadSearchIndex();
- 
-     // 等 Modal 和 input 真正渲染完成
-     await nextTick();
- 
-     // 自动聚焦
-     searchInput.value?.focus();
-   },
- );
+watch(
+  () => store.searchShow,
+  async (show) => {
+    if (!show) {
+      query.value = "";
+      results.value = [];
+      return;
+    }
+
+    // 打开搜索框时加载索引
+    await loadSearchIndex();
+
+    // 如果用户在索引加载期间已经输入关键词，加载完成后立即重新搜索。
+    if (query.value.trim()) {
+      doSearch(query.value);
+    }
+
+    // 等 Modal 和 input 真正渲染完成
+    await nextTick();
+
+    // 自动聚焦
+    searchInput.value?.focus();
+  },
+  { immediate: true },
+);
 
 /**
  * 组件卸载
  */
 onBeforeUnmount(() => {
   query.value = "";
-
   results.value = [];
 });
 </script>
