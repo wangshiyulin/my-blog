@@ -46,7 +46,7 @@ const { theme } = useData();
 
 onMounted(() => {
   const load = () =>
-    loadScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", {
+    loadScript("https://busuanzi.icodeq.com/busuanzi.pure.mini.js", {
       async: true,
       reload: true,
     });

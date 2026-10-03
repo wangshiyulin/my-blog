@@ -12,7 +12,9 @@ import "@/style/main.scss";
 
 // pinia
 const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
+if (typeof window !== 'undefined') {
+  pinia.use(piniaPluginPersistedstate)
+}
 
 // Theme
 const Theme = {

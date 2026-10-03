@@ -69,30 +69,6 @@
           </div>
       </div>
     </div>
-
-    
-    <div class="about-content" style="grid-template-columns: 2fr 3fr">
-      <!-- 信息 -->
-      <div class="about-item child">
-        <div
-          class="about-item map image"
-          style="background-image: url(https://pic.efefee.cn/uploads/2024/04/15/661cbccc56af5.webp)"
-        >
-          <span class="position">我现在住在 <strong>中国，河南省</strong></span>
-        </div>
-      </div>
-
-      <div class="about-item info"> 
-        <div class="info-item"> 
-         <span class="info-name">生于</span>
-         <span class="info-num" style="--color: #43a6c6">2007</span>
-         </div>  
-        <div class="info-item"> 
-         <span class="info-name">现在职业</span>
-         <span class="info-num" style="--color: #dfac46">博主、见习交易员</span>
-        </div> 
-      </div> 
-    </div>
     
     <!-- 心路历程 -->
     <div class="about-content" style="display: flex">
