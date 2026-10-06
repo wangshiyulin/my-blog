@@ -42,20 +42,56 @@
 import { loadScript } from "@/utils/commonTools";
 import { daysFromNow } from "@/utils/helper";
 
+const COUNTER_SCRIPT = "https://events.vercount.one/js";
 const { theme } = useData();
 
-onMounted(() => {
-  const load = () =>
-    loadScript("https://busuanzi.icodeq.com/busuanzi.pure.mini.js", {
-      async: true,
-      reload: true,
-    });
+let handleRouteChange = null;
+let loadedPath = "";
 
-  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-    window.requestIdleCallback(load, { timeout: 4000 });
+const getCurrentPath = () => {
+  if (typeof window === "undefined") return "";
+  return `${window.location.pathname}${window.location.search}`;
+};
+
+const loadCounter = () => {
+  if (typeof window === "undefined" || typeof document === "undefined") return;
+
+  const currentPath = getCurrentPath();
+  if (!currentPath || currentPath === loadedPath) return;
+
+  // Vercount 兼容不蒜子的 busuanzi_value_site_pv / site_uv 标签。
+  // 使用主题原本的 loadScript 机制，保证脚本在 DOM 节点存在后再加载。
+  const result = loadScript(COUNTER_SCRIPT, {
+    async: true,
+    reload: true,
+  });
+
+  if (result && typeof result.catch === "function") {
+    void result.then(
+      () => {
+        loadedPath = currentPath;
+      },
+      (error) => {
+        console.error("网站访问统计加载失败：", error);
+      },
+    );
   } else {
-    window.setTimeout(load, 2500);
+    loadedPath = currentPath;
   }
+};
+
+onMounted(() => {
+  if (typeof window === "undefined") return;
+
+  loadCounter();
+  handleRouteChange = loadCounter;
+  window.addEventListener("vitepress-route-change", handleRouteChange);
+});
+
+onBeforeUnmount(() => {
+  if (typeof window === "undefined" || !handleRouteChange) return;
+  window.removeEventListener("vitepress-route-change", handleRouteChange);
+  handleRouteChange = null;
 });
 </script>
 

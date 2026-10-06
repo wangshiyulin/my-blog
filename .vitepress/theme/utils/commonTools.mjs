@@ -14,75 +14,168 @@ export const generateId = (fileName) => {
   return numericId;
 };
 
-/**
- * 动态加载脚本
- * @param {string} src - 脚本 URL
- * * @param {object} option - 配置
- */
-export const loadScript = (src, option = {}) => {
-  if (typeof document === "undefined" || !src) return false;
-  // 获取配置
-  const { async = false, reload = false, callback } = option;
-  // 检查是否已经加载过此脚本
-  const existingScript = document.querySelector(`script[src="${src}"]`);
-  if (existingScript) {
-    console.log("已有重复脚本");
-    if (!reload) {
-      callback && callback(null, existingScript);
-      return false;
-    }
-    existingScript.remove();
-  }
-  // 创建一个新的script标签并加载
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = src;
-    if (async) script.async = true;
-    script.onload = () => {
-      resolve(script);
-      callback && callback(null, script);
-    };
-    script.onerror = (error) => {
-      reject(error);
-      callback && callback(error);
-    };
-    document.head.appendChild(script);
-  });
+const scriptPromises = new Map();
+const stylePromises = new Map();
+
+const findScript = (src) => {
+  if (typeof document === "undefined") return null;
+  const absoluteSrc = new URL(src, document.baseURI).href;
+  return [...document.scripts].find((script) => script.src === absoluteSrc) || null;
+};
+
+const findStyle = (href) => {
+  if (typeof document === "undefined") return null;
+  const absoluteHref = new URL(href, document.baseURI).href;
+  return (
+    [...document.querySelectorAll('link[rel="stylesheet"]')].find(
+      (link) => link.href === absoluteHref,
+    ) || null
+  );
 };
 
 /**
- * 动态加载样式表
+ * 动态加载脚本。
+ * 同一 URL 的并发加载会共享同一个 Promise，避免 SPA 中重复插入脚本造成竞态。
+ * @param {string} src - 脚本 URL
+ * @param {object} option - 配置
+ * @returns {Promise<HTMLScriptElement>|false}
+ */
+export const loadScript = (src, option = {}) => {
+  if (typeof document === "undefined" || !src) return false;
+
+  const { async = false, reload = false, callback } = option;
+  const absoluteSrc = new URL(src, document.baseURI).href;
+
+  if (!reload) {
+    const pending = scriptPromises.get(absoluteSrc);
+    if (pending) {
+      return pending.then(
+        (script) => {
+          callback?.(null, script);
+          return script;
+        },
+        (error) => {
+          callback?.(error);
+          throw error;
+        },
+      );
+    }
+
+    const existingScript = findScript(src);
+    if (existingScript) {
+      const promise = Promise.resolve(existingScript);
+      callback?.(null, existingScript);
+      return promise;
+    }
+  } else {
+    scriptPromises.delete(absoluteSrc);
+    findScript(src)?.remove();
+  }
+
+  let resolvePromise;
+  let rejectPromise;
+  const promise = new Promise((resolve, reject) => {
+    resolvePromise = resolve;
+    rejectPromise = reject;
+  });
+  scriptPromises.set(absoluteSrc, promise);
+
+  const script = document.createElement("script");
+  script.src = absoluteSrc;
+  script.async = async;
+  script.onload = () => {
+    script.dataset.loaded = "true";
+    resolvePromise(script);
+  };
+  script.onerror = (error) => {
+    script.remove();
+    scriptPromises.delete(absoluteSrc);
+    rejectPromise(error);
+  };
+  document.head.appendChild(script);
+
+  return promise.then(
+    (loadedScript) => {
+      callback?.(null, loadedScript);
+      return loadedScript;
+    },
+    (error) => {
+      callback?.(error);
+      throw error;
+    },
+  );
+};
+
+/**
+ * 动态加载样式表。
+ * 同一 URL 的并发加载会共享同一个 Promise。
  * @param {string} href - 样式表 URL
  * @param {object} option - 配置
+ * @returns {Promise<HTMLLinkElement>|false}
  */
 export const loadCSS = (href, option = {}) => {
   if (typeof document === "undefined" || !href) return false;
-  // 获取配置
+
   const { reload = false, callback } = option;
-  // 检查是否已经加载过此样式表
-  const existingLink = document.querySelector(`link[href="${href}"]`);
-  if (existingLink) {
-    console.log("已有重复样式");
-    if (!reload) {
-      callback && callback(null, existingLink);
-      return false;
+  const absoluteHref = new URL(href, document.baseURI).href;
+
+  if (!reload) {
+    const pending = stylePromises.get(absoluteHref);
+    if (pending) {
+      return pending.then(
+        (link) => {
+          callback?.(null, link);
+          return link;
+        },
+        (error) => {
+          callback?.(error);
+          throw error;
+        },
+      );
     }
-    existingLink.remove();
+
+    const existingLink = findStyle(href);
+    if (existingLink) {
+      const promise = Promise.resolve(existingLink);
+      callback?.(null, existingLink);
+      return promise;
+    }
+  } else {
+    stylePromises.delete(absoluteHref);
+    findStyle(href)?.remove();
   }
-  // 创建新的link标签并设置属性
-  return new Promise((resolve, reject) => {
-    const link = document.createElement("link");
-    link.href = href;
-    link.rel = "stylesheet";
-    link.type = "text/css";
-    link.onload = () => {
-      resolve(link);
-      callback && callback(null, link);
-    };
-    link.onerror = (error) => {
-      reject(error);
-      callback && callback(error);
-    };
-    document.head.appendChild(link);
+
+  let resolvePromise;
+  let rejectPromise;
+  const promise = new Promise((resolve, reject) => {
+    resolvePromise = resolve;
+    rejectPromise = reject;
   });
+  stylePromises.set(absoluteHref, promise);
+
+  const link = document.createElement("link");
+  link.href = absoluteHref;
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.onload = () => {
+    link.dataset.loaded = "true";
+    resolvePromise(link);
+  };
+  link.onerror = (error) => {
+    link.remove();
+    stylePromises.delete(absoluteHref);
+    rejectPromise(error);
+  };
+  document.head.appendChild(link);
+
+  return promise.then(
+    (loadedLink) => {
+      callback?.(null, loadedLink);
+      return loadedLink;
+    },
+    (error) => {
+      callback?.(error);
+      throw error;
+    },
+  );
 };

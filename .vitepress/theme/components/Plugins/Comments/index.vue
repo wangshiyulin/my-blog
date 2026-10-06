@@ -19,9 +19,10 @@
 </template>
 
 <script setup>
+import initComments from "@/utils/initComments";
 const { theme } = useData();
 const router = useRouter();
-const props = defineProps({
+defineProps({
   // 填充评论区
   fill: {
     type: [Boolean, String],
@@ -29,6 +30,26 @@ const props = defineProps({
   },
 });
 const mainCommentRef = ref(null);
+
+// 获取当前文章评论数。Twikoo 官方 API 支持在未调用 twikoo.init() 前直接查询。
+const updateCommentCount = async () => {
+  const countElement = document.getElementById("twikoo_comments");
+  if (!countElement || !theme.value.comment?.twikoo?.envId) return;
+
+  try {
+    const Twikoo = await initComments(theme.value);
+    const result = await Twikoo.getCommentsCount({
+      envId: theme.value.comment.twikoo.envId,
+      region: theme.value.comment.twikoo.region,
+      urls: [router.route.path.split("?")[0]],
+      includeReply: false,
+    });
+    const count = result?.[0]?.count;
+    if (Number.isFinite(count)) countElement.textContent = String(count);
+  } catch (error) {
+    console.error("获取评论数失败：", error);
+  }
+};
 
 // 滚动至评论
 const scrollToComments = () => {
@@ -39,6 +60,12 @@ const scrollToComments = () => {
 };
 
 defineExpose({ scrollToComments });
+
+onMounted(() => {
+  if (theme.value.comment.enable && theme.value.comment.type === "twikoo") {
+    void updateCommentCount();
+  }
+});
 </script>
 
 <style lang="scss" scoped>

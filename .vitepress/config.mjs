@@ -71,7 +71,6 @@ export default withPwa(
     },
     // markdown
     markdown: {
-      math: true,
       lineNumbers: true,
       toc: { level: [1, 2, 3] },
       image: {

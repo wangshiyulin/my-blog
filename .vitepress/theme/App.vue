@@ -61,10 +61,15 @@ const rightMenuRef = ref(null);
 const externalResources = theme.value.externalResources || {};
 const loadedResources = new Set();
 
-const loadResource = (url) => {
+const loadResource = async (url) => {
   if (!url || loadedResources.has(url)) return;
-  loadedResources.add(url);
-  loadCSS(url);
+
+  try {
+    await loadCSS(url);
+    loadedResources.add(url);
+  } catch (error) {
+    console.error("可选资源加载失败：", url, error);
+  }
 };
 
 const loadOptionalResources = () => {

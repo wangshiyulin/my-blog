@@ -1,5 +1,5 @@
 <template>
-  <div ref="commentRef" id="comment-dom" :class="['comment-content', 'twikoo', { fill }]" />
+  <div ref="commentRef" :class="['comment-content', 'twikoo', { fill }]" />
 </template>
 
 <script setup>
@@ -17,7 +17,6 @@ const { theme } = useData();
 const { comment } = theme.value;
 
 // 评论数据
-const twikoo = ref(null);
 const commentRef = ref(null);
 let observer = null;
 
@@ -26,15 +25,13 @@ const initTwikoo = async () => {
   try {
     await nextTick();
     const Twikoo = await initComments(theme.value);
-    twikoo.value = Twikoo.init({
-      el: commentRef.value || "#comment-dom",
+    return Twikoo.init({
+      el: commentRef.value,
       envId: comment.twikoo.envId,
       onCommentLoaded: () => {
-        console.log("评论已加载完毕");
         if (props.fill) fillComments(props.fill);
       },
     });
-    return twikoo.value;
   } catch (error) {
     console.error("初始化评论出错：", error);
   }
@@ -43,11 +40,9 @@ const initTwikoo = async () => {
 // 填充评论区
 const fillComments = (data) => {
   console.log("填充评论：", data);
-  // 获取评论元素
-  const commentDom = document.querySelector(".tk-input.el-textarea");
-  if (!commentDom) return false;
-  // 获取输入框
-  const commentInput = commentDom.querySelector("textarea");
+  // 只操作当前 Twikoo 实例中的输入框，避免快速评论弹窗和正文评论区互相干扰。
+  const commentInput = commentRef.value?.querySelector(".tk-input.el-textarea textarea");
+  if (!commentInput) return false;
   // 写入内容
   commentInput.value = data + "\n\n";
   commentInput.focus();

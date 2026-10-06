@@ -45,8 +45,6 @@ const browserGlobals = {
 const nodeGlobals = {
   process: "readonly",
   Buffer: "readonly",
-  __dirname: "readonly",
-  __filename: "readonly",
   console: "readonly",
   globalThis: "readonly",
 };
@@ -57,8 +55,8 @@ export default [
       "node_modules/**",
       ".vitepress/dist/**",
       ".vitepress/cache/**",
-      "auto-imports.d.ts",
-      "components.d.ts",
+      ".vitepress/auto-imports.d.ts",
+      ".vitepress/components.d.ts",
     ],
   },
   js.configs.recommended,

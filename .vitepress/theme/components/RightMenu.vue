@@ -145,7 +145,7 @@
       @modal-close="commentCopyClose"
     >
       <span class="modal-tip">您无需删除现有的输入框内容，直接在下方评论即可</span>
-      <Twikoo :fill="commentCopyData" />
+      <Twikoo v-if="commentCopyShow" :fill="commentCopyData" />
     </Modal>
   </Teleport>
 </template>
