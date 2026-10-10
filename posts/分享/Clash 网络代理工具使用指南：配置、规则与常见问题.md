@@ -7,6 +7,7 @@ categories:
   - 分享
 tags: 
   - 软件
+  - Clash
 description: 如何快速访问Github和海外网站？来这里！有指南！
 ---
 

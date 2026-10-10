@@ -7,6 +7,7 @@ categories:
   - 技术
 tags: 
   - AI
+  - Opencode
 description: Opencode部署及使用指南
 ---
 

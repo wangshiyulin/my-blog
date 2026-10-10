@@ -7,6 +7,7 @@ categories:
   - 分享
 tags: 
   - 游戏
+  - 我的世界
 description: 如何在离线状态下，用PCL2联机玩我的世界？
 ---
 

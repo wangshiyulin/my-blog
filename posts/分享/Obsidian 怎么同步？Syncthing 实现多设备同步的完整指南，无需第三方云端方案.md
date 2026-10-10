@@ -7,6 +7,8 @@ categories:
   - 分享
 tags: 
   - 软件
+  - Obsidian
+  - 数据同步
 description: 本文介绍使用Syncthing实现跨设备文件同步的方法，涵盖PC与PC、PC与Android间的设置步骤，强调需在同一局域网下运行。
 ---
 

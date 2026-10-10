@@ -7,6 +7,7 @@ categories:
   - 分享
 tags: 
   - 软件
+  - Thunderbird
 description: Thunderbird——解放收件箱！
 ---
 

@@ -7,6 +7,7 @@ categories:
   - 技术
 tags: 
   - 软件
+  - 数据同步
 description: 从零开始在 Ubuntu 云服务器部署 Syncplay 独立服务端，使用 systemd 管理服务并配置防火墙，再通过 Kazumi 的“一起看”功能连接自建 Syncplay 服务器，实现多人远程同步观看。
 ---
 

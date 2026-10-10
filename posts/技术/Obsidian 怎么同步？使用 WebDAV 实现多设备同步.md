@@ -7,6 +7,8 @@ categories:
   - 技术
 tags: 
   - 软件
+  - Obsidian
+  - 数据同步
 description: WebDAV搭建+Obsidian同步，极大提高效率
 ---
 

@@ -7,6 +7,7 @@ categories:
   - 技术
 tags:
   - 网站
+  - Cloudflare
 description: 在Cloudflare Worker上部署Twikoo评论系统
 ---
 

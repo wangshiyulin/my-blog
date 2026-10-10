@@ -7,6 +7,7 @@ categories:
   - 分享
 tags: 
   - 软件
+  - Kazumi
 description: Kazumi 是一款开源的跨平台追番软件，通过规则管理和多源聚合，让用户可以在一个客户端中搜索和观看番剧。本文介绍 Kazumi 的主要功能、使用方式、优缺点以及适合人群。
 ---
 

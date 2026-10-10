@@ -7,6 +7,7 @@ categories:
   - 技术
 tags: 
   - 网站
+  - Typecho
 description: 使用1Panel+Typecho搭建动态博客指南
 ---
 

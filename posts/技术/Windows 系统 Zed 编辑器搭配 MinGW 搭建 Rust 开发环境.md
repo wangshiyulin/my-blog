@@ -7,6 +7,7 @@ categories:
   - 技术
 tags: 
   - 开发
+  - Windows
 description: Zed 通过 MinGW 配置 Rust 开发环境（Windows）
 ---
 

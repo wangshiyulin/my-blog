@@ -7,6 +7,7 @@ categories:
   - 解疑
 tags: 
   - 软件
+  - Thunderbird
 description: Thunderbird Android 端无法扫描二维码导入账户解决
 ---
 

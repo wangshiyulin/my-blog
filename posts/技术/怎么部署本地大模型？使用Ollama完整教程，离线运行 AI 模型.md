@@ -7,6 +7,7 @@ categories:
   - 技术
 tags: 
   - AI
+  - Ollama
 description: 本地部署神器Ollama，推荐新手使用，简单又便捷
 ---
 

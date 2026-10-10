@@ -7,6 +7,7 @@ categories:
   - 技术
 tags:
   - 网站
+  - Cloudflare
 description: 从零开始使用 GitHub 与 Cloudflare Pages 部署 Curve 静态博客，并绑定自定义域名，实现自动部署。
 ---
 

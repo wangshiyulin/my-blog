@@ -7,6 +7,7 @@ categories:
   - 技术
 tags:
   - 网站
+  - Cloudflare
 description: 详细介绍如何使用 GitHub Actions 和 Cloudflare Workers、D1 部署 UptimeFlare，监控网站可用性与性能，并绑定自定义域名。
 ---
 

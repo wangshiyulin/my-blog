@@ -7,6 +7,7 @@ categories:
   - 技术
 tags: 
   - 网站
+  - Typecho
 description: Typecho设置站点地图，方便google和bing提交
 ---
 
