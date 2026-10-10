@@ -7,7 +7,7 @@ export const themeConfig = {
     // 站点描述
     description: "记录此刻所思，创造未来之物",
     // 站点logo
-    logo: "/images/logo/logo-100.webp",
+    logo: "/images/logo/logo.webp",
     // 站点地址
     site: "https://qingluanx.com",
     // 语言
@@ -86,23 +86,8 @@ export const themeConfig = {
       ],
     },
     {
-      name: "服务",
-      list: [
-        {
-          icon: "/images/logo/favicon-32x32.webp",
-          name: "站点监测",
-          url: "https://status.qingluanx.com/",
-        },
-      ],
-    },
-    {
       name: "项目",
       list: [
-        {
-          icon: "/images/logo/github.webp",
-          name: "site-status",
-          url: "https://github.com/wangshiyulin/UptimeFlare",
-        },
         {
           icon: "/images/logo/github.webp",
           name: "twikoo-cloudflare",
@@ -170,12 +155,6 @@ export const themeConfig = {
           { text: "隐私政策", link: "/pages/privacy" },
           { text: "版权协议", link: "/pages/cc" },
           { text: "联系我们", action: "contact" },
-        ],
-      },
-      {
-        text: "服务",
-        items: [
-          { text: "站点状态", link: "https://status.qingluanx.com/", newTab: true }
         ],
       },
     ],

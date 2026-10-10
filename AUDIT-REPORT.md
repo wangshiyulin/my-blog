@@ -99,3 +99,27 @@
 - `App.vue`：字体资源按需加载的判断由 `hmos || lxgw` 收敛为仅 `lxgw`；`changeSiteFont()` 中不再移除 `hmos` 类，并在开头增加校验——除 `lxgw` 外的任何取值一律回落到 `system`，以兼容浏览器里可能残留的 `fontFamily: "hmos"` 持久化配置。
 
 `pnpm-lock.yaml` 中的 `openharmony-arm64` 条目是 esbuild / rollup 等依赖的平台绑定，与字体无关，未做改动。
+
+
+## 2026-10-11 清理站点监测入口与源码复核
+
+按站点所有者要求，移除主题配置中的 UptimeFlare 站点入口：
+
+- `navMore` 中删除“服务 / 站点监测”栏目。
+- `navMore` 的“项目”中删除 `site-status` / UptimeFlare 项目链接，保留 `twikoo-cloudflare`。
+- 页脚 sitemap 删除“服务 / 站点状态”栏目，其他页脚栏目保持不变。
+- 保留 UptimeFlare 教程文章；搜索索引仍由现有生成流程维护，没有手工改写索引。
+
+### 静态复核
+
+- JavaScript / MJS / CJS 与 Vue `<script>` 语法检查：无错误。
+- 本地与 `@/` 导入：65 个引用，0 个断裂。
+- 文章：41 篇，41 个 slug，未发现重复。
+- 搜索索引：41 条，与文章 slug 一一对应。
+- Markdown 相对图片引用：0 个断链。
+- `package.json` 与 pnpm 锁文件：25 项依赖版本一致；保留 pnpm 12.8.1 对应锁文件。
+- 主题配置中残留的 UptimeFlare / 站点状态入口：0 个。
+
+### 未执行的验证
+
+本次没有运行 `pnpm build`，按要求由站点所有者本地手动检查。当前执行环境中的 pnpm 命令在项目目录内未能正常返回，因此也未完成 `pnpm lint:check`；静态检查结果不能替代本地构建验证。
