@@ -225,7 +225,7 @@ const closeRightMenu = (e) => {
   rightMenuY.value = 0;
   clickedType.value = "normal";
   clickedTypeData.value = null;
-  commentCopyData.value = false;
+  commentCopyData.value = null;
 };
 
 // 判断点击元素类型

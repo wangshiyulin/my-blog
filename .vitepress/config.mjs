@@ -79,7 +79,8 @@ export default withPwa(
       config: (md) => markdownConfig(md, themeConfig),
     },
     // 构建排除
-    srcExclude: ["**/README.md", "**/TODO.md"],
+    // AUDIT-REPORT.md 与第三方字体包自带的 CHANGELOG.md 仅供本地查阅，不作为页面发布。
+    srcExclude: ["**/README.md", "**/TODO.md", "**/AUDIT-REPORT.md", "**/CHANGELOG.md"],
     // transformHead
     transformPageData: async (pageData) => {
       const pageSlug =
@@ -97,7 +98,6 @@ export default withPwa(
     // buildEnd
     buildEnd: async (config) => {
       await createRssFile(config, themeConfig);
-      await createSearchIndex(config);
     },
     // vite
     vite: {

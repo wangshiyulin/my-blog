@@ -1,5 +1,10 @@
 ---
 title: 正在重定向
+sitemap: false
+head:
+  - - meta
+    - name: robots
+      content: noindex,follow
 ---
 
 <script setup>

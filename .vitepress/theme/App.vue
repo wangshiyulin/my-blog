@@ -74,7 +74,7 @@ const loadResource = async (url) => {
 
 const loadOptionalResources = () => {
   loadResource(externalResources.iconfontCss);
-  if (fontFamily.value === "hmos" || fontFamily.value === "lxgw") {
+  if (fontFamily.value === "lxgw") {
     loadResource(externalResources.fonts?.[fontFamily.value]);
   }
 };
@@ -148,7 +148,11 @@ const changeSiteThemeType = () => {
 const changeSiteFont = () => {
   try {
     const htmlElement = document.documentElement;
-    htmlElement.classList.remove("lxgw", "hmos");
+    // 现仅支持系统字体与霞鹜文楷，旧配置里的其它字体一律回落到系统字体
+    if (fontFamily.value !== "lxgw") {
+      fontFamily.value = "system";
+    }
+    htmlElement.classList.remove("lxgw");
     htmlElement.classList.add(fontFamily.value);
     htmlElement.style.fontSize = fontSize.value + "px";
   } catch (error) {
@@ -165,7 +169,7 @@ watch(
   () => fontFamily.value,
   () => {
     changeSiteFont();
-    if (fontFamily.value === "hmos" || fontFamily.value === "lxgw") {
+    if (fontFamily.value === "lxgw") {
       loadResource(externalResources.fonts?.[fontFamily.value]);
     }
   },

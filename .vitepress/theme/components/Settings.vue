@@ -25,12 +25,6 @@
               系统字体
             </span>
             <span
-              :class="['options', { choose: fontFamily === 'hmos' }]"
-              @click="fontFamily = 'hmos'"
-            >
-              HarmonyOS Sans
-            </span>
-            <span
               :class="['options', { choose: fontFamily === 'lxgw' }]"
               @click="fontFamily = 'lxgw'"
             >

@@ -1,5 +1,5 @@
 ---
-title: Google Play商店订阅ChatGPT Plus教程，中国地区也可以订阅
+title: 使用国内银行卡通过Google Play商店订阅ChatGPT Plus教程
 slug: china-bank-subscribe-chatgpt
 date: 2026/10/10 10:13:00
 updated: 2026/10/10 11:25:17

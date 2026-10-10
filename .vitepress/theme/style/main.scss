@@ -54,9 +54,6 @@ html.dark {
 
 // 字体
 html {
-  &.hmos {
-    --main-font-family: "HarmonyOS_Regular", sans-serif;
-  }
   &.lxgw {
     --main-font-family: "LXGW WenKai Screen", sans-serif;
   }
@@ -160,7 +157,7 @@ a {
     &::before {
       right: 0;
       left: 4px;
-      background: var(--main-scrolling-bar);
+      background: var(--main-scrollbar-bar);
       transition:
         background 0.3s,
         left 0.3s;

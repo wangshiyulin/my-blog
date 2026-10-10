@@ -45,7 +45,6 @@ export const themeConfig = {
   externalResources: {
     iconfontCss: "https://cdn2.codesign.qq.com/icons/g5ZpEgx3z4VO6j2/latest/iconfont.css",
     fonts: {
-      hmos: "https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css",
       lxgw: "/fonts/lxgw/style.css",
     },
   },

@@ -686,7 +686,7 @@ onBeforeUnmount(() => {
  
    background: transparent;
  
-   color: var(--main-text-color);
+   color: var(--main-font-color);
  
    font-size: 1rem;
  
@@ -695,7 +695,7 @@ onBeforeUnmount(() => {
    padding: 0;
  
    &::placeholder {
-     color: var(--main-text-second-color);
+     color: var(--main-font-second-color);
  
      opacity: 0.65;
    }
@@ -720,7 +720,7 @@ onBeforeUnmount(() => {
 
   min-height: 180px;
 
-  color: var(--main-text-second-color);
+  color: var(--main-font-second-color);
 
   gap: 10px;
 
@@ -744,7 +744,7 @@ onBeforeUnmount(() => {
   min-height: 120px;
 
   color:
-    var(--main-text-second-color);
+    var(--main-font-second-color);
 }
 
 /*
@@ -755,7 +755,7 @@ onBeforeUnmount(() => {
 
   .text {
     color:
-      var(--main-text-second-color);
+      var(--main-font-second-color);
 
     font-size: 0.8rem;
   }
@@ -773,7 +773,7 @@ onBeforeUnmount(() => {
 
   .name {
     color:
-      var(--main-text-second-color);
+      var(--main-font-second-color);
 
     font-size: 0.75rem;
 
@@ -860,7 +860,7 @@ onBeforeUnmount(() => {
     line-height: 1.5;
 
     color:
-      var(--main-text-second-color);
+      var(--main-font-second-color);
 
     display: -webkit-box;
 
@@ -881,7 +881,7 @@ onBeforeUnmount(() => {
     line-height: 1.6;
 
     color:
-      var(--main-text-second-color);
+      var(--main-font-second-color);
 
     display: -webkit-box;
 

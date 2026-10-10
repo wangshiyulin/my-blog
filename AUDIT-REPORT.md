@@ -48,3 +48,54 @@
 上一版自定义 `busuanzi.mjs` 直接拼接 JSONP 请求，已删除。现在恢复为主题原有的 `loadScript()` 机制，并使用 Vercount 的兼容脚本 `https://events.vercount.one/js`。Vercount 官方明确说明其兼容不蒜子 span 标签，并采用更现代的 POST 统计链路。
 
 为适配 VitePress SPA，本次增加当前路由去重：同一路由只初始化一次，路由变化时重新加载统计脚本，避免一次路由变化触发重复统计。
+
+
+## 2026-10-10 全面审计与修复
+
+本次以压缩包内实际文件为唯一基准（不再沿用此前“已修复”的结论），并用包内附带的 2026-10-06 构建产物 `.vitepress/dist` 做交叉验证。
+
+### 逻辑缺陷
+
+1. 搜索弹窗色彩失效：`Search.vue` 中 8 处 `--main-text-color` / `--main-text-second-color` 在全站从未定义，导致搜索框、结果标题与摘要文字颜色回退继承。现改为主题实际定义的 `--main-font-color` / `--main-font-second-color`。
+2. 首页分页导航失效：首页场景 `routePath` 为空字符串，在 `/page/2` 点击“上一页”“1”或使用快速跳转到第 1 页时实际执行的是 `router.go('')`。`Pagination.vue` 现统一把空路径归一为 `/`。
+3. 倒计时开关失效：`theme.aside.countDown.enable` 是死配置，`Aside/index.vue` 无条件渲染 `<Countdown />`，现补上 `v-if`，与同级其它挂件一致。
+4. CSS 变量名拼错：`main.scss` 中 `var(--main-scrolling-bar)` 改为 `var(--main-scrollbar-bar)`。
+5. `RightMenu.vue` 关闭菜单时把 `commentCopyData` 由 `false` 复位为 `null`，与其声明类型一致。
+
+### 构建与 SEO
+
+6. `AUDIT-REPORT.md` 与 `public/fonts/lxgw/CHANGELOG.md` 此前会被渲染成公开页面（`/AUDIT-REPORT.html`、`/public/fonts/lxgw/CHANGELOG`）并写入 sitemap。`config.mjs` 的 `srcExclude` 现增加 `**/AUDIT-REPORT.md` 与 `**/CHANGELOG.md`，两个文件仍保留在仓库供本地查阅。
+7. `page.md`、`page/index.md`、`page/1.md`、`pages/index.md` 是重定向占位页，此前 `/page`、`/page/1`、`/page/`、`/pages/` 四条 URL 会进入 sitemap。现加 `sitemap: false` 与 `robots: noindex,follow`；跳转行为与文件本身均保持不变。
+8. `page/[num].md` 未改动，`/page/2` 至 `/page/6` 仍正常参与索引。
+
+### 仓库清理
+
+9. 删除 `.vitepress/init.mjs`：无任何引用，且 ESM 下使用 `__dirname`，一旦加载必然报错。
+10. 删除 `.eslintrc.js` 与 `.eslintignore`：ESLint 10 已使用 `eslint.config.js` 扁平配置接管。
+11. 删除根目录重复的 `ads.txt`：只有 `public/ads.txt` 会随构建输出。
+12. 删除过期且与 pnpm 冲突的 `package-lock.json`，仅保留 `pnpm-lock.yaml`。
+13. 删除遗留死组件 `References.vue`（整个模板被注释、无任何引用），并同步清理 `.vitepress/components.d.ts` 中对应的一行。
+14. 移除 `buildEnd` 中重复的 `createSearchIndex()` 调用；配置加载阶段的调用已保证索引在复制进 `dist` 之前生成，输出完全一致。
+
+### 静态验证
+
+- JavaScript / MJS / Vue `<script>` 语法解析：66 个文件，0 个失败
+- 本地/别名导入检查：110 个引用，0 个断裂
+- 已删除文件的残留引用：0 个（仅本文件的历史正文中提及）
+- 文章数量：41，slug 唯一性校验通过
+
+### 无法在当前执行环境完成的验证
+
+本次执行环境无网络，且 pnpm 在该沙箱下因权限限制无法运行（`EPERM` realpath），因此未能执行 `pnpm install`、`pnpm lint:check`、`pnpm build`。构建与视觉回归比对需在本地完成，比对基准为仓库内保留的 `.vitepress/dist`。
+
+
+### 2026-10-10 追加：移除 HarmonyOS Sans 字体
+
+按站点所有者要求，“全站字体”只保留系统字体与霞鹜文楷两种，HarmonyOS Sans 的全部配置与代码已删除：
+
+- `themeConfig.mjs`：`externalResources.fonts` 中的 `hmos` 条目（`https://s1.hdslb.com/.../regular.css`）已移除，仅保留 `lxgw`。
+- `Settings.vue`：个性化配置中的“HarmonyOS Sans”选项已移除。
+- `main.scss`：`html.hmos` 的 `--main-font-family` 覆盖规则已删除。
+- `App.vue`：字体资源按需加载的判断由 `hmos || lxgw` 收敛为仅 `lxgw`；`changeSiteFont()` 中不再移除 `hmos` 类，并在开头增加校验——除 `lxgw` 外的任何取值一律回落到 `system`，以兼容浏览器里可能残留的 `fontFamily: "hmos"` 持久化配置。
+
+`pnpm-lock.yaml` 中的 `openharmony-arm64` 条目是 esbuild / rollup 等依赖的平台绑定，与字体无关，未做改动。

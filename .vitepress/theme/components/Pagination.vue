@@ -140,6 +140,8 @@ const validateInput = () => {
 
 // 跳转页面
 const jumpPage = (url, page) => {
+  // 首页第 1 页没有独立路由，空路径统一回到根路径
+  const targetPath = url || "/";
   // 使用参数跳转
   if (props.useParams) {
     if (page === 1) {
@@ -150,7 +152,7 @@ const jumpPage = (url, page) => {
   }
   // 正常跳转
   else {
-    router.go(url);
+    router.go(targetPath);
   }
 };
 
