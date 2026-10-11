@@ -12,7 +12,7 @@ import "@/style/main.scss";
 
 // pinia
 const pinia = createPinia();
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   pinia.use(piniaPluginPersistedstate)
 }
 
@@ -22,7 +22,7 @@ const Theme = {
   Layout: () => {
     return h(App);
   },
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({ app, router }) {
     // 挂载
     app.use(pinia);
     app.component("LazyLoader", LazyLoader);

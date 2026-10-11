@@ -22,7 +22,6 @@ test.html
 
 # Editor directories and files
 
-.vercel
 
 # Markdown、文本文件仓库统一存储LF换行
 *.md text eol=lf

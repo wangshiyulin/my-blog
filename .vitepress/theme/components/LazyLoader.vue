@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   // 兼容友链朋友圈
   useFriendsLink: {
     type: [Boolean, String],

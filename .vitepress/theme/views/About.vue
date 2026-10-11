@@ -90,7 +90,7 @@
 </template>
 
 <script setup>
-const { theme } = useData();
+
 
 // 技能数据
 const skillsData = [

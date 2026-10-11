@@ -19,12 +19,6 @@
   </div>
 </template>  -->
 
-<script setup>
-const { frontmatter } = useData();
-
-// 参考资料
-const references = frontmatter.value?.references;
-</script>
 
 <style lang="scss" scoped>
 .references {

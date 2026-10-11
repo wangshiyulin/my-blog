@@ -49,7 +49,7 @@
 
 <script setup>
 const { theme, params } = useData();
-const props = defineProps({
+defineProps({
   // 显示类别
   type: {
     type: String,

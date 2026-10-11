@@ -1,3 +1,4 @@
+/* global self */
 import { defineConfig } from "vitepress";
 import { themeConfig as siteThemeConfig } from "./theme/assets/themeConfig.mjs";
 import { createRssFile } from "./theme/utils/generateRSS.mjs";
@@ -144,44 +145,52 @@ export default withPwa(
     pwa: {
       registerType: "autoUpdate",
       injectRegister: "script-defer",
-      selfDestroying: true,
       workbox: {
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
-        // 资源缓存
+        // 页面与应用核心资源预缓存；文章图片和可选字体按需缓存。
         runtimeCaching: [
           {
-            urlPattern: /(.*?)\.(woff2|woff|ttf|css)/,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "file-cache",
-            },
-          },
-          {
-            urlPattern: /(.*?)\.(ico|webp|png|jpe?g|svg|gif|bmp|psd|tiff|tga|eps)/,
+            urlPattern: ({ url }) =>
+              url.origin === self.location.origin && url.pathname.startsWith("/images/"),
             handler: "CacheFirst",
             options: {
               cacheName: "image-cache",
+              expiration: {
+                maxEntries: 80,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+              cacheableResponse: {
+                statuses: [200],
+              },
             },
           },
           {
-            urlPattern: /^https:\/\/cdn2\.codesign\.qq\.com\/.*/i,
+            urlPattern: ({ url }) =>
+              url.origin === self.location.origin && url.pathname.startsWith("/fonts/lxgw/"),
             handler: "CacheFirst",
             options: {
-              cacheName: "iconfont-cache",
+              cacheName: "optional-font-cache",
               expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 2,
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
               },
               cacheableResponse: {
-                statuses: [0, 200],
+                statuses: [200],
               },
             },
           },
         ],
-        // 缓存文件
-        globPatterns: ["**/*.{js,css,html,ico,png,jpg,jpeg,gif,svg,woff2,ttf}"],
+        // 预缓存文章页面、应用资源和搜索索引；不预缓存整批文章图片与可选字体子集。
+        globPatterns: [
+          "**/*.{js,css,html,ico,json,webmanifest}",
+          "vendor/iconfont/*.{woff,ttf}",
+          "images/logo/logo.webp",
+          "images/logo/logo-100.webp",
+          "images/logo/github.webp",
+          "images/logo/favicon-*.webp",
+        ],
         // 排除路径
         navigateFallbackDenylist: [/^\/sitemap.xml$/, /^\/rss.xml$/, /^\/robots.txt$/],
       },

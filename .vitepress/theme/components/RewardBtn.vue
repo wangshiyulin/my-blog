@@ -48,7 +48,7 @@ const router = useRouter();
 const { theme } = useData();
 const { rewardData } = theme.value;
 
-const props = defineProps({
+defineProps({
   showJump: {
     type: Boolean,
     default: true,

@@ -12,7 +12,7 @@
 
 <script setup>
 const { theme } = useData();
-const props = defineProps({
+defineProps({
   // 显示目录
   showToc: {
     type: Boolean,

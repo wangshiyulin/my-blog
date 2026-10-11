@@ -106,7 +106,7 @@ export const themeConfig = {
       // 是否开启封面显示 文章不设置cover封面会显示异常，可以设置下方默认封面
       enable: false,
       // 封面布局方式: left | right | both
-      coverLayout: 'both',
+      coverLayout: "both",
     }
   },
   

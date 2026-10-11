@@ -117,9 +117,6 @@ const pageNumber = computed(() => {
   // 当 endPage < totalPages-1 时，后面需要显示省略号
   if (endPage < total - 1) {
     pages.push("...");
-  } else {
-    // 如果 endPage 是 totalPages-1，不需要省略号，直接显示倒数第二页
-    if (endPage === total - 1) endPage = total - 1;
   }
   // 总是显示最后一页，除非只有一页
   if (total > 1) pages.push(total);

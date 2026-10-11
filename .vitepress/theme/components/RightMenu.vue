@@ -277,11 +277,12 @@ const rightMenuFunc = async (type) => {
       case "open-link":
         window.open(clickedTypeData.value?.href, "_blank", "noopener,noreferrer");
         break;
-      case "copy-link":
+      case "copy-link": {
         const pageLink = theme.value.siteMeta.site + router.route.path;
         if (pageLink) copyText(pageLink);
         break;
-      case "input-paste":
+      }
+      case "input-paste": {
         const text = await navigator.clipboard.readText();
         if (clickedTypeData.value && typeof clickedTypeData.value === "object") {
           const inputElement = clickedTypeData.value;
@@ -296,6 +297,7 @@ const rightMenuFunc = async (type) => {
           inputElement.setSelectionRange(newCursorPosition, newCursorPosition);
         }
         break;
+      }
       default:
         return false;
     }
@@ -314,7 +316,7 @@ const isLink = (data) => {
   try {
     new URL(urlData);
     return urlData;
-  } catch (error) {
+  } catch (_error) {
     return false;
   }
 };

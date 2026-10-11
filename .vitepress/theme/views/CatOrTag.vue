@@ -39,7 +39,7 @@
 
 <script setup>
 const { theme } = useData();
-const props = defineProps({
+defineProps({
   // 页面类型
   type: {
     type: String,

@@ -54,7 +54,7 @@ import { formatTimestamp } from "@/utils/helper";
 const store = mainStore();
 const router = useRouter();
 
-const props = defineProps({
+defineProps({
   // 列表数据
   listData: {
     type: [Array, String],
@@ -71,14 +71,14 @@ const { theme: themeConfig } = useData()
 
 // 计算布局类型
 const layoutType = computed(() => 
-  themeConfig.value?.cover?.twoColumns ? 'twoColumns' : themeConfig.value?.cover?.showCover?.coverLayout ?? 'left'
+  themeConfig.value?.cover?.twoColumns ? "twoColumns" : themeConfig.value?.cover?.showCover?.coverLayout ?? "left"
 )
 
 // 计算网格样式
 const gridStyle = computed(() => 
-  layoutType.value === 'twoColumns' ? {
-    '--grid-columns': 2,
-    '--grid-gap': '1rem'
+  layoutType.value === "twoColumns" ? {
+    "--grid-columns": 2,
+    "--grid-gap": "1rem"
   } : {}
 )
 

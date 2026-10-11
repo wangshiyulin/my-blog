@@ -5,6 +5,13 @@ const browserGlobals = {
   window: "readonly",
   document: "readonly",
   navigator: "readonly",
+  setInterval: "readonly",
+  clearInterval: "readonly",
+  scrollTo: "readonly",
+  ClipboardItem: "readonly",
+  Fancybox: "readonly",
+  defineAsyncComponent: "readonly",
+  shallowRef: "readonly",
   localStorage: "readonly",
   sessionStorage: "readonly",
   HTMLElement: "readonly",
@@ -53,6 +60,7 @@ export default [
   {
     ignores: [
       "node_modules/**",
+      "public/vendor/**",
       ".vitepress/dist/**",
       ".vitepress/cache/**",
       ".vitepress/auto-imports.d.ts",
@@ -73,6 +81,7 @@ export default [
       },
     },
     rules: {
+      "vue/multi-word-component-names": ["error", { ignores: ["Clock", "Countdown", "Hello", "Tags", "Toc", "index", "Background", "Banner", "Control", "Copyright", "Footer", "Loading", "Message", "Modal", "Nav", "Pagination", "Twikoo", "References", "Search", "Settings", "Checkbox", "Slider", "About", "Archives", "Home", "Link", "Page", "Post", "Project"] }],
       quotes: ["warn", "double", { avoidEscape: true, allowTemplateLiterals: true }],
       "no-console": "off",
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" }],

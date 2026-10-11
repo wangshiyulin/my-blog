@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   // 列表数据
   listData: {
     type: [Array, String],

@@ -121,7 +121,7 @@ const allListTotal = computed(() => {
 const postData = computed(() => {
   const page =
     currentPage.value - 1;
-  let data = null;
+  let data;
 
   // 分类
   if (props.showCategories) {

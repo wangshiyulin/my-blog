@@ -70,8 +70,8 @@ const markdownConfig = (md, themeConfig) => {
   // 图片
   md.renderer.rules.image = (tokens, idx) => {
     const token = tokens[idx];
-    const src = token.attrs[token.attrIndex("src")][1];
-    const alt = token.content;
+    const src = md.utils.escapeHtml(token.attrs[token.attrIndex("src")][1] ?? "");
+    const alt = md.utils.escapeHtml(token.content ?? "");
     if (!themeConfig.fancybox.enable) {
       return `<img src="${src}" alt="${alt}" loading="lazy">`;
     }
@@ -89,24 +89,24 @@ const markdownConfig = (md, themeConfig) => {
     const lang = token.info.trim();
 
     // 处理 Obsidian admonition
-    if (lang.startsWith('ad-')) {
+    if (lang.startsWith("ad-")) {
       const type = lang.substring(3); // 取ad-之后的内容，获取类型
       const content = token.content;
 
       const admonitionTypes = {
-        'note': 'info',
-        'question': 'info',
-        'warning': 'warning',
-        'tip': 'tip',
-        'summary': 'info',
-        'hint': 'tip',
-        'important': 'warning',
-        'caution': 'warning',
-        'error': 'danger',
-        'danger': 'danger'
+        "note": "info",
+        "question": "info",
+        "warning": "warning",
+        "tip": "tip",
+        "summary": "info",
+        "hint": "tip",
+        "important": "warning",
+        "caution": "warning",
+        "error": "danger",
+        "danger": "danger"
       };
 
-      const className = admonitionTypes[type] || 'info';
+      const className = admonitionTypes[type] || "info";
       const title = type.toUpperCase();
 
       return `<div class="${className} custom-block">
