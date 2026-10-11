@@ -43,7 +43,7 @@ export const themeConfig = {
 
   // 运行时按需加载资源
   externalResources: {
-    iconfontCss: "https://cdn2.codesign.qq.com/icons/g5ZpEgx3z4VO6j2/latest/iconfont.css",
+    iconfontCss: "/vendor/iconfont/iconfont.css",
     fonts: {
       lxgw: "/fonts/lxgw/style.css",
     },
@@ -220,7 +220,7 @@ export const themeConfig = {
   // 图片灯箱
   fancybox: {
     enable: true,
-    js: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.min.js",
-    css: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.min.css",
+    js: "/vendor/fancybox/fancybox.umd.min.js",
+    css: "/vendor/fancybox/fancybox.min.css",
   },
 };
