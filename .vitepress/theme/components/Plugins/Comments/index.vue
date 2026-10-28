@@ -60,7 +60,7 @@ const initTwikoo = async (current, target) => {
   const path = router.route.path.split("?")[0];
   try {
     const Twikoo = await loadComments();
-    if (disposed || current !== generation || !target.isConnected || target !== commentRef.value) return;
+    if (disposed || current !== generation || !target.isConnected || target.parentElement !== commentRef.value) return;
     await Twikoo.init({
       el: target,
       envId: options.envId,
@@ -130,9 +130,12 @@ const updateComments = async () => {
   setCountState(current, "twikoo_visitors", "阅读量加载中");
   setCountState(current, "twikoo_comments", "评论数加载中");
   void updateCommentCount(current);
-  const target = commentRef.value;
-  if (!target) return;
-  stopAvatarObserver = observeBloggerAvatars(target);
+  const host = commentRef.value;
+  if (!host) return;
+  // Twikoo 使用 Vue 2 挂载并替换传入节点；外层必须保留给 Vue 3、链接隔离和头像监听。
+  const target = document.createElement("div");
+  host.replaceChildren(target);
+  stopAvatarObserver = observeBloggerAvatars(host);
   // 文章阅读量依赖 Twikoo 挂载，进入文章即初始化；普通页面仍按需加载。
   if (document.getElementById("twikoo_visitors") || !("IntersectionObserver" in window)) {
     void initTwikoo(current, target);
