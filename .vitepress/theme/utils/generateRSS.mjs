@@ -1,0 +1,55 @@
+import { getAllPosts } from "./getPostData.mjs";
+import { writeFileSync } from "fs";
+import { Feed } from "feed";
+import path from "path";
+
+/**
+ * 生成 RSS
+ * @param {*} config VitePress buildEnd
+ * @param {*} themeConfig 主题配置
+ */
+export const createRssFile = async (config, themeConfig) => {
+  // 配置信息
+  const siteMeta = themeConfig.siteMeta;
+  const hostLink = siteMeta.site;
+  const sinceYear = new Date(themeConfig.since).getFullYear();
+  // Feed 实例
+  const feed = new Feed({
+    title: siteMeta.title,
+    description: siteMeta.description,
+    id: hostLink,
+    link: hostLink,
+    language: "zh",
+    generator: siteMeta.author.name,
+    favicon: siteMeta.author.cover,
+    copyright: `Copyright © ${sinceYear}-present ${siteMeta.author.name}`,
+    updated: new Date(),
+  });
+  // 加载文章
+  const posts = await getAllPosts();
+  for (const post of posts) {
+    // 仅保留最近 10 篇文章
+    if (feed.items.length >= 10) break;
+    // 文章信息
+    const { title, description } = post;
+    const date = new Date(post.date);
+    // 添加文章
+    feed.addItem({
+      title,
+      id: `${hostLink}${post.regularPath}`,
+      link: `${hostLink}${post.regularPath}`,
+      description,
+      date,
+      // updated,
+      author: [
+        {
+          name: siteMeta.author.name,
+          email: siteMeta.author.email,
+          link: siteMeta.author.link,
+        },
+      ],
+    });
+  }
+  // 写入文件
+  writeFileSync(path.join(config.outDir, "rss.xml"), feed.rss2(), "utf-8");
+};

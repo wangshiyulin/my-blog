@@ -1,0 +1,130 @@
+// Translucent surfaces share theme tokens; large card lists never allocate blur layers.
+html .main-footer {
+  background: var(--main-card-background);
+  border-top-color: var(--main-card-border);
+}
+html .main-header .main-nav {
+  border-bottom: 1px solid var(--main-card-border);
+}
+html .modal-main.s-card {
+  background-color: var(--main-surface-overlay);
+  border-color: var(--main-card-border);
+  box-shadow:
+    inset 0 1px 0 var(--main-glass-highlight),
+    0 24px 64px var(--main-glass-shadow);
+}
+html .modal-main > .modal-header {
+  background-color: var(--main-card-second-background);
+}
+html .control-content .menu .menu-item {
+  border-color: var(--main-card-border);
+  background-image: linear-gradient(135deg, var(--main-glass-highlight), transparent 70%);
+  box-shadow:
+    inset 0 1px 0 var(--main-glass-highlight),
+    0 8px 24px var(--main-border-shadow);
+}
+html .control-content .menu .menu-item.open {
+  background-color: var(--main-color);
+}
+html .mobile-menu .menu-content,
+html .right-menu .menu-content {
+  background-color: var(--main-surface-overlay);
+}
+html .hello.s-card {
+  border: 1px solid var(--main-card-border);
+  background:
+    linear-gradient(140deg, var(--main-color-bg), transparent 70%), var(--main-card-background);
+  color: var(--main-font-color);
+}
+html .hello.s-card .social-link .iconfont {
+  color: var(--main-font-color);
+}
+html .hello.s-card .social-link:hover .iconfont {
+  color: var(--main-color);
+}
+html .hello.s-card .social-link:hover {
+  background-color: var(--main-card-second-background);
+}
+html .search-more {
+  background:
+    linear-gradient(130deg, var(--main-glass-highlight), transparent),
+    var(--main-card-second-background);
+}
+html .post-article .expired {
+  background-color: var(--main-color-bg);
+}
+
+// Pure black outer canvas, with complete light surfaces under every text region.
+html.light {
+  .toc .toc-item {
+    opacity: 0.9;
+  }
+  .mian-layout {
+    background: var(--main-page-surface);
+    border-radius: 0 0 24px 24px;
+  }
+  .main-header .main-nav,
+  .main-header .main-nav.top {
+    background-color: var(--main-surface-overlay);
+  }
+  .footer-link {
+    background: var(--main-page-surface);
+    border-radius: 24px;
+    padding: 1rem;
+  }
+  .hello .name .desc {
+    opacity: 0.85;
+  }
+  .about .intro-portrait {
+    border-color: var(--main-card-border);
+  }
+}
+
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  @media (min-width: 769px) {
+    html .modal-main.s-card,
+    html .control-content .menu .menu-item {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  html .post-lists .post-item:hover,
+  html .archives .posts-item:hover,
+  html .link-list .link-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--main-color);
+  }
+  html .pagination .page-item:active {
+    transform: scale(0.96);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html .post-lists .post-item:hover,
+  html .archives .posts-item:hover,
+  html .link-list .link-card:hover,
+  html .pagination .page-item:active,
+  html .control-content .menu .menu-item:hover {
+    transform: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  html .s-card,
+  html .hello.s-card,
+  html .modal-main.s-card,
+  html .right-menu .menu-content,
+  html .mobile-menu .menu-content,
+  html .control-content .menu .menu-item {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: var(--main-surface-solid);
+  }
+  html .main-header .main-nav,
+  html .main-footer {
+    background: var(--main-surface-solid);
+  }
+  html .control-content .menu .menu-item.open {
+    background-color: var(--main-color);
+  }
+}

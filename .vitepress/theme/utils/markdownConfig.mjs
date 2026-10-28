@@ -1,0 +1,84 @@
+import { tabsMarkdownPlugin } from "vitepress-plugin-tabs";
+import container from "markdown-it-container";
+
+// markdown-it
+const markdownConfig = (md, themeConfig) => {
+  // Disable the attribute rule bundled with VitePress as well.
+  md.core.ruler.disable("curly_attributes", true);
+  // 插件
+  md.use(tabsMarkdownPlugin);
+  // timeline
+  md.use(container, "timeline", {
+    validate: (params) => params.trim().match(/^timeline\s+(.*)$/),
+    render: (tokens, idx) => {
+      const m = tokens[idx].info.trim().match(/^timeline\s+(.*)$/);
+      if (tokens[idx].nesting === 1) {
+        return `<div class="timeline">
+                    <span class="timeline-title">${md.utils.escapeHtml(m[1])}</span>
+                    <div class="timeline-content">`;
+      } else {
+        return "</div></div>\n";
+      }
+    },
+  });
+  // 表格
+  md.renderer.rules.table_open = () => {
+    return '<div class="table-container"><table>';
+  };
+  md.renderer.rules.table_close = () => {
+    return "</table></div>";
+  };
+  // 图片
+  md.renderer.rules.image = (tokens, idx) => {
+    const token = tokens[idx];
+    const src = md.utils.escapeHtml(token.attrs[token.attrIndex("src")][1] ?? "");
+    const alt = md.utils.escapeHtml(token.content ?? "");
+    if (!themeConfig.fancybox.enable) {
+      return `<img src="${src}" alt="${alt}" loading="lazy">`;
+    }
+    return `<a class="img-fancybox" href="${src}" data-fancybox="gallery" data-caption="${alt}">
+                <img class="post-img" src="${src}" alt="${alt}" loading="lazy" />
+                <span class="post-img-tip">${alt}</span>
+              </a>`;
+  };
+  
+  // obsidian admonition
+  const fence = md.renderer.rules.fence;
+  md.renderer.rules.fence = (...args) => {
+    const [tokens, idx] = args;
+    const token = tokens[idx];
+    const lang = token.info.trim();
+
+    // 处理 Obsidian admonition
+    if (lang.startsWith("ad-")) {
+      const type = lang.substring(3); // 取ad-之后的内容，获取类型
+      const content = token.content;
+
+      const admonitionTypes = {
+        "note": "info",
+        "question": "info",
+        "warning": "warning",
+        "tip": "tip",
+        "summary": "info",
+        "hint": "tip",
+        "important": "warning",
+        "caution": "warning",
+        "error": "danger",
+        "danger": "danger"
+      };
+
+      const className = admonitionTypes[type] || "info";
+      const title = type.toUpperCase();
+
+      return `<div class="${className} custom-block">
+            <p class="custom-block-title">${title}</p>
+            <div class="custom-block-content">
+              ${md.render(content)}
+            </div>
+    </div>`;
+    }
+    return fence(...args);
+  };  
+};
+
+export default markdownConfig;

@@ -1,0 +1,190 @@
+// 主题配置
+export const themeConfig = {
+  // 站点信息
+  siteMeta: {
+    // 站点标题
+    title: "青鸾小栈",
+    // 站点描述
+    description: "记录此刻所思，创造未来之物",
+    // 站点地址
+    site: "https://qingluanx.com",
+    // 语言
+    lang: "zh-CN",
+    // 作者
+    author: {
+      name: "往世雨",
+      cover: "/images/logo/logo-100.webp",
+      email: "wangshiyu@qingluanx.com",
+      link: "https://qingluanx.com",
+    },
+  },
+
+  // 建站日期
+  since: "2026-08-07",
+  // 网站显示参数：需要调整时直接修改这里，不再向访客提供个性化面板。
+  display: {
+    fontSize: 16,
+    backgroundImage: "/images/background/fantasy-cosmos.webp",
+    backgroundEnabled: true,
+    // 背景开启时统一采用深色；关闭背景后允许切换亮暗模式。
+  },
+  // 每页文章数据
+  postSize: 8,
+  // inject
+  // 本地霞鹜文楷与图标样式由站点配置统一加入页面 head。
+  inject: {
+    header: [
+      ["link", { rel: "icon", href: "/images/logo/favicon.ico" }],
+      [
+        "link",
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          title: "RSS",
+          href: "/rss.xml",
+        },
+      ],
+    ],
+  },
+
+  // 运行时按需加载资源
+  externalResources: {
+    iconfontCss: "/vendor/iconfont/iconfont.css",
+    fonts: {
+      lxgw: "/fonts/lxgw/lxgwwenkaiscreen.css",
+    },
+  },
+
+  // 导航栏菜单
+  nav: [
+    {
+      text: "文库",
+      items: [
+        { text: "文章列表", link: "/pages/archives", icon: "article" },
+        { text: "全部分类", link: "/pages/categories", icon: "folder" },
+        { text: "全部标签", link: "/pages/tags", icon: "hashtag" },
+      ],
+    },
+    {
+      text: "友链",
+      items: [{ text: "友情链接", link: "/pages/link", icon: "people" }],
+    },
+    {
+      text: "我的",
+      items: [{ text: "关于本站", link: "/pages/about", icon: "contacts" }],
+    },
+  ],
+
+  // 导航栏菜单 - 左侧
+  navMore: [
+    {
+      name: "博客",
+      list: [
+        {
+          icon: "/images/logo/logo.webp",
+          name: "主站",
+          url: "/",
+        },
+      ],
+    },
+    {
+      name: "项目",
+      list: [
+        {
+          icon: "/images/logo/github.webp",
+          name: "twikoo-cloudflare",
+          url: "https://github.com/wangshiyulin/twikoo-cloudflare",
+        },
+      ],
+    },
+  ],
+
+  // 页脚信息
+  footer: {
+    // 页脚“下一站”。直接编辑下面的单一列表，不生成或推测个人事项。
+    // 示例条目结构：{ text: "填写事项", link: "/pages/about" }；link 可省略。
+    activity: {
+      title: "下一站",
+      items: [],
+    },
+    // sitemap
+    sitemap: [
+      {
+        text: "博客",
+        items: [
+          { text: "近期文章", link: "/" },
+          { text: "全部分类", link: "/pages/categories" },
+          { text: "全部标签", link: "/pages/tags" },
+          { text: "文章归档", link: "/pages/archives", newTab: true },
+        ],
+      },
+      {
+        text: "项目",
+        items: [
+          { text: "本站源码", link: "https://github.com/wangshiyulin/my-blog", newTab: true },
+        ],
+      },
+      {
+        text: "页面",
+        items: [
+          { text: "关于本站", link: "/pages/about" },
+          { text: "隐私政策", link: "/pages/privacy" },
+          { text: "版权协议", link: "/pages/cc" },
+          { text: "联系我们", action: "contact" },
+        ],
+      },
+    ],
+  },
+  // 评论
+  comment: {
+    enable: true,
+    type: "twikoo",
+    // 评论系统选择
+    // Twikoo
+    // https://twikoo.js.org/
+    twikoo: {
+      // 必填，若不想使用 CDN，可以使用 pnpm add twikoo 安装并引入
+      js: "/vendor/twikoo/twikoo.all.min.js",
+      envId: "https://twikoo.qingluanx.com",
+      // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+      region: "ap-shanghai",
+      lang: "zh-CN",
+    },
+  },
+  // 侧边栏
+  aside: {
+    // 站点简介
+    hello: {
+      enable: true,
+      text: "欢迎你，希望你能有所收获。",
+      social: [
+        { icon: "github", label: "GitHub", link: "https://www.github.com/wangshiyulin/" },
+        { icon: "email", label: "邮箱", link: "mailto:wangshiyu@qingluanx.com" },
+        { icon: "reddit", label: "Reddit", link: "https://www.reddit.com/user/wangshi_yu/" },
+        { icon: "twitter-x", label: "X", link: "https://twitter.com/wangshi_yu" },
+      ],
+    },
+    // 目录
+    toc: {
+      enable: true,
+    },
+    // 标签
+    tags: {
+      enable: true,
+    },
+    // 站点数据
+    siteData: {
+      enable: true,
+    },
+  },
+  // 搜索
+  search: {
+    enable: true,
+  },
+  // 图片灯箱
+  fancybox: {
+    enable: true,
+    js: "/vendor/fancybox/fancybox.umd.min.js",
+    css: "/vendor/fancybox/fancybox.min.css",
+  },
+};

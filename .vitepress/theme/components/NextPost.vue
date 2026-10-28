@@ -1,0 +1,157 @@
+<!-- 下一篇文章 -->
+<template>
+  <div
+    v-if="nextPostData"
+    :class="[
+      'next-post',
+      's-card',
+      {
+        fixed: true,
+        show: nextPostShow && !footerIsShow,
+      },
+    ]"
+    @click="router.go(nextPostData?.regularPath)"
+  >
+    <span class="post-tip">
+      {{ isNextPost ? "下一篇阅读" : "阅读上一篇" }}
+    </span>
+    <span class="post-title">
+      {{ nextPostData?.title || "暂无标题" }}
+    </span>
+  </div>
+</template>
+
+<script setup>
+import { storeToRefs } from "pinia";
+import { mainStore } from "@/store";
+import { generateId } from "@/utils/commonTools";
+
+const router = useRouter();
+const store = mainStore();
+const { theme, page } = useData();
+const { footerIsShow } = storeToRefs(store);
+
+// 文章信息
+let observer = null;
+let observedPost = null;
+let disposed = false;
+const isNextPost = ref(true);
+const nextPostShow = ref(false);
+const nextPostData = ref(null);
+
+// 获取文章
+const getNextPostData = () => {
+  const { postData } = theme.value;
+  const { filePath, frontmatter } = page.value;
+  if (!postData) return false;
+  // 本篇索引：优先使用 slug，避免 URL 重写后依赖源文件路径。
+  const currentSlug = frontmatter?.slug;
+  const postIndex = currentSlug
+    ? postData.findIndex((post) => post.slug === currentSlug)
+    : filePath
+      ? postData.findIndex((post) => post.id === generateId(filePath))
+      : -1;
+  // 是否有下一篇
+  if (postIndex >= 0 && postIndex < postData.length - 1) {
+    nextPostData.value = postData[postIndex + 1];
+    isNextPost.value = true;
+    return true;
+  }
+  // 是否有上一篇
+  else if (postIndex > 0) {
+    nextPostData.value = postData[postIndex - 1];
+    isNextPost.value = false;
+    return true;
+  }
+  // 如果没有任何文章
+  nextPostData.value = null;
+  return false;
+};
+
+// Reuse the observer when VitePress reuses the same article container.
+const isShowNext = () => {
+  const postDom = document.getElementById("page-content");
+  if (!postDom) {
+    observer?.disconnect();
+    observedPost = null;
+    nextPostShow.value = false;
+    return;
+  }
+  const bounds = postDom.getBoundingClientRect();
+  nextPostShow.value = bounds.bottom <= 0 || bounds.top >= window.innerHeight;
+  if (postDom === observedPost) return;
+  observer?.disconnect();
+  if (!("IntersectionObserver" in window)) return;
+  observer = new IntersectionObserver((entries) => {
+    nextPostShow.value = !entries[0]?.isIntersecting;
+  });
+  observedPost = postDom;
+  observer.observe(postDom);
+};
+const updatePost = async () => {
+  await nextTick();
+  if (disposed) return;
+  getNextPostData();
+  isShowNext();
+};
+watch(() => page.value.relativePath, updatePost, { flush: "post" });
+onMounted(updatePost);
+onBeforeUnmount(() => {
+  disposed = true;
+  observer?.disconnect();
+  observedPost = null;
+});
+</script>
+
+<style lang="scss" scoped>
+.next-post {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--main-card-background);
+  .post-tip {
+    font-size: 14px;
+    color: var(--main-font-second-color);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed var(--main-card-border);
+    transition: color 0.3s;
+  }
+  .post-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  &.fixed {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    width: 300px;
+    transform: translateY(180px);
+  }
+  &.show {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &:hover {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: var(--main-on-accent-color);
+    box-shadow: 0 8px 16px -4px var(--main-color-bg);
+    .post-tip {
+      opacity: 0.8;
+      color: var(--main-on-accent-color);
+    }
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+</style>

@@ -1,0 +1,48 @@
+{
+  "name": "qingluanx-blog",
+  "productName": "青鸾小栈",
+  "version": "1.0.1",
+  "description": "青鸾小栈博客",
+  "author": "往世雨",
+  "repository": "github:wangshiyulin/my-blog",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13.0",
+    "npm": ">=10"
+  },
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \".vitepress/**/*.{js,mjs,cjs,vue,scss,json}\"",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "dev": "vitepress dev --host localhost",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.6.4",
+    "@vite-pwa/vitepress": "1.1.0",
+    "eslint": "10.10.0",
+    "eslint-plugin-vue": "10.11.0",
+    "feed": "6.0.0",
+    "globby": "16.2.4",
+    "gray-matter": "4.0.3",
+    "markdown-it-container": "4.0.0",
+    "prettier": "3.9.9",
+    "sass": "1.105.1",
+    "terser": "5.51.2",
+    "unplugin-auto-import": "21.1.0",
+    "unplugin-vue-components": "32.1.0",
+    "vitepress": "1.6.4",
+    "vitepress-plugin-tabs": "0.9.1"
+  },
+  "dependencies": {
+    "fuse.js": "7.5.0",
+    "lodash-es": "4.18.1",
+    "pinia": "4.0.3",
+    "vue": "3.5.43"
+  },
+  "homepage": "https://qingluanx.com",
+  "packageManager": "pnpm@11.25.0"
+}

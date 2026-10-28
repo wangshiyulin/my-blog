@@ -1,0 +1,532 @@
+// 字体与基础动画统一在本文件维护。
+@font-face {
+  font-family: "Site Title";
+  font-display: swap;
+  src: url("/fonts/title.ttf");
+}
+
+html,
+body,
+#app {
+  font-family: var(--main-font-family) !important;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--main-font-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 渐入
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// 上浮
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up-opacity {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+}
+
+// 骨架屏加载
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+// fade
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 160ms ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// toLeft
+.toLeft-enter-active,
+.toLeft-leave-active {
+  transition: transform 160ms ease;
+}
+
+.toLeft-enter-from,
+.toLeft-leave-to {
+  transform: translateX(300px);
+}
+
+// 全局颜色变量
+:root {
+  --main-color: #e4bf77;
+  --main-color-bg: rgba(228, 191, 119, 0.12);
+  --main-site-background: #000;
+  color-scheme: dark;
+  --main-on-accent-color: #17191f;
+  --main-surface-solid: #1b1e25;
+  --main-surface-overlay: rgba(24, 27, 33, 0.94);
+  --main-glass-highlight: rgba(255, 255, 255, 0.065);
+  --main-glass-shadow: rgba(0, 0, 0, 0.38);
+  --main-page-surface: transparent;
+  --main-card-background: rgba(25, 28, 34, 0.72);
+  --main-card-second-background: rgba(255, 255, 255, 0.045);
+  --main-font-color: #f5f1e8;
+  --main-font-second-color: #bcbcc4;
+  --main-card-border: rgba(255, 255, 255, 0.13);
+  --main-border-shadow: rgba(0, 0, 0, 0.18);
+  --main-scrollbar-bar: rgba(224, 204, 169, 0.4);
+  --main-mask-background: rgba(10, 12, 17, 0.86);
+  --main-mask-Inverse-background: rgba(255, 255, 255, 0.06);
+  --main-mask-second-background: rgba(10, 12, 17, 0.55);
+  --main-color-opacity: rgba(255, 255, 255, 0.065);
+  --main-dark-opacity: rgba(255, 255, 255, 0.15);
+  --main-info-color: #50bfff;
+  --main-info-color-gray: #50bfff60;
+  --main-warning-color: #ffa500;
+  --main-warning-color-gray: #f7ba2a60;
+  --main-success-color: #13ce66;
+  --main-error-color: #ff3842;
+  --main-error-color-gray: #ff38423b;
+  --main-color-white: #ffffff40;
+  --main-color-gray: #999;
+  --main-color-red: #ff3842;
+  --main-font-family:
+    "LXGW WenKai Screen", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --main-overlay-background: rgba(3, 5, 9, 0.52);
+}
+
+// 页面外层画布与阅读表面随亮暗主题同步。
+html.light {
+  --main-site-background: var(--main-page-surface);
+  color-scheme: light;
+  color-scheme: only light;
+  --main-info-color: #075f92;
+  --main-info-color-gray: rgba(7, 95, 146, 0.08);
+  --main-warning-color: #875300;
+  --main-warning-color-gray: rgba(135, 83, 0, 0.09);
+  --main-error-color: #a5112d;
+  --main-error-color-gray: rgba(165, 17, 45, 0.08);
+  --main-success-color: #096a43;
+  --main-color: #79521a;
+  --main-color-bg: rgba(121, 82, 26, 0.1);
+  --main-on-accent-color: #fff8ea;
+  --main-card-background: rgba(255, 252, 246, 0.97);
+  --main-card-second-background: rgba(66, 47, 23, 0.055);
+  --main-font-color: #23272f;
+  --main-font-second-color: #5b5e67;
+  --main-card-border: rgba(65, 49, 28, 0.19);
+  --main-border-shadow: rgba(40, 30, 16, 0.12);
+  --main-scrollbar-bar: rgba(121, 82, 26, 0.45);
+  --main-mask-background: rgba(255, 252, 246, 0.93);
+  --main-mask-Inverse-background: rgba(66, 47, 23, 0.06);
+  --main-mask-second-background: rgba(255, 252, 246, 0.75);
+  --main-color-opacity: rgba(66, 47, 23, 0.07);
+  --main-dark-opacity: rgba(66, 47, 23, 0.1);
+  --main-surface-solid: #faf7ef;
+  --main-surface-overlay: rgba(255, 252, 246, 0.98);
+  --main-glass-highlight: rgba(255, 255, 255, 0.7);
+  --main-glass-shadow: rgba(40, 30, 16, 0.18);
+  --main-page-surface: #f4f0e8;
+}
+
+// 字体
+html {
+  .iconfont {
+    font-size: 1rem;
+  }
+  button {
+    font-family: var(--main-font-family);
+  }
+}
+
+// 壁纸背景
+html {
+  &.image {
+    .main-nav {
+      // 固定导航栏的实时模糊容易在滚动时大面积重绘。
+      background-color: rgba(17, 20, 26, 0.84);
+      backdrop-filter: none;
+      &.top {
+        background-color: transparent;
+      }
+      @media (max-width: 768px) {
+        &.down {
+          .nav-center {
+            background-color: #1b1c20 !important;
+          }
+        }
+      }
+    }
+    .tags-cloud {
+      .all-tags {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// 全局基础样式
+* {
+  -webkit-user-drag: none;
+  box-sizing: border-box;
+}
+
+html {
+  user-select: none;
+  // 交互按钮明确指定 smooth；页面恢复、锚点和浏览器滚动不强制全局动画。
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+  // 特殊情况
+  &.dark {
+    // 代码高亮
+    pre {
+      code {
+        .line {
+          span {
+            color: var(--shiki-dark) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--main-font-color);
+  background-color: var(--main-site-background);
+  overflow-x: hidden;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-font-color);
+  transition: color 0.3s;
+  .iconfont {
+    transition: color 0.3s;
+  }
+  &:hover {
+    color: var(--main-color);
+  }
+}
+
+#app {
+  width: 100vw;
+  width: 100dvw;
+  // height: 100vh;
+  // 滚动条
+  .simplebar-scrollbar {
+    &::before {
+      right: 0;
+      left: 4px;
+      background: var(--main-scrollbar-bar);
+      transition:
+        background 0.3s,
+        left 0.3s;
+      cursor: pointer;
+    }
+    &:hover {
+      &::before {
+        left: 2px;
+        background: var(--main-color);
+      }
+    }
+  }
+}
+
+// 通用卡片
+.s-card {
+  padding: 0.8rem;
+  border-radius: 16px;
+  background-color: var(--main-card-background);
+  border: 1px solid var(--main-card-border);
+  background-image: linear-gradient(135deg, var(--main-glass-highlight), transparent 56%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 12px 28px -18px rgba(0, 0, 0, 0.65);
+  transition:
+    transform 160ms ease-out,
+    border-color 160ms,
+    background-color 160ms;
+  cursor: pointer;
+  &:hover {
+    &.hover {
+      border-color: var(--main-color);
+      box-shadow: 0 8px 16px -4px var(--main-color-bg);
+    }
+  }
+}
+
+// 滚动条
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-scrollbar-bar);
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--main-color);
+  }
+}
+
+// 选中文本
+::selection {
+  background-color: var(--main-color);
+  color: #efefef;
+}
+
+// fancybox
+.fancybox__container {
+  .fancybox__progress {
+    background: var(--main-color) !important;
+  }
+  .fancybox__thumb {
+    &::after {
+      border-width: 2px !important;
+      border-color: var(--main-color) !important;
+    }
+  }
+}
+
+//自定义块样式
+.custom-block {
+  .custom-block-content {
+    p,
+    ul,
+    ol,
+    li {
+      color: var(--main-font-color) !important;
+    }
+  }
+
+  &.info,
+  &.warning,
+  &.danger,
+  &.tip,
+  &.summary {
+    .custom-block-content {
+      p,
+      ul,
+      ol,
+      li {
+        color: var(--main-font-color) !important;
+      }
+    }
+  }
+
+  // 标题颜色保持原样
+  .custom-block-title {
+    color: inherit;
+  }
+}
+
+// Small feedback only on direct interaction; no permanent compositor layers.
+@media (hover: hover) and (pointer: fine) {
+  .s-card.hover:hover {
+    transform: translateY(-2px);
+  }
+  .skills-item:hover {
+    transform: translateY(-2px);
+  }
+}
+button,
+.options,
+.menu-item,
+.page-item,
+.skills-item {
+  transition-duration: 160ms;
+}
+button:active:not(:disabled),
+.options:active {
+  transform: scale(0.98);
+}
+a:focus-visible,
+button:focus-visible,
+[role="link"]:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .s-card.hover:hover,
+  .skills-item:hover {
+    transform: none;
+  }
+}
+
+// 玻璃表面与交互效果
+// Translucent surfaces share theme tokens; large card lists never allocate blur layers.
+html .main-footer {
+  background: var(--main-card-background);
+  border-top-color: var(--main-card-border);
+}
+html .main-header .main-nav {
+  border-bottom: 1px solid var(--main-card-border);
+}
+html .modal-main.s-card {
+  background-color: var(--main-surface-overlay);
+  border-color: var(--main-card-border);
+  box-shadow:
+    inset 0 1px 0 var(--main-glass-highlight),
+    0 24px 64px var(--main-glass-shadow);
+}
+html .modal-main > .modal-header {
+  background-color: var(--main-card-second-background);
+}
+html .control-content .menu .menu-item {
+  border-color: var(--main-card-border);
+  background-image: linear-gradient(135deg, var(--main-glass-highlight), transparent 70%);
+  box-shadow:
+    inset 0 1px 0 var(--main-glass-highlight),
+    0 8px 24px var(--main-border-shadow);
+}
+html .control-content .menu .menu-item.open {
+  background-color: var(--main-color);
+}
+html .mobile-menu .menu-content {
+  background-color: var(--main-surface-overlay);
+}
+html .hello.s-card {
+  border: 1px solid var(--main-card-border);
+  background:
+    linear-gradient(140deg, var(--main-color-bg), transparent 70%), var(--main-card-background);
+  color: var(--main-font-color);
+}
+html .hello.s-card .social-link .iconfont {
+  color: var(--main-font-color);
+}
+html .hello.s-card .social-link:hover .iconfont {
+  color: var(--main-color);
+}
+html .hello.s-card .social-link:hover {
+  background-color: var(--main-card-second-background);
+}
+html .search-more {
+  background:
+    linear-gradient(130deg, var(--main-glass-highlight), transparent),
+    var(--main-card-second-background);
+}
+html .post-article .expired {
+  background-color: var(--main-color-bg);
+}
+
+// Light surfaces share the outer canvas color in light mode.
+html.light {
+  .toc .toc-item {
+    opacity: 0.9;
+  }
+  .mian-layout {
+    background: var(--main-page-surface);
+    border-radius: 0 0 24px 24px;
+  }
+  .main-header .main-nav,
+  .main-header .main-nav.top {
+    background-color: var(--main-surface-overlay);
+  }
+  .footer-link {
+    background: var(--main-page-surface);
+    border-radius: 24px;
+    padding: 1rem;
+  }
+  .hello .name .desc {
+    opacity: 0.85;
+  }
+  .about .intro-portrait {
+    border-color: var(--main-card-border);
+  }
+}
+
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  @media (min-width: 769px) {
+    html .modal-main.s-card,
+    html .control-content .menu .menu-item {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  html .post-lists .post-item:hover,
+  html .archives .posts-item:hover,
+  html .link-list .link-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--main-color);
+  }
+  html .pagination .page-item:active {
+    transform: scale(0.96);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html .post-lists .post-item:hover,
+  html .archives .posts-item:hover,
+  html .link-list .link-card:hover,
+  html .pagination .page-item:active,
+  html .control-content .menu .menu-item:hover {
+    transform: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  html .s-card,
+  html .hello.s-card,
+  html .modal-main.s-card,
+  html .mobile-menu .menu-content,
+  html .control-content .menu .menu-item {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: var(--main-surface-solid);
+  }
+  html .main-header .main-nav,
+  html .main-footer {
+    background: var(--main-surface-solid);
+  }
+  html .control-content .menu .menu-item.open {
+    background-color: var(--main-color);
+  }
+}

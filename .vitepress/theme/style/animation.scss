@@ -1,0 +1,88 @@
+// 渐入
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// 上浮
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up-opacity {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+}
+
+// 进度
+@keyframes loading-width {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+// 骨架屏加载
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+// fade
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 160ms ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// fadeDown
+.fadeDown-enter-active,
+.fadeDown-leave-active {
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.fadeDown-enter-from,
+.fadeDown-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+// toLeft
+.toLeft-enter-active,
+.toLeft-leave-active {
+  transition: transform 160ms ease;
+}
+
+.toLeft-enter-from,
+.toLeft-leave-to {
+  transform: translateX(300px);
+}

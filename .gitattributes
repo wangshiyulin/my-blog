@@ -1,0 +1,27 @@
+# Normalize all detected text files to LF in the repository and working tree.
+* text=auto eol=lf
+
+# Windows command scripts conventionally use CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Explicitly treat binary assets as binary.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.bmp binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.mp3 binary
+*.mp4 binary
+*.webm binary
+*.zip binary
+*.gz binary
