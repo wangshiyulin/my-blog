@@ -24,9 +24,9 @@ PS：真是踩了无数坑，在电脑前坐了几个小时，终于将几个方
 
 相关文章：
 
-[内网穿透——使用公网 IPv4 自托管 NetBird 组建虚拟局域网](/posts/selfhost-netbird-ipv4/)\
-[内网穿透——注册 NetBird Cloud 并组建个人虚拟局域网](/posts/netbird-cloud-guide/)\
-[内网穿透——NetBird 功能与组网原理详解](/posts/netbird-architecture-and-features/)
+[内网穿透——使用公网 IPv4 自托管 NetBird 组建虚拟局域网](/selfhost-netbird-ipv4)\
+[内网穿透——注册 NetBird Cloud 并组建个人虚拟局域网](/netbird-cloud-guide)\
+[内网穿透——NetBird 功能与组网原理详解](/netbird-architecture-and-features)
 
 ## 一、部署准备
 

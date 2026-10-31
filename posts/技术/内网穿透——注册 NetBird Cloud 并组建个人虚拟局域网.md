@@ -17,9 +17,9 @@ NetBird 是基于 WireGuard 的私有组网工具。将不同网络中的设备�
 
 相关文章：
 
-[内网穿透——使用公网 IPv4 自托管 NetBird 组建虚拟局域网](/posts/selfhost-netbird-ipv4/)\
-[内网穿透——NetBird 功能与组网原理详解](/posts/netbird-architecture-and-features/)\
-[内网穿透——使用域名自托管 NetBird 组建虚拟局域网](/posts/selfhost-netbird-domain/)
+[内网穿透——使用公网 IPv4 自托管 NetBird 组建虚拟局域网](/selfhost-netbird-ipv4)\
+[内网穿透——NetBird 功能与组网原理详解](/netbird-architecture-and-features)\
+[内网穿透——使用域名自托管 NetBird 组建虚拟局域网](/selfhost-netbird-domain)
 
 ## 一、注册账户
 

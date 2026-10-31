@@ -19,13 +19,13 @@ NetBird 是一款基于 WireGuard 的开源组网软件，支持多设备组成�
 
 需要说明：NetBird 官方自托管 Quickstart 仍以域名和 HTTPS 为标准部署方式。本文使用官方安装脚本的 `use-ip` 模式，再通过 Caddy 和 Let's Encrypt IP 证书补充 HTTPS，属于定制部署，相关配置需随 NetBird 版本变化进行核对。
 
-本文很多部分都跟另一篇文章[内网穿透——使用域名自托管 NetBird 组建虚拟局域网](/posts/selfhost-netbird-domain/)类似。
+本文很多部分都跟另一篇文章[内网穿透——使用域名自托管 NetBird 组建虚拟局域网](/selfhost-netbird-domain)类似。
 
 相关文章：
 
-[内网穿透——使用域名自托管 NetBird 组建虚拟局域网](/posts/selfhost-netbird-domain/)\
-[内网穿透——注册 NetBird Cloud 并组建个人虚拟局域网](/posts/netbird-cloud-guide/)\
-[内网穿透——NetBird 功能与组网原理详解](/posts/netbird-architecture-and-features/)
+[内网穿透——使用域名自托管 NetBird 组建虚拟局域网](/selfhost-netbird-domain)\
+[内网穿透——注册 NetBird Cloud 并组建个人虚拟局域网](/netbird-cloud-guide)\
+[内网穿透——NetBird 功能与组网原理详解](/netbird-architecture-and-features)
 
 ## 一、部署准备
 
