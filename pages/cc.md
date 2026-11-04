@@ -1,4 +1,5 @@
 ---
+description: 说明本站原创文章、源码与第三方素材的许可范围及授权联系方式。
 title: 版权协议
 aside: false
 card: true

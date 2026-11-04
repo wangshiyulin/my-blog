@@ -1,4 +1,5 @@
 ---
+description: 青鸾小栈的友情链接、站点信息与友链申请规则。
 title: 友情链接
 aside: false
 comment: true

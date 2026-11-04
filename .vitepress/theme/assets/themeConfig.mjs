@@ -24,7 +24,7 @@ export const themeConfig = {
   // 网站显示参数：需要调整时直接修改这里，不再向访客提供个性化面板。
   display: {
     fontSize: 16,
-    backgroundImage: "/images/background/fantasy-cosmos.webp",
+    backgroundImage: "/images/background/flow-amber.png",
     backgroundEnabled: true,
     // 背景开启时统一采用深色；关闭背景后允许切换亮暗模式。
   },

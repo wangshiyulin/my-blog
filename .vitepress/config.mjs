@@ -91,7 +91,7 @@ export default withPwa(
     },
     // 构建排除
     // 使用手册、README 与第三方字体更新记录仅供本地查阅，不作为页面发布。
-    srcExclude: ["**/README.md", "**/TODO.md", "**/WEBSITE-GUIDE.md", "**/CHANGELOG.md"],
+    srcExclude: ["**/README.md", "**/TODO.md", "**/WEBSITE-GUIDE.md", "**/SOURCE-MAP.md", "**/CHANGELOG.md"],
     // transformHead
     transformPageData: async (pageData) => {
       const pageSlug =

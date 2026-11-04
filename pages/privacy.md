@@ -1,4 +1,5 @@
 ---
+description: 说明本站评论、统计、浏览器存储、第三方服务及计划使用的广告服务如何处理信息。
 title: 隐私政策
 aside: false
 card: true

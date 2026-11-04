@@ -2,6 +2,8 @@
 
 # 青鸾小栈
 
+完整功能、服务和源码维护入口见 [源码地图](./SOURCE-MAP.md)。
+
 这是「青鸾小栈」的博客源码，基于 VitePress 构建，使用 Vue 组件实现自定义主题，通过 Pinia 管理页面状态。
 
 博客地址：[qingluanx.com](https://qingluanx.com)
@@ -36,7 +38,7 @@ pnpm preview
 ```js
 display: {
   fontSize: 16,
-  backgroundImage: "/images/background/fantasy-cosmos.webp",
+  backgroundImage: "/images/background/flow-amber.png",
   backgroundEnabled: true,
 },
 ```

@@ -1,4 +1,5 @@
 ---
+description: 访问往世雨的 GitHub 项目主页。
 title: 我的项目
 aside: false
 ---
@@ -9,4 +10,3 @@ import Project from "@/views/Project.vue"
 
 <Project />
 
-> 还没想好写点什么
