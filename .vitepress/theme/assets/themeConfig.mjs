@@ -95,6 +95,11 @@ export const themeConfig = {
           name: "twikoo-cloudflare",
           url: "https://github.com/wangshiyulin/twikoo-cloudflare",
         },
+        {
+          icon: "/images/logo/github.webp",
+          name: "qingluan-ledger",
+          url: "https://github.com/wangshiyulin/qingluan-ledger",
+        }
       ],
     },
   ],
@@ -122,6 +127,7 @@ export const themeConfig = {
         text: "项目",
         items: [
           { text: "本站源码", link: "https://github.com/wangshiyulin/my-blog", newTab: true },
+          { text: "青鸾记账", link: "https://github.com/wangshiyulin/qingluan-ledger", newTab: true }          
         ],
       },
       {
