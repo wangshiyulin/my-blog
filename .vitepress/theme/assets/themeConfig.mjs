@@ -91,15 +91,15 @@ export const themeConfig = {
       name: "项目",
       list: [
         {
-          icon: "/images/logo/github.webp",
-          name: "twikoo-cloudflare",
-          url: "https://github.com/wangshiyulin/twikoo-cloudflare",
+          icon: "/images/logo/ledger.webp",
+          name: "青鸾记账",
+          url: "https://ledger.qingluanx.com",
         },
         {
-          icon: "/images/logo/github.webp",
-          name: "qingluan-ledger",
-          url: "https://github.com/wangshiyulin/qingluan-ledger",
-        }
+          icon: "/images/logo/schedule.webp",
+          name: "青鸾课程表",
+          url: "https://schedule.qingluanx.com",
+        },
       ],
     },
   ],
@@ -127,7 +127,8 @@ export const themeConfig = {
         text: "项目",
         items: [
           { text: "本站源码", link: "https://github.com/wangshiyulin/my-blog", newTab: true },
-          { text: "青鸾记账", link: "https://github.com/wangshiyulin/qingluan-ledger", newTab: true }          
+          { text: "青鸾记账", link: "https://github.com/wangshiyulin/qingluan-ledger", newTab: true }，
+          { text: "青鸾课程表", link: "https://github.com/wangshiyulin/qingluan-schedule", newTab: true }
         ],
       },
       {
